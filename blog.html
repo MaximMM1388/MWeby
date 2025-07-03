@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - MWeby | Online Úspech pre Vašu Reštauráciu, Autoškolu a Biznis</title>
+    <meta name="description" content="Kľúčové stratégie pre majiteľov kaviarní, reštaurácií a autoškôl v Nitre. Zistite, prečo je vlastná webstránka lepšia ako len Facebook, prečo je mobilná responzívnosť kľúčová a ako sa vyhnúť skrytým nákladom pri tvorbe webu.">
+    <meta name="keywords" content="webstránka pre reštauráciu Nitra, web pre kaviareň Nitra, webstránka pre autoškolu Nitra, mobilná responzívnosť webu, SEO pre lokálne firmy, transparentné ceny webu, skryté náklady web, tvorba webstránok bez poplatkov, online marketing pre gastro, kyberbezpečnosť pre podnikateľov, MWeby pre biznis">
+    <meta name="author" content="MWeby">
+
+    <meta property="og:title" content="Blog - MWeby | Online Úspech pre Vašu Reštauráciu, Autoškolu a Biznis">
+    <meta property="og:description" content="Kľúčové stratégie pre majiteľov kaviarní, reštaurácií a autoškôl v Nitre. Zistite, prečo je vlastná webstránka lepšia ako len Facebook, prečo je mobilná responzívnosť kľúčová a ako sa vyhnúť skrytým nákladom pri tvorbe webu.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.vasadomena.sk/blog.html"> 
+    <meta property="og:image" content="https://www.vasadomena.sk/blog-og-image-consistent.png"> <meta property="og:locale" content="sk_SK">
+ <link rel="icon" type="image/png" href="logo.jpg.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Základné premenné a reset (Konzistentné s index.html) --- */
+        :root {
+            --primary-color: hsl(205, 78%, 42%); /* Hlboká oceľová modrá */
+            --accent-color: hsl(170, 70%, 45%); /* Svieža, moderná tyrkysová/zelenkavá */
+            --accent-color-light: hsl(170, 80%, 75%); /* Svetlejší variant akcentovej farby */
+            --dark-bg-color: hsl(210, 10%, 18%); /* Antracitová */
+            --light-bg-color: hsl(210, 15%, 96%); /* Jemná svetlo šedá */
+            --text-color-dark: hsl(0, 0%, 20%); /* Tmavý text */
+            --text-color-light: hsl(0, 0%, 30%); /* Svetlejší text */
+            --white-color: #FFFFFF;
+
+            --primary-color-rgb: 52, 152, 219;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color-dark);
+            background-color: var(--light-bg-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- Reusable components (Konzistentné s index.html) --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg-color);
+        }
+        .bg-dark {
+            background-color: var(--dark-bg-color);
+            color: var(--white-color);
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: var(--dark-bg-color);
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title strong {
+            color: var(--primary-color);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            font-size: 1.2em;
+            color: var(--text-color-light);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        /* --- Hlavička a Navigácia (Štýly kopírované z index.html pre konzistenciu) --- */
+        .main-header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+      .site-logo img {
+    max-width: 100%; /* Zabezpečí, že logo nikdy nepresiahne šírku svojho rodičovského prvku */
+    height: auto;    /* Kľúčové: Automaticky prispôsobí výšku, aby sa zachoval pôvodný pomer strán obrázka */
+    display: block;  /* Zabezpečí, že sa naň správne aplikujú rozmery a zarovnanie */
+    /* Voliteľné: Ak potrebujete obmedziť maximálnu výšku loga, pridajte max-height */
+    max-height: 50px; /* Príklad: Obmedzí maximálnu výšku loga na 50px, pričom šírka sa prispôsobí */
+    /* Odstráňte pevnú šírku, napr. width: 150px;, ktorú ste mohli mať predtým */
+}
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li a {
+            color: var(--text-color-dark);
+            font-weight: 600;
+            font-size: 1.05em;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after,
+        .nav-links li a.active::after {
+            width: 100%;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-outline-header, .btn-primary-header {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .btn-outline-header {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-outline-header:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .btn-primary-header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-primary-header:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .hamburger-menu {
+            display: none; /* Skryté na desktopoch */
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-bg-color);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* --- Blog Hero Section --- */
+        .blog-hero-section {
+            background: linear-gradient(135deg, var(--dark-bg-color) 0%, var(--primary-color) 100%);
+            color: var(--white-color);
+            text-align: center;
+            padding: 100px 25px 70px;
+            min-height: 35vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero-section .section-title {
+            color: var(--white-color);
+            font-size: 3.8em;
+            margin-bottom: 15px;
+        }
+        .blog-hero-section .section-title strong {
+             color: var(--accent-color);
+        }
+        .blog-hero-section .section-title::after {
+            background-color: var(--accent-color);
+        }
+        .blog-hero-section .section-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25em;
+            max-width: 900px;
+            margin-bottom: 0;
+        }
+
+        /* --- Blog Posts List (Overview) Section --- */
+        .blog-posts-overview-section {
+            padding: 80px 0;
+        }
+
+        .article-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px; /* Space before full articles */
+        }
+
+        .article-summary-card {
+            background-color: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .article-summary-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        .article-summary-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .article-summary-card:hover img {
+            transform: scale(1.03);
+        }
+        .article-summary-card .card-content {
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .card-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            color: var(--text-color-light);
+            flex-wrap: wrap;
+        }
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .card-meta i {
+            color: var(--primary-color);
+        }
+        .article-summary-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .article-summary-card h3 a {
+            color: var(--dark-bg-color);
+            transition: color 0.3s ease;
+        }
+        .article-summary-card h3 a:hover {
+            color: var(--primary-color);
+        }
+        .article-summary-card p {
+            font-size: 1em;
+            color: var(--text-color-dark);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        .view-article-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .view-article-btn:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        .view-article-btn i {
+            font-size: 0.8em;
+        }
+
+
+        /* --- Full Article Styles --- */
+        .full-article-section {
+            background-color: var(--white-color);
+            padding: 80px 0;
+            margin-bottom: 60px; /* Space between articles */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .full-article-section:last-of-type {
+            margin-bottom: 0; /* No margin after last article */
+        }
+
+        .article-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .article-content h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .article-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            color: var(--dark-bg-color);
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+        .article-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: var(--text-color-dark);
+        }
+        .article-content ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: var(--text-color-dark);
+        }
+        .article-content ul li {
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+        .article-content strong {
+            color: var(--primary-color);
+        }
+        .article-content img {
+            margin: 30px auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .article-content .article-meta {
+            text-align: center;
+            font-size: 1em;
+            color: var(--text-color-light);
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .article-content .article-meta span i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        /* --- Pätička (Konzistentné s index.html) --- */
+        .main-footer {
+            background-color: var(--dark-bg-color);
+            color: var(--white-color);
+            padding: 80px 0 30px;
+            font-size: 0.95em;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand, .footer-links, .footer-contact {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-brand h3 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 5px;
+        }
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-contact p i {
+            color: var(--accent-color);
+            font-size: 1.1em;
+        }
+        .footer-contact p a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .footer-contact p a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            margin-top: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+
+        .social-links-footer {
+            display: flex;
+            gap: 15px;
+        }
+        .social-links-footer a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-links-footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Media Queries (Konzistentné s index.html a prispôsobené pre články) --- */
+        @media (max-width: 992px) {
+            .nav-links {
+                gap: 20px;
+            }
+            .section-title {
+                font-size: 2.8em;
+            }
+            .section-description {
+                font-size: 1.05em;
+                margin-bottom: 40px;
+            }
+            .blog-hero-section .section-title {
+                font-size: 3em;
+            }
+            .blog-hero-section .section-description {
+                font-size: 1.1em;
+            }
+            .article-summary-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            .article-summary-card h3 {
+                font-size: 1.4em;
+            }
+            .article-summary-card .card-content {
+                padding: 20px;
+            }
+            .full-article-section {
+                padding: 60px 0;
+            }
+            .article-content h2 {
+                font-size: 2em;
+            }
+            .article-content h3 {
+                font-size: 1.5em;
+            }
+            .article-content p {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .site-logo {
+                flex-grow: 0; /* Logo nebude zaberať celú šírku */
+                order: 0; /* Ponechá logo vľavo */
+                margin-bottom: 0; /* Zruší spodný margin */
+            }
+            .hamburger-menu {
+                display: flex;
+                order: 1; /* Posunie hamburger doprava */
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--white-color);
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                padding: 25px 0;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+                border-top: 1px solid #eee;
+                z-index: 999;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                text-align: center;
+                margin: 12px 0;
+            }
+            .nav-links li a {
+                padding: 12px 0;
+                display: block;
+                color: var(--dark-bg-color);
+                font-size: 1.2em;
+            }
+            .nav-links li a.btn-outline-header,
+            .nav-links li a.btn-primary-header {
+                display: inline-block;
+                margin-top: 10px;
+                width: auto;
+            }
+            .blog-hero-section {
+                padding: 70px 20px 40px;
+            }
+            .blog-hero-section .section-title {
+                font-size: 2.2em;
+            }
+            .blog-hero-section .section-description {
+                font-size: 1em;
+            }
+            .blog-posts-overview-section {
+                padding: 60px 0;
+            }
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .footer-brand, .footer-links, .footer-contact {
+                min-width: unset;
+                width: 100%;
+                text-align: center;
+            }
+            .footer-links ul, .footer-contact p {
+                padding-left: 0;
+                text-align: center;
+                justify-content: center;
+            }
+            .footer-links h4::after, .footer-contact h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 2.2em;
+            }
+            .blog-hero-section .section-title {
+                font-size: 1.8em;
+            }
+            .article-summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="site-logo"><img src="logo.jpg.png" alt=""></a>
+                <ul class="nav-links">
+                    <li><a href="sluzby.html">Služby</a></li>
+                    <li><a href="portfolio.html">Projekty</a></li>
+                    <li><a href="index.html#omne">O nás</a></li>
+                    <li><a href="index.html#omne">Blog</a></li>
+                    <li><a href="index.html#kontakt" class="btn btn-primary-header">Kontakt</a></li> 
+                </ul>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero-section section-padding">
+            <div class="container">
+                <h1 class="section-title">Náš <strong>Digitálny Blog</strong>: Stratégie pre Váš Rast</h1>
+                <p class="section-description">Špeciálne pre majiteľov reštaurácií, kaviarní a autoškôl. Objavte, ako moderné webové riešenia a transparentné postupy prinesú viac zákazníkov a pokoj v duši.</p>
+            </div>
+        </section>
+
+        <section class="blog-posts-overview-section section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">Kľúčové <strong>Pre Váš Biznis</strong></h2>
+                <p class="section-description">Praktické rady a hĺbkové analýzy, ktoré vám pomôžu vyniknúť online a získať viac zákazníkov.</p>
+
+                <div class="article-summary-grid">
+                    <article class="article-summary-card">
+                        <img src="blog1.jpg" alt="Webstránka pre reštauráciu vs. Facebook: prečo web vyhráva">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 15. júl 2025</span>
+                                <span><i class="fas fa-user"></i> MWeby</span>
+                                <span><i class="fas fa-tag"></i> Webdesign, Marketing</span>
+                            </div>
+                            <h3><a href="#restauracia-web">Prečo vaša reštaurácia v Nitre potrebuje vlastnú webstránku (a nestačí len Facebook)?</a></h3>
+                            <p>Zistite, ako profesionálny web môže zvýšiť vaše rezervácie, predstaviť menu atraktívnejšie a posilniť vašu značku nad rámec sociálnych sietí. Vaši zákazníci hľadajú informácie inde!</p>
+                            <a href="#restauracia-web" class="view-article-btn">Čítať celý článok <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="article-summary-card">
+                        <img src="blog2.jpg" alt="Mobilná responzívnosť pre autoškolu: získajte viac študentov">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 5. júl 2025</span>
+                                <span><i class="fas fa-user"></i> MWeby</span>
+                                <span><i class="fas fa-tag"></i> Webdesign, Autoškola</span>
+                            </div>
+                            <h3><a href="#autoskola-responzivnost">Mobilná responzívnosť: Prečo je pre vašu autoškolu kľúčová v roku 2025</a></h3>
+                            <p>Nenechajte si ujsť potenciálnych študentov kvôli nefunkčnému webu na mobile. Zistite, ako prispôsobený dizajn zvýši počet registrácií a zlepší online reputáciu vašej autoškoly.</p>
+                            <a href="#autoskola-responzivnost" class="view-article-btn">Čítať celý článok <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="article-summary-card">
+                        <img src="blog3.jpg" alt="Vyhnite sa skrytým nákladom na hosting a domény pri tvorbe webu">
+                        <div class="card-content">
+                            <div class="card-meta">
+                                <span><i class="far fa-calendar-alt"></i> 28. jún 2025</span>
+                                <span><i class="fas fa-user"></i> MWeby</span>
+                                <span><i class="fas fa-tag"></i> Tvorba webu, Financie</span>
+                            </div>
+                            <h3><a href="#skryte-naklady">Skryté náklady na hosting a domény? Ako sa im vyhnúť pri tvorbe webu</a></h3>
+                            <p>Všetko o transparentnosti cien, aby ste mali plnú kontrolu nad svojím online majetkom. Zistite, čo by vás nemalo prekvapiť pri investícii do vašej novej firemnej webstránky.</p>
+                            <a href="#skryte-naklady" class="view-article-btn">Čítať celý článok <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="full-articles-container section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">Prečítajte Si <strong>Detailne</strong></h2>
+                <p class="section-description">Hĺbkové informácie, ktoré vám pomôžu robiť informované rozhodnutia pre váš podnik.</p>
+
+                <section id="restauracia-web" class="full-article-section">
+                    <div class="container article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> 15. júl 2025</span>
+                            <span><i class="fas fa-user"></i> MWeby</span>
+                            <span><i class="fas fa-tag"></i> Webdesign, Marketing</span>
+                        </div>
+                        <h2>Prečo vaša reštaurácia v Nitre potrebuje vlastnú webstránku (a nestačí len Facebook)?</h2>
+                        <img src="blog1.jpg" alt="Vlastná profesionálna webstránka pre reštauráciu v Nitre">
+                        <p>Ste majiteľom kaviarne, reštaurácie alebo pubu v Nitre a spoliehate sa hlavne na Facebook, Instagram alebo iné sociálne siete, aby ste oslovili zákazníkov? Mnohí robia tú istú chybu. Aj keď sú sociálne siete skvelé pre budovanie komunity a rýchle promo, pre váš seriózny biznis jednoducho nestačia. Profesionálna webstránka je základ, ktorý vám prinesie oveľa viac.</p>
+                        
+                        <h3>Prečo Facebook nestačí?</h3>
+                        <ul>
+                            <li><strong>Obmedzená kontrola:</strong> Na Facebooku ste na cudzom pozemku. Pravidlá sa menia, dosah príspevkov klesá a váš profil môže byť kedykoľvek zrušený. Nad vlastnou webstránkou máte 100% kontrolu.</li>
+                            <li><strong>Profesionalita a dôvera:</strong> Zákazníci očakávajú, že reštaurácia bude mať profesionálnu prezentáciu. Webstránka buduje dôveryhodnosť a potvrdzuje, že ste seriózny podnik.</li>
+                            <li><strong>Informácie "na zavolanie":</strong> Predstavte si, že zákazník hľadá vaše menu, otváracie hodiny alebo možnosť rezervácie. Na webe je všetko prehľadne dostupné okamžite, bez nutnosti prechádzať nekonečnými príspevkami na Facebooku.</li>
+                            <li><strong>Obmedzené funkcie:</strong> Facebook neponúka integrované online rezervácie, detailné menu s alergiénmi, fotogalérie interiéru či možnosť online objednávok jedla. Kvalitná webstránka áno!</li>
+                        </ul>
+
+                        <h3>Ako vám profesionálna webstránka zmení biznis v Nitre?</h3>
+                        <p>Predstavte si vašu novú webstránku ako digitálny vstup do vášho podniku. Je otvorená 24/7 a robí prácu za vás:</p>
+                        <ul>
+                            <li><strong>Zvýšené rezervácie a objednávky:</strong> Vďaka jednoduchému rezervačnému systému alebo online objednávkam, ktoré sú okamžite dostupné.</li>
+                            <li><strong>Lepšia prezentácia menu:</strong> Krásne fotografie jedál, detailné popisy, informácie o alergiénoch a sezónnych ponukách – všetko na jednom mieste.</li>
+                            <li><strong>Lokálna viditeľnosť:</strong> S optimalizovanou webstránkou vás ľudia z Nitry a okolia ľahšie nájdu na Google, keď hľadajú "reštaurácia Nitra" alebo "najlepšia kaviareň v Nitre".</li>
+                            <li><strong>Budovanie značky a príbehu:</strong> Vlastná stránka vám umožní plne vyjadriť atmosféru vášho miesta, váš príbeh a hodnoty, čo sociálne siete len ťažko zvládnu.</li>
+                            <li><strong>Marketingové príležitosti:</strong> Zber e-mailových adries pre newsletter, sledovanie návštevnosti, integrácia s Google Maps a priame prepojenie na vaše sociálne siete.</li>
+                        </ul>
+                        <p>Nepodceňujte silu profesionálnej webstránky. Je to investícia, ktorá sa vám mnohonásobne vráti v podobe nových zákazníkov, efektívnejšej prevádzky a posilnenej značky. Ak chcete, aby vaša reštaurácia skutočne rástla, kvalitná webstránka je prvým krokom. <a href="index.html#kontakt">Ozvite sa mi</a> a porozprávame sa o tom, ako môže vyzerať tá vaša!</p>
+                    </div>
+                </section>
+
+                <section id="autoskola-responzivnost" class="full-article-section">
+                    <div class="container article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> 5. júl 2025</span>
+                            <span><i class="fas fa-user"></i> MWeby</span>
+                            <span><i class="fas fa-tag"></i> Webdesign, Autoškola</span>
+                        </div>
+                        <h2>Mobilná responzívnosť: Prečo je pre vašu autoškolu kľúčová v roku 2025</h2>
+                        <img src="blog2.jpg" alt="Mobilne optimalizovaná webstránka pre autoškolu">
+                        <p>Ste majiteľ autoškoly a váš web vyzerá skvele na počítači, ale na mobile je to katastrofa? Zmenšený text, neklikateľné tlačidlá, nekonečné rolovanie? Máte problém! Vaši potenciálni študenti – mladí ľudia – používajú internet takmer výhradne na mobilných telefónoch. Ak ich váš web odradí na prvý pohľad, prichádzate o kľúčové registrácie.</p>
+
+                        <h3>Generácia Z a mileniáli: Mobil na prvom mieste</h3>
+                        <ul>
+                            <li><strong>80% vyhľadávaní:</strong> Väčšina mladých ľudí hľadá informácie o autoškolách na mobile. Ak je váš web nepoužiteľný, prejdú ku konkurencii.</li>
+                            <li><strong>Prvý dojem:</strong> Ak web vyzerá zastaralo a nefunguje, odrádza to. Ak je moderný a responzívny, zvyšuje to dôveru a profesionalitu.</li>
+                            <li><strong>Google penalizuje:</strong> Vyhľadávače ako Google dávajú prednosť mobilne optimalizovaným stránkam. Ak váš web nie je responzívny, zobrazí sa nižšie vo výsledkoch vyhľadávania.</li>
+                        </ul>
+
+                        <h3>Čo to znamená „mobilná responzívnosť“ pre vašu autoškolu?</h3>
+                        <p>Responzívny web sa automaticky prispôsobí veľkosti obrazovky, či už je to smartfón, tablet alebo počítač. Všetok obsah – text, obrázky, formuláre – sa prispôsobí tak, aby bol ľahko čitateľný a ovládateľný.</p>
+
+                        <h3>Ako vám mobilná responzívnosť prinesie viac študentov:</h3>
+                        <ul>
+                            <li><strong>Viac registrácií:</strong> Jednoduchý prístup k prihláške, cenníku a kontaktným údajom priamo z mobilu zvýši počet potenciálnych študentov.</li>
+                            <li><strong>Lepšie SEO a viditeľnosť:</strong> Google uprednostňuje mobilne responzívne weby, čo znamená, že sa budete zobrazovať vyššie vo vyhľadávaní, keď niekto v Nitre hľadá autoškolu.</li>
+                            <li><strong>Pozitívna reputácia:</strong> Moderný a funkčný web odráža modernú a funkčnú autoškolu. Ukazujete, že držíte krok s dobou.</li>
+                            <li><strong>Zníženie "odskočenia":</strong> Ak sa návštevník stretne s nefunkčným webom, okamžite odchádza. Responzívny dizajn ich udrží na stránke dlhšie.</li>
+                        </ul>
+                        <p>Neignorujte fakt, že mobil je dnes hlavným nástrojom pre vyhľadávanie. Investícia do mobilne responzívneho webu nie je len o estetike, je to o získavaní nových študentov a udržaní si náskoku pred konkurenciou. Ak chcete, aby vaša autoškola naplno využila online potenciál v roku 2025, je čas na zmenu. <a href="index.html#kontakt">Kontaktujte ma</a> a premeníme váš web na magnet pre študentov!</p>
+                    </div>
+                </section>
+
+                <section id="skryte-naklady" class="full-article-section">
+                    <div class="container article-content">
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar-alt"></i> 28. jún 2025</span>
+                            <span><i class="fas fa-user"></i> MWeby</span>
+                            <span><i class="fas fa-tag"></i> Tvorba webu, Financie</span>
+                        </div>
+                        <h2>Skryté náklady na hosting a domény? Ako sa im vyhnúť pri tvorbe webu</h2>
+                        <img src="blog3.jpg" alt="Transparentné ceny za hosting a domény webstránok">
+                        <p>Plánujete novú webstránku pre svoju kaviareň, reštauráciu alebo akúkoľvek firmu, ale obávate sa nečakaných poplatkov? Mnohí dodávatelia lákajú na nízke počiatočné ceny, no neskôr vás prekvapia skrytými nákladmi za hosting, domény, údržbu alebo "nevyhnutné" doplnky. Pre mňa je transparentnosť kľúčová, aby ste mali plnú kontrolu nad svojím online majetkom.</p>
+
+                        <h3>Čo sú to "skryté náklady" a kde sa objavujú?</h3>
+                        <ul>
+                            <li><strong>Hosting:</strong> Niektorí ponúkajú prvý rok zadarmo, ale potom vás čakajú prehnané predlžovacie poplatky. Alebo účtujú extra za vyšší výkon, ktorý vaša stránka potrebuje pre stabilitu.</li>
+                            <li><strong>Doména:</strong> Podobne ako pri hostingu, po prvom roku môže cena domény násobne narásť. Niekedy vám dokonca ani neumožnia doménu vlastniť, ale len prenajímať.</li>
+                            <li><strong>SSL certifikát:</strong> Dnes je HTTPS štandardom pre bezpečnosť a SEO. Niektorí ho však účtujú extra, hoci je k dispozícii zadarmo.</li>
+                            <li><strong>Údržba a aktualizácie:</strong> Web potrebuje pravidelnú údržbu. Mnohí dodávatelia si za to účtujú extrémne sumy, alebo vás nútia do drahých paušálov.</li>
+                            <li><strong>"Nevyhnutné" doplnky:</strong> Potrebujete kontaktný formulár, galériu, Google mapu? Niektorí za tieto základné prvky účtujú extra, hoci by mali byť súčasťou štandardnej služby.</li>
+                            <li><strong>Licencie:</strong> Ak web stojí na CMS (ako WordPress) s platenými šablónami alebo pluginmi, licenčné poplatky môžu byť ročné a nemusia byť vopred transparentne komunikované.</li>
+                        </ul>
+
+                        <h3>Ako vám zabezpečím plnú transparentnosť a kontrolu:</h3>
+                        <p>Mojím cieľom je, aby ste mali jasný prehľad o každom eure a žiadne nepríjemné prekvapenia. Preto ponúkam:</p>
+                        <ul>
+                            <li><strong>Jasné a jednoznačné cenové ponuky:</strong> Pred začatím projektu presne viete, čo platíte a za čo. Žiadne drobné písmo, žiadne hádanky.</li>
+                            <li><strong>Vysvetlenie všetkých poplatkov:</strong> Prediskutujeme všetky súvisiace náklady (hosting, doména, SSL) a poradím vám, ako si ich zabezpečiť transparentne a cenovo výhodne. Ak si ich chcete spravovať sami, ukážem vám ako.</li>
+                            <li><strong>Vlastníctvo domény a hostingu:</strong> Doména a hosting budú vždy registrované na vaše meno, nie na naše. Ste ich plným vlastníkom a máte nad nimi kontrolu.</li>
+                            <li><strong>Bez skrytých ročných poplatkov:</strong> Naše ceny za web sú jednorazové. Hosting a doménu si spravujete (a platíte) u vybraného registrátora, čo je vždy transparentné.</li>
+                            <li><strong>Kvalita bez kompromisov:</strong> Všetky základné funkcie a moderný dizajn sú súčasťou ceny. Nepredávam "extra" za to, čo by malo byť štandardom.</li>
+                            <li><strong>Podpora a poradenstvo:</strong> Aj po odovzdaní webu som tu pre vás, aby som odpovedal na otázky a pomohol s vecami súvisiacimi s prevádzkou webu.</li>
+                        </ul>
+                        <p>Investícia do webstránky má byť zdrojom rastu, nie stresu. S transparentným prístupom a jasnými nákladmi môžete pokojne spať s vedomím, že váš online majetok je v bezpečí a pod vašou kontrolou. Zaujíma vás to? <a href="index.html#kontakt">Napíšte mi</a> a vysvetlím vám celý proces krok za krokom!</p>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer bg-dark">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>MWeby</h3>
+                    <p>Váš partner pre profesionálny webdesign a online bezpečnosť.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Rýchla Navigácia</h4>
+                    <ul>
+                        <li><a href="sluzby.html">Služby</a></li>
+                        <li><a href="portfolio.html">Projekty</a></li>
+                        <li><a href="index.html#omne">O Mne</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:mweby.2025@gmail.com">mweby.2025@gmail.com</a></p>
+                
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MWeby. Všetky práva vyhradené.</p>
+                <div class="social-links-footer">
+                    <a href="https://www.linkedin.com/in/vas-profil-maxim-mlynek" target="_blank" aria-label="LinkedIn profil"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/vas-github-profil" target="_blank" aria-label="GitHub profil"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // Ak je kliknutie na internú kotvu na tej istej stránke,
+                    // spracujeme scroll a zatvoríme menu.
+                    if (link.getAttribute('href').startsWith('#')) {
+                        event.preventDefault(); // Zastaví štandardné správanie pre #linky
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                    // Zatvorí menu po kliknutí na akýkoľvek link, či už interný alebo externý
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1208 @@
+/* --- 1. CSS Reset a Box Sizing --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- 2. Základné Štýly (Body, Fonty, Farby) --- */
+:root {
+    /* Definícia vlastných CSS premenných pre farby pre jednoduchšiu zmenu */
+    --primary-color: hsl(205, 78%, 42%); /* Hlboká oceľová modrá */
+    --accent-color: hsl(170, 70%, 45%); /* Svieža, moderná tyrkysová/zelenkavá */
+    --accent-color-light: hsl(170, 80%, 75%); /* Svetlejší variant akcentovej farby */
+    --dark-bg-color: hsl(210, 10%, 18%); /* Antracitová */
+    --light-bg-color: hsl(210, 15%, 96%); /* Jemná svetlo šedá */
+    --text-color-dark: hsl(0, 0%, 20%); /* Tmavý text */
+    --text-color-light: hsl(0, 0%, 30%); /* Svetlejší text */
+    --white-color: #FFFFFF;
+
+    /* RGB hodnoty pre použitie v rgba() */
+    --primary-color-rgb: 52, 152, 219;
+    --accent-color-rgb: 64, 184, 159; /* RGB pre hsl(170, 70%, 45%) */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.7; /* Väčšie riadkovanie pre lepšiu čitateľnosť */
+    color: var(--text-color-dark);
+    background-color: var(--light-bg-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* Nadpisy */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0.8em;
+    color: var(--dark-bg-color);
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+h1 { font-size: 2.8em; font-weight: 900; } /* Extra tučný pre H1 */
+h2 { font-size: 2.3em; }
+h3 { font-size: 1.8em; }
+p { font-size: 1.05em; margin-bottom: 1.2em; color: var(--text-color-light); }
+
+/* Strong tag styling */
+strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.hero-section strong {
+    color: var(--accent-color-light); /* Svetlejšia tyrkysová v hero sekcii */
+}
+.bg-dark strong {
+    color: var(--accent-color-light); /* Svetlejšia tyrkysová v tmavých sekciách */
+}
+
+
+/* Odkazy */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--dark-bg-color);
+    text-decoration: underline;
+}
+
+/* --- 3. Utility Triedy --- */
+.container {
+    max-width: 1280px; /* Väčší max-width */
+    margin: 0 auto;
+    padding: 0 25px; /* Väčší padding po stranách */
+}
+
+.section-padding {
+    padding: 100px 0; /* Väčší vertikálny padding pre všetky sekcie */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 0.7em;
+    position: relative;
+    padding-bottom: 20px; /* Priestor pre podčiarknutie */
+    color: var(--dark-bg-color);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px; /* Dlhšie podčiarknutie */
+    height: 5px; /* Hrubšie podčiarknutie */
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%); /* Gradient podčiarknutie */
+    margin: 20px auto 0 auto;
+    border-radius: 3px;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4em auto; /* Väčší priestor pod popisom */
+    font-size: 1.2em;
+    color: var(--text-color-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: var(--white-color) !important;
+}
+
+.text-white-light {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.bg-light {
+    background-color: var(--light-bg-color);
+}
+
+.bg-dark {
+    background-color: var(--dark-bg-color);
+    color: var(--white-color);
+}
+
+/* Tlačidlá */
+.btn {
+    display: inline-block;
+    padding: 14px 32px; /* Väčší padding */
+    border-radius: 10px; /* Väčšie zaoblenie */
+    font-weight: 600; /* Stredná tučnosť */
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Sofistikovanejšia easing funkcia */
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1.05em;
+    text-transform: uppercase;
+    letter-spacing: 0.8px; /* Väčšie medzery medzi písmenami */
+    position: relative;
+    overflow: hidden; /* Pre hover efekt */
+    z-index: 1;
+}
+
+/* Pridaný mikro-efekt pre tlačidlá pri kliknutí/aktivácii */
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::before { /* Hover efekt pre tlačidlá */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color) 0%, #2980b9 100%);
+    color: var(--white-color);
+    box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.4); /* Dynamický tieň */
+    border-color: var(--primary-color);
+    /* Pridaná transition pre plynulejší prechod všetkých zmien */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 12px 35px rgba(var(--primary-color-rgb), 0.55); /* Ešte výraznejší tieň pri hoveri */
+    transform: translateY(-5px); /* Výraznejší posun nahor */
+    /* Farba ani pozadie sa už nemení, len sa zvýrazní efekt */
+}
+
+.btn-secondary {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.btn-large {
+    padding: 18px 40px; /* Väčší padding */
+    font-size: 1.2em;
+    border-radius: 12px;
+}
+
+.btn-full-width {
+    width: 100%;
+    display: block;
+}
+
+/* --- 4. Hlavička (Header a Navigácia) --- */
+.main-header {
+    background-color: var(--white-color);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo img {
+    max-width: 100%; /* Zabezpečí, že logo nikdy nepresiahne šírku svojho rodičovského prvku */
+    height: auto;    /* Kľúčové: Automaticky prispôsobí výšku, aby sa zachoval pôvodný pomer strán obrázka */
+    display: block;  /* Zabezpečí, že sa naň správne aplikujú rozmery a zarovnanie */
+    /* Voliteľné: Ak potrebujete obmedziť maximálnu výšku loga, pridajte max-height */
+    max-height: 50px; /* Príklad: Obmedzí maximálnu výšku loga na 50px, pričom šírka sa prispôsobí */
+    /* Odstráňte pevnú šírku, napr. width: 150px;, ktorú ste mohli mať predtým */
+}
+.site-logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links li a {
+    color: var(--text-color-dark);
+    font-weight: 500;
+    padding: 10px 0;
+    position: relative;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -8px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Štýly pre tlačidlá v hlavičke */
+.btn-primary-header {
+    /* Používame základné štýly z .btn */
+    padding: 10px 25px; /* Menší padding pre hlavičku */
+    border-radius: 8px; /* Jemnejšie zaoblenie */
+    font-size: 0.95em; /* Jemne menší font */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    background: linear-gradient(45deg, var(--primary-color) 0%, #2980b9 100%);
+    color: var(--white-color);
+    box-shadow: 0 4px 15px rgba(var(--primary-color-rgb), 0.3); /* Jemnejší tieň */
+    border: 2px solid transparent; /* Pôvodný border */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease-in-out; /* Pridaná tranzícia pre všetky zmeny */
+}
+
+.btn-primary-header::before {
+    /* Pôvodný hover efekt - prekrytie bielou vrstvou */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1); /* Jemný biely overlay */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.btn-primary-header:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-primary-header:hover {
+    /* Pri hoveri sa farba nemení, len sa zvýrazní tieň a posunie sa */
+    box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.45); /* Výraznejší tieň */
+    transform: translateY(-3px); /* Výraznejší posun */
+    /* Farba pozadia zostane rovnaká */
+    /* Farba textu zostane rovnaká */
+}
+
+.btn-primary-header:active {
+    transform: translateY(0px); /* Menej výrazné stlačenie */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn-outline-header {
+    /* Sekundárne tlačidlo v hlavičke */
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    background-color: transparent;
+    color: var(--primary-color); /* Farba textu a orámovania je primárna farba */
+    border: 2px solid var(--primary-color); /* Orámovanie primárnou farbou */
+    box-shadow: none; /* Bez tieňa */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease-in-out; /* Pridaná tranzícia pre všetky zmeny */
+}
+
+.btn-outline-header::before {
+    /* Prechod pri hoveri - vyplnenie primárnou farbou */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color); /* Pri hoveri sa vyplní primárnou farbou */
+    transform: scaleX(0);
+    transform-origin: right; /* Zmena smeru animácie */
+    transition: transform 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.btn-outline-header:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-outline-header:hover {
+    color: var(--white-color); /* Farba textu pri hoveri je biela */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.btn-outline-header:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}   
+
+/* Zbytok hlavičky */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    position: relative;
+    z-index: 1100;
+}
+
+.hamburger-menu .bar {
+    width: 30px;
+    height: 3px;
+    background-color: var(--dark-bg-color);
+    transition: all 0.3s ease-in-out;
+    border-radius: 2px;
+}
+
+/* --- 5. Sekcie Obsahu --- */
+
+/* Sekcia Hero */
+.hero-section {
+    background: linear-gradient(135deg, hsl(210, 10%, 18%) 0%, hsl(210, 15%, 25%) 50%, hsl(205, 78%, 35%) 100%);
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite alternate;
+    color: var(--white-color);
+    text-align: center;
+    padding: 150px 25px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.05); /* Jemné svetlé prvky */
+    border-radius: 50%;
+    animation: floatUpDown 15s infinite ease-in-out alternate;
+    z-index: 0;
+}
+
+.hero-section::before {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 5%;
+    animation-duration: 18s;
+}
+
+.hero-section::after {
+    width: 150px;
+    height: 150px;
+    bottom: 15%;
+    right: 8%;
+    animation-duration: 12s;
+}
+
+@keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4.5em;
+    margin-bottom: 30px;
+    color: var(--white-color);
+    text-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    letter-spacing: -0.5px;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    opacity: 0.95;
+    color: var(--light-bg-color);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Grid Layouts pre Služby, Portfólio, Blog */
+.services-grid, .portfolio-grid, .blog-posts-grid {
+    display: grid;
+    gap: 40px; /* Väčšia medzera medzi kartami */
+    grid-template-columns: 1fr;
+}
+
+/* Animácia pre zobrazenie kariet pri scrollovaní */
+.service-card, .portfolio-card, .blog-post-card {
+    background-color: var(--white-color);
+    padding: 40px; /* Väčší padding */
+    border-radius: 15px; /* Väčšie zaoblenie */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); /* Výraznejší, hlbší tieň */
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-top: 6px solid var(--primary-color); /* Hrubší akcent */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    opacity: 0; /* Prednastavená neviditeľnosť pre animáciu */
+    transform: translateY(30px); /* Mierny posun pre animáciu */
+    animation: fadeInOnScroll 0.8s ease-out forwards; /* Názov a parametre animácie */
+    margin-bottom: 30px;
+}
+
+/* Keyframes pre animáciu zobrazenia kariet */
+@keyframes fadeInOnScroll {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay animácie pre každú kartu (pre vizuálny efekt pri scrollovaní) */
+/* Toto je potrebné nastaviť v JS, alebo použiť komplexnejší prístup pre dynamické dáta */
+/* Pre statické dáta môžeme pridať data-animation-delay atribút v HTML a použiť ho v CSS */
+/* Príklad (pre prvé 6 kariet): */
+.service-card:nth-child(1), .portfolio-card:nth-child(1), .blog-post-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2), .portfolio-card:nth-child(2), .blog-post-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3), .portfolio-card:nth-child(3), .blog-post-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4), .portfolio-card:nth-child(4), .blog-post-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5), .portfolio-card:nth-child(5), .blog-post-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6), .portfolio-card:nth-child(6), .blog-post-card:nth-child(6) { animation-delay: 0.6s; }
+
+
+.service-card:hover, .portfolio-card:hover, .blog-post-card:hover {
+    transform: translateY(-12px); /* Výraznejší pohyb hore */
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    width: 70px; /* Väčšie ikony */
+    height: 70px;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+.service-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.service-card h3 {
+    color: var(--dark-bg-color);
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+.service-card p {
+    font-size: 1.05em;
+    color: var(--text-color-light);
+}
+
+.portfolio-icon-placeholder {
+    width: 90px; /* Väčšie kruhy */
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color)); /* Gradient pozadia ikon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: var(--white-color);
+    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3); /* Jemný tieň */
+    /* Animácia pulzovania pre ikony portfólia */
+    animation: iconPulse 2s infinite ease-in-out alternate;
+}
+
+@keyframes iconPulse {
+    0% { transform: scale(1); box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3); }
+    100% { transform: scale(1.05); box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.4); }
+}
+
+
+.portfolio-icon-placeholder svg {
+    width: 65%;
+    height: 65%;
+}
+
+.portfolio-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 12px;
+    color: var(--dark-bg-color);
+    font-weight: 700;
+}
+
+.portfolio-card p {
+    font-size: 1.05em;
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+}
+
+.blog-post-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.blog-post-card h3 a {
+    color: var(--dark-bg-color);
+}
+
+.blog-post-card h3 a:hover {
+    color: var(--primary-color);
+}
+
+.blog-post-card p {
+    font-size: 1em;
+    color: var(--text-color-light);
+}
+
+/* Sekcia O Mne */
+.about-me-section {
+    position: relative;
+    overflow: hidden; /* Pre CSS dekorácie */
+}
+.about-me-section::before { /* Dekoratívny abstraktný tvar */
+    content: '';
+    position: absolute;
+    top: 50px;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(45deg, var(--accent-color-light), transparent);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Organický tvar */
+    opacity: 0.1;
+    filter: blur(30px);
+    transform: rotate(20deg);
+    z-index: 0;
+}
+.about-me-section::after { /* Ďalší dekoratívny tvar */
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    left: -100px;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary-color), transparent);
+    border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; /* Organický tvar */
+    opacity: 0.1;
+    filter: blur(30px);
+    transform: rotate(-30deg);
+    z-index: 0;
+}
+
+.about-me-section .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px; /* Väčšia medzera */
+    text-align: center;
+    position: relative; /* Zabezpečí, že obsah bude nad pseudo-elementmi */
+    z-index: 1;
+}
+
+.about-visual-placeholder {
+    width: 250px; /* Väčší vizuálny placeholder */
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, var(--primary-color), var(--dark-bg-color)); /* Dynamický gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5em; /* Väčšie písmo */
+    font-weight: 900; /* Extra tučné */
+    color: var(--accent-color-light); /* Akcentová farba */
+    text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* Výrazný tieň */
+    flex-shrink: 0;
+    border: 5px solid var(--accent-color); /* Tyrkysový rámik */
+    animation: rotateAndScale 15s infinite ease-in-out alternate; /* Nová animácia pre "MM" */
+}
+
+@keyframes rotateAndScale {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(5deg) scale(1.02); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.about-me-section .about-text h3 {
+    color: var(--primary-color);
+    font-size: 2em;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.about-me-section .about-text p {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    margin-bottom: 1.5em;
+}
+
+/* Sekcia Kvíz */
+.quiz-section {
+    padding: 100px 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--light-bg-color) 0%, hsl(210, 10%, 90%) 100%); /* Jemný gradient pozadia */
+    position: relative;
+    overflow: hidden;
+}
+.quiz-section::before { /* Dekoratívny tvar v pozadí */
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 20%;
+    width: 150px;
+    height: 150px;
+    background: var(--accent-color-light);
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(40px);
+    animation: floatUpDown 8s infinite ease-in-out;
+}
+.quiz-section::after { /* Ďalší dekoratívny tvar */
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: 15%;
+    width: 200px;
+    height: 200px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.08;
+    filter: blur(50px);
+    animation: floatUpDown 10s infinite reverse ease-in-out;
+}
+
+@keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+.quiz-form {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: var(--white-color);
+    padding: 50px; /* Väčší padding */
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12); /* Hlbší tieň */
+    border-left: 8px solid var(--accent-color); /* Akcentový pás */
+    position: relative; /* Pre Z-index */
+    z-index: 1;
+}
+
+.quiz-question-group {
+    margin-bottom: 35px;
+    text-align: left;
+}
+
+.quiz-question-group p {
+    font-size: 1.25em; /* Väčší font otázok */
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: var(--dark-bg-color);
+}
+
+.quiz-question-group label {
+    display: block;
+    margin-bottom: 18px;
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    transition: color 0.2s ease;
+}
+.quiz-question-group label:hover {
+    color: var(--primary-color);
+}
+
+.quiz-question-group input[type="radio"] {
+    margin-right: 18px;
+    transform: scale(1.3); /* Ešte väčšie rádiové tlačidlá */
+    accent-color: var(--primary-color);
+    transition: transform 0.2s ease;
+}
+.quiz-question-group input[type="radio"]:checked {
+    transform: scale(1.5); /* Mierne zväčšenie pri zaškrtnutí */
+}
+
+.quiz-results-container {
+    background-color: var(--white-color);
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    text-align: left;
+    border-left: 8px solid var(--accent-color);
+    position: relative; /* Pre Z-index */
+    z-index: 1;
+}
+
+.quiz-results-container h3 {
+    color: var(--primary-color);
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.quiz-results-container p {
+    margin-bottom: 25px;
+    color: var(--text-color-dark);
+}
+
+.email-capture-form input {
+    width: calc(100% - 30px); /* Upravené pre padding */
+    padding: 18px; /* Väčší padding inputov */
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Väčšie zaoblenie */
+    font-size: 1.1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.email-capture-form input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+    outline: none;
+}
+
+
+/* Sekcia Kontakt */
+.contact-section {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+.contact-section::before { /* Dekoratívny gradientový obdĺžnik */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Výška dekorácie */
+    background: linear-gradient(180deg, var(--dark-bg-color), transparent);
+    opacity: 0.1;
+    z-index: 0;
+}
+.contact-section::after { /* Ďalšia dekorácia */
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, var(--primary-color), transparent);
+    border-radius: 50%;
+    opacity: 0.1;
+    filter: blur(20px);
+    z-index: 0;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: flex-start;
+    position: relative; /* Zabezpečí, že obsah bude nad pseudo-elementmi */
+    z-index: 1;
+}
+
+.contact-form-wrapper, .contact-details {
+    background-color: var(--white-color); /* Formulár a detaily na bielom pozadí */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    width: 100%;
+}
+
+.bg-dark .contact-form-wrapper, .bg-dark .contact-details {
+    background-color: var(--dark-bg-color); /* Override pre kontakt sekciu */
+    box-shadow: none; /* Bez tieňa pre tmavé pozadie */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main-form input[type="text"],
+.main-form input[type="email"],
+.main-form input[type="tel"],
+.main-form textarea {
+    width: calc(100% - 30px);
+    padding: 18px;
+    margin-bottom: 25px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.1em;
+    background-color: var(--white-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.main-form textarea {
+    min-height: 150px;
+}
+.main-form input:focus, .main-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.2);
+    outline: none;
+}
+
+.bg-dark .main-form input, .bg-dark .main-form textarea {
+    background-color: rgba(255, 255, 255, 0.08); /* Svetlejšie inputy na tmavom pozadí */
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--white-color);
+}
+.bg-dark .main-form input::placeholder, .bg-dark .main-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.bg-dark .main-form input:focus, .bg-dark .main-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.3);
+}
+
+
+.contact-details h3 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.contact-details p {
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    color: var(--text-color-light);
+    display: flex;
+    align-items: center;
+}
+
+.bg-dark .contact-details p {
+    color: var(--white-color); /* Biely text na tmavom pozadí */
+}
+
+.contact-details p a {
+    color: var(--primary-color);
+}
+.bg-dark .contact-details p a {
+    color: var(--white-color);
+}
+.bg-dark .contact-details p a:hover {
+    color: var(--primary-color);
+}
+
+.contact-icon {
+    width: 28px; /* Väčšie ikony */
+    height: 28px;
+    margin-right: 18px;
+    color: var(--accent-color); /* Akcentová farba pre ikony kontaktu */
+    flex-shrink: 0;
+}
+
+.contact-icon svg {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.contact-details .social-links {
+    margin-top: 40px;
+    display: flex;
+    gap: 30px;
+}
+
+.social-links a {
+    display: inline-block;
+    color: var(--accent-color);
+    font-size: 2.5em; /* Väčšie ikony sociálnych sietí */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-8px) scale(1.1); /* Výraznejší efekt */
+    color: var(--primary-color);
+}
+
+/* --- 6. Pätička (Footer) --- */
+.main-footer {
+    background-color: var(--dark-bg-color);
+    color: var(--white-color);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.95em;
+    border-top: 5px solid var(--primary-color); /* Akcentový pás */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.footer-links li a {
+    color: var(--white-color);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footer-links li a:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+
+/* --- 7. Responzívny Dizajn (Media Queries) --- */
+
+/* Pre tablety (šírka nad 768px) */
+@media (min-width: 768px) {
+    h1 { font-size: 3.8em; }
+    h2 { font-size: 3em; }
+    h3 { font-size: 2.2em; }
+
+    .section-title {
+        font-size: 3.5em;
+    }
+
+    .section-padding {
+        padding: 120px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 5.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.8em;
+    }
+
+    .hero-buttons {
+        gap: 30px;
+    }
+
+    /* Hlavička */
+    .hamburger-menu {
+        display: none;
+    }
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        width: auto;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    /* Grid Layouts */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .blog-posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* O Mne */
+    .about-me-section .about-content {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .about-visual-placeholder {
+        margin-right: 70px; /* Väčšia medzera */
+        width: 300px;
+        height: 300px;
+        font-size: 6em;
+    }
+    
+    /* Kontakt */
+    .contact-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .contact-form-wrapper, .contact-details {
+        width: calc(50% - 30px); /* Väčšia medzera */
+    }
+}
+
+/* Pre desktopy (šírka nad 1200px) */
+@media (min-width: 1200px) {
+    h1 { font-size: 5em; }
+    h2 { font-size: 3.5em; }
+    h3 { font-size: 2.5em; }
+
+    .section-title {
+        font-size: 4em;
+    }
+
+    .hero-content h1 {
+        font-size: 6.5em; /* Ešte väčší nadpis */
+    }
+
+    .hero-content p {
+        font-size: 2em;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .blog-posts-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-links {
+        flex-direction: row;
+        gap: 40px;
+        margin-top: 0;
+    }
+}
+
+/* Štýly pre otvorený hamburger menu (JavaScriptom pridaná trieda) */
+@media (max-width: 767px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--white-color);
+        position: absolute;
+        top: 70px; /* Upravené, aby sa prispôsobilo zmenšenému paddingu hlavičky */
+        left: 0;
+        padding: 25px 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        border-top: 1px solid #eee;
+        z-index: 999;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        text-align: center;
+        margin: 12px 0;
+    }
+    .nav-links li a {
+        padding: 12px 0;
+        display: block;
+        color: var(--dark-bg-color);
+        font-size: 1.2em;
+    }
+    .nav-links li a:hover {
+        color: var(--primary-color);
+    }
+    .nav-links li a::after {
+        display: none;
+    }
+    .hamburger-menu {
+        display: flex;
+    }
+    .hamburger-menu.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg); /* Upravené pre menšie bary */
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger-menu.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg); /* Upravené pre menšie bary */
+    }
+}
