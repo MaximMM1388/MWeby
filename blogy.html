@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MWeby - Blogy | Tipy a Novinky zo Sveta Webstránok</title>
+    <meta name="description"
+        content="Prečítajte si najnovšie články od MWeby o dôležitosti webstránok, SEO a digitálnom marketingu pre vaše podnikanie.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="dark-mode.css" id="dark-mode-style">
+    <link rel="stylesheet" href="styleblog.css"> <!-- Nový CSS súbor pre štýlovanie blogov -->
+</head>
+
+<body class="dark-mode">
+
+    <div class="background-visual">
+        <!-- Global background elements for dark mode -->
+        <div class="bg-shooting-star star-1"></div>
+        <div class="bg-shooting-star star-2"></div>
+        <div class="bg-planet planet-1"></div>
+        <div class="bg-planet planet-2"></div>
+    </div>
+
+    <div class="custom-cursor"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="logo.jpg.png" alt="MWeby Logo" width="150" height="60">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                        <li><a href="index.html#home">Domov</a></li>
+                    <li><a href="index.html#about">O Nás</a></li>
+                    <li><a href="index.html#services">Služby</a></li>
+                    <li><a href="index.html#portfolio">Portfólio</a></li>
+                    <li><a href="index.html#advantages">Výhody</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#quiz-section">Kvíz</a></li>
+                    <li><a href="blogy.html" class="active">Blog</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Prepnúť režim zobrazenia">
+                <i class="fas fa-sun icon-sun show"></i>
+                <i class="fas fa-moon icon-moon hide"></i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <main>
+        <section id="blog-listing" class="blog-section blog-page-listing">
+            <div class="container">
+                <h1 class="text-center animate-on-scroll">Náš Blog</h1>
+                <p class="section-description text-center animate-on-scroll delay-1">Prečítajte si naše tipy, triky a
+                    novinky zo sveta webových technológií a digitálneho marketingu.</p>
+
+                <div class="blog-grid">
+                    <!-- Blog Post 1 -->
+                    <div class="blog-post-card animate-on-scroll delay-2">
+                        <img src="WF.jpg" alt="Obrázok: Webstránka vs. Facebook" loading="lazy">
+                        <div class="blog-content">
+                            <h3 class="spacing1"><a href="blog1.html">Prečo podniky v roku 2025 potrebujú webovú
+                                    stránku a nestačí Facebook</a></h3>
+                            <p class="post-meta"><i class="far fa-calendar-alt"></i> 5. júl 2025 | <i
+                                    class="fas fa-tags"></i> Prítomnosť</p>
+                            <p>V dnešnej digitálnej dobe je prežitie a rast podniku bez vlastnej webstránky čoraz
+                                náročnejšie. Hoci sociálne siete ako Facebook ponúkajú určitú formu online prítomnosti,
+                                nemôžu nahradiť plnohodnotnú webovú stránku.</p>
+                            <a href="blog1.html" class="read-more">Čítať Viac <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 2 -->
+                    <div class="blog-post-card animate-on-scroll delay-3">
+                        <img src="wf2.jpg" alt="Obrázok: Výhodná investícia" loading="lazy">
+                        <div class="blog-content">
+                            <h3 class="spacing1"><a href="blog2.html">Je stránka naozaj výhodná pre váš biznis
+                                    alebo je to len strata peňazí</a></h3>
+                            <p class="post-meta"><i class="far fa-calendar-alt"></i> 1. júl 2025 | <i
+                                    class="fas fa-tags"></i> Investície</p>
+                            <p>Mnohí podnikatelia sa pýtajú, či je investícia do webovej stránky skutočne rentabilná.
+                                Prinášame vám dôkazy a argumenty, prečo je webstránka kľúčovou investíciou pre dlhodobý
+                                úspech.</p>
+                            <a href="blog2.html" class="read-more">Čítať Viac <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Post 3 -->
+                    <div class="blog-post-card animate-on-scroll delay-4">
+                        <img src="wf3.jpg" alt="Obrázok: Prekonajte konkurenciu" loading="lazy">
+                        <div class="blog-content">
+                            <h3 class="spacing1"><a href="blog3.html">Ako Vám webová stránka pomôže prekonať vaše
+                                    konkurenčné podniky a prilákať viac zákazníkov</a></h3>
+                            <p class="post-meta"><i class="far fa-calendar-alt"></i> 28. jún 2025 | <i
+                                    class="fas fa-tags"></i>Konkurencia</p>
+                            <p>V dnešnom konkurenčnom prostredí je nevyhnutné odlíšiť sa. Zistite, ako môže
+                                profesionálna webová stránka posilniť vašu pozíciu na trhu a pritiahnuť nových
+                                zákazníkov.</p>
+                            <a href="blog3.html" class="read-more">Čítať Viac <i
+                                    class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Sekcia s detailnými blogmi bola presunutá do samostatných súborov (napr. blog-post-1.html, blog-post-2.html, blog-post-3.html) -->
+    </main>
+
+    <footer class="new-site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg.png" alt="MWeby Logo" class="footer-logo">
+                <p>Tvorba profesionálnych webstránok v Nitre. Kvalita za rozumnú cenu.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Rýchle Odkazy</h4>
+                <ul>
+                    <li><a href="index.html#about">O Nás</a></li>
+                    <li><a href="index.html#services">Služby</a></li>
+                    <li><a href="index.html#portfolio">Portfólio</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontaktujte Nás</h4>
+                <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2025 MWeby. Všetky práva vyhradené. | Vytvorené s <i class="fas fa-heart"></i> v Nitre</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Skripty pre smooth scroll a tlačidlá "Späť na zoznam článkov" už nie sú potrebné,
+        // keďže detailné články sú na samostatných stránkach.
+        // Ak by ste chceli v budúcnosti dynamicky načítavať obsah, bolo by potrebné ich prepracovať.
+    </script>
+</body>
+
+</html>

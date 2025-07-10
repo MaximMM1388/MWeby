@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MWeby - Tvorba Webstránok v Nitre | Kvalita za rozumnú Cenu</title>
+    <meta name="description"
+        content="Tvorba profesionálnych a responzívnych webstránok na mieru v Nitre. Garancia najlepšej ceny s jednorazovou platbou a vysokou kvalitou.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="dark-mode.css" id="dark-mode-style">
+
+    <!-- NEW: Style to ensure FAQ answers expand fully -->
+
+</head>
+
+<body class="dark-mode">
+
+    <div class="background-visual">
+        <!-- Global background elements for dark mode -->
+        <div class="bg-shooting-star star-1"></div>
+        <div class="bg-shooting-star star-2"></div>
+        <div class="bg-planet planet-1"></div>
+        <div class="bg-planet planet-2"></div>
+    </div>
+
+    <div class="custom-cursor"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="logo.jpg.png" alt="MWeby Logo" width="150" height="60">
+                </a>
+            </div>
+            <!-- Main navigation for desktop, hidden on mobile -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Domov</a></li>
+                    <li><a href="#about">O Nás</a></li>
+                    <li><a href="#services">Služby</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#advantages">Výhody</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#quiz-section">Kvíz</a></li>
+                    <li><a href="blogy.html">Blog</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+            <!-- Controls always visible, but menu-toggle only on mobile -->
+            <div class="header-controls"> <!-- Renamed class for clarity -->
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Prepnúť režim zobrazenia">
+                    <i class="fas fa-sun icon-sun show"></i>
+                    <i class="fas fa-moon icon-moon hide"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="day-night-visual">
+                <div class="sun"></div>
+
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+                <div class="cloud cloud-4"></div>
+                <div class="bird bird-1"></div>
+                <div class="bird bird-2"></div>
+                <div class="bird bird-3"></div>
+                <div class="bird bird-4"></div>
+                <div class="bird bird-5"></div>
+                <!-- Hero-specific shooting star and planet are kept here if desired for distinct hero visuals -->
+                <div class="shooting-star"></div>
+                <div class="shooting-star delay-1"></div>
+                <div class="planet"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="container animate-on-scroll">
+                <h1>Tvorba profesionálnych webstránok v Nitre</h1>
+                <p>Navrhujeme a vyvíjame moderné, rýchle a responzívne webstránky na mieru. Získajte profesionálnu
+                    online prezentáciu za najlepšiu cenu!</p>
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary">Chcem Webstránku!</a>
+                    <a href="#portfolio" class="btn btn-secondary">Naše Portfólio</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Kto Sme a Čo Robíme</h2>
+                <p class="section-description animate-on-scroll delay-1">Sme tím vášnivých webových vývojárov z Nitry,
+                    ktorí veria, že kvalitná webstránka nemusí byť drahá. Spájame kreativitu s technickou excelenciou.
+                </p>
+
+                <div class="about-content">
+                    <div class="about-text animate-on-scroll delay-2">
+                        <h3>Naša Misia</h3>
+                        <p>Našou misiou je priniesť online úspech lokálnym firmám a podnikateľom v Nitre a okolí.
+                            Veríme, že silná online prítomnosť je dnes kľúčom k rastu a my sme tu, aby sme vám pomohli
+                            ju dosiahnuť.</p>
+                        <p>Zameriavame sa na jednorazové platby a transparentné ceny, aby ste presne vedeli, za čo
+                            platíte, bez skrytých poplatkov a mesačných prekvapení.</p>
+                        <a href="#services" class="btn btn-secondary">Naše Služby</a>
+                    </div>
+                    <div class="about-image animate-on-scroll delay-3">
+                        <img src="logo.jpg.png" alt="Tím MWeby pracuje na webstránke" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Čo Vám Ponúkame</h2>
+                <p class="section-description animate-on-scroll delay-1">Komplexné služby pre vašu online prítomnosť –
+                    od firemných webov po e-shopy.</p>
+
+                <div class="service-grid">
+                    <div class="service-item animate-on-scroll delay-2">
+                        <i class="fas fa-desktop service-icon"></i>
+                        <h3>Tvorba Responzívnych Webstránok</h3>
+                        <p>Navrhujeme a vyvíjame moderné webstránky, ktoré vyzerajú perfektne na každom zariadení – od
+                            počítačov po mobily.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll delay-3">
+                        <i class="fas fa-shopping-cart service-icon"></i>
+                        <h3>Vývoj E-shopov</h3>
+                        <p>Vytvárame výkonné a užívateľsky prívetivé e-shopy, ktoré premenia návštevníkov na zákazníkov
+                            a maximalizujú vaše tržby.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll delay-4">
+                        <i class="fas fa-search-dollar service-icon"></i>
+                        <h3>SEO Optimalizácia</h3>
+                        <p>Zabezpečíme, aby vaša webstránka bola viditeľná vo vyhľadávačoch a pritiahla správnych
+                            zákazníkov.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll delay-5">
+                        <i class="fas fa-mobile-alt service-icon"></i>
+                        <h3>Mobilné Aplikácie</h3>
+                        <p>Vyvíjame intuitívne mobilné aplikácie pre iOS a Android, ktoré rozšíria váš dosah a
+                            interakciu so zákazníkmi.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll delay-2">
+                        <i class="fas fa-lightbulb service-icon"></i>
+                        <h3>Konzultácie a Stratégia</h3>
+                        <p>Pomôžeme vám s digitálnou stratégiou, aby vaša online prítomnosť bola efektívna a prinášala
+                            reálne výsledky.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll delay-3">
+                        <i class="fas fa-tools service-icon"></i>
+                        <h3>Údržba a Podpora</h3>
+                        <p>Ponúkame pravidelnú údržbu, aktualizácie a technickú podporu, aby váš web bežal hladko a
+                            bezpečne.</p>
+                    </div>
+                </div>
+                <div class="price-guarantee-banner text-center animate-on-scroll">
+                    <h3><i class="fas fa-handshake"></i> Garancia Najlepšej Ceny v Nitre <i
+                            class="fas fa-info-circle info-icon"
+                            data-tooltip="Ak nájdete lacnejšiu ponuku s rovnakou kvalitou, dorovnáme cenu a pridáme extra bonus!"></i>
+                    </h3>
+                    <p>Veríme v transparentnosť a férovosť. Získajte profesionálnu kvalitu bez kompromisov za
+                        bezkonkurenčnú cenu!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Ukážkové Projekty</h2>
+                <p class="section-description animate-on-scroll delay-1">Prezrite si výber z našich najnovších prác,
+                    ktoré svedčia o našej kreativite a odbornosti.</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item animate-on-scroll delay-2">
+                        <img src="gener.jpg" alt="Ukážka projektu Kaviareň" loading="lazy" class="imgprojekt">
+                        <h3>Kaviareň - Pražiareň pod Hradom</h3>
+                        <p>Ukážkový dizajn webstránky pre modernú kaviareň s detailným predstavením ponuky.</p>
+                        <a href="https://maximmm1388.github.io/praziaren/index.html" class="btn btn-primary btn-sm"
+                            target="_blank">Zobraziť Projekt</a>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll delay-3">
+                        <img src="background.jpg" alt="Ukážka projektu Autoškola" loading="lazy" class="imgprojekt">
+                        <h3>Autoškola</h3>
+                        <p>Ukážkový dizajn webstránky pre autoškolu, zameraný na jednoduchú navigáciu a informácie.</p>
+                        <a href="https://maximmm1388.github.io/autoskoladesign1/" class="btn btn-primary btn-sm"
+                            target="_blank">Zobraziť Projekt</a>
+                    </div>
+                    <div class="portfolio-item animate-on-scroll delay-4">
+                        <img src="bowling-hero.jpg" alt="Ukážka projektu Krčma" loading="lazy" class="imgprojekt">
+                        <h3>Krčma</h3>
+                        <p>Ukážkový dizajn webstránky pre krčmu, s dôrazom na ponuku a atmosféru.</p>
+                        <a href="https://maximmm1388.github.io//index.html" class="btn btn-primary btn-sm"
+                            target="_blank">Zobraziť Projekt</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="advantages" class="advantages-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Prečo Si Vybrať MWeby?</h2>
+                <p class="section-description animate-on-scroll delay-1">Vaša online prítomnosť je naša priorita.
+                    Ponúkame výhody, ktoré inde nenájdete.</p>
+
+                <div class="advantages-grid">
+                    <div class="advantage-item animate-on-scroll delay-2">
+                        <i class="fas fa-hand-holding-usd advantage-icon"></i>
+                        <h3>Jednorazová Platba</h3>
+                        <p>Žiadne skryté poplatky, žiadne mesačné predplatné. Platíte raz a webstránka je vaša.</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll delay-3">
+                        <i class="fas fa-medal advantage-icon"></i>
+                        <h3>Garancia Kvality</h3>
+                        <p>Každý projekt dodávame s dôrazom na detail, moderný dizajn a najnovšie technológie.</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll delay-4">
+                        <i class="fas fa-tachometer-alt advantage-icon"></i>
+                        <h3>Rýchle Dodanie</h3>
+                        <p>Efektívny proces vývoja zabezpečuje, že váš web bude online v rekordne krátkom čase.</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll delay-5">
+                        <i class="fas fa-mobile-alt advantage-icon"></i>
+                        <h3>Plne Responzívne</h3>
+                        <p>Vaša webstránka bude vyzerať perfektne a fungovať bezchybne na akomkoľvek zariadení.</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll delay-2">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Inovatívne Riešenia</h3>
+                        <p>Používame najnovšie technológie a trendy pre efektívne a moderné webové riešenia.</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll delay-3">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Rýchle Spustenie</h3>
+                        <p>Optimalizujeme proces vývoja, aby bol váš web online v čo najkratšom čase.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Časté Otázky</h2>
+                <p class="section-description animate-on-scroll delay-1">Máte otázky? Pozrite si najčastejšie otázky a naše odpovede.</p>
+                <div class="faq-list animate-on-scroll delay-2">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Ako dlho trvá vytvorenie webstránky?
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Doba vytvorenia webstránky závisí od jej komplexnosti. Jednoduché vizitky a menšie firemné stránky môžeme mať hotové už do 2-3 dní. Väčšie projekty alebo e-shopy môžu trvať týždeň. Vždy sa snažíme prispôsobiť vašim termínom a dodržať ich.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Poskytujete aj údržbu webstránok?
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Áno, ponúkame aj komplexnú údržbu webstránok, ktorá zahŕňa pravidelné aktualizácie systému, zálohovanie, bezpečnostné kontroly a drobné úpravy obsahu. Môžete si vybrať jednorazovú údržbu alebo mesačný paušál, podľa vašich potrieb.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Je SEO optimalizácia zahrnutá v cene?
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Áno, základná on-page SEO optimalizácia je súčasťou každého projektu, aby vaša webstránka bola pripravená na dobrú viditeľnosť vo vyhľadávačoch. Zahŕňa to nastavenie meta tagov, optimalizáciu nadpisov a štruktúry obsahu. Pre rozsiahlejšiu a dlhodobú SEO stratégiu ponúkame samostatné balíčky.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Ponúkate aj tvorbu obsahu (texty, obrázky)?
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Áno, primárne sa zameriavame na dizajn a vývoj webstránok. Obsah nám zvyčajne dodáva klient. Avšak, vieme vám poradiť s tvorbou efektívneho obsahu a v prípade potreby odporučiť overených partnerov pre copywritting a profesionálne fotografovanie.
+                        </div>
+                    </div>
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Ako prebieha platba za webstránku?
+                            <i class="fas fa-chevron-down faq-arrow"></i>
+                        </div>
+                        <div class="faq-answer">
+                            U nás platíte jednorazovo po dokončení projektu, žiadne skryté poplatky ani mesačné prekvapenia. Cena, na ktorej sa dohodneme, je konečná a garantovaná. 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Quiz Section -->
+        <section id="quiz-section" class="quiz-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Zistite, Aký Web Potrebujete!</h2>
+                <p class="section-description animate-on-scroll delay-1">Vyplňte náš krátky kvíz a získajte nezáväznú cenovú ponuku na mieru.</p>
+                <div id="quiz-container" class="quiz-container animate-on-scroll delay-2">
+                    <div class="quiz-intro-card is-visible">
+                        <h3>Váš Ideálny Web v Pár Krokoch</h3>
+                        <p>Odpovedzte na pár jednoduchých otázok, aby sme lepšie pochopili vaše potreby a pripravili vám ponuku, ktorá vám sadne!</p>
+                        <button id="start-quiz-btn" class="btn btn-primary">Spustiť Kvíz</button>
+                    </div>
+                    <!-- Question cards will be dynamically inserted by quiz.js -->
+                    <!-- Results card will be dynamically inserted by quiz.js -->
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Náš Blog</h2>
+                <p class="section-description animate-on-scroll delay-1">Prečítajte si naše tipy, triky a novinky zo
+                    sveta webových technológií a digitálneho marketingu.</p>
+
+                <div class="blog-grid">
+                    <div class="blog-post-card animate-on-scroll delay-2">
+                        <img src="WF.jpg" alt="Obrázok k blogu 1" loading="lazy" class="imgprojekt">
+                        <div class="blog-content">
+                            <h3><a href="blogy.html">Prečo podniky v roku 2025 potrebujú webovú stránku a nestačí
+                                        Facebook</a></h3>
+                            <p class="post-meta"><i class="far fa-calendar-alt"></i> 1. júl 2025 | <i
+                                        class="fas fa-tags"></i> Tipy</p>
+                            <p>Podnikanie bez webstránky je čoraz ťažšie. Facebook nestačí – web ponúka omnoho viac.</p>
+                        </div>
+                    </div>
+                    <div class="blog-post-card animate-on-scroll delay-3">
+                        <img src="wf2.jpg" alt="Obrázok k blogu 2" loading="lazy" class="imgprojekt">
+                        <div class="blog-content">
+                            <h3><a href="blogy.html">Je stránka naozaj výhodná pre váš biznis alebo je to len strata
+                                        peňazí</a></h3>
+                            <p class="post-meta"><i class="far fa-calendar-alt"></i> 25. jún 2025 | <i
+                                        class="fas fa-tags"></i> SEO</p>
+                            <p>Web je investícia, nie výdavok. Ukážeme vám prečo sa oplatí.</p>
+                        </div>
+                    </div>
+                    <div class="blog-post-card animate-on-scroll delay-4">
+                        <img src="wf3.jpg" alt="Obrázok k blogu 3" loading="lazy" class="imgprojekt">
+                        <div class="blog-content">
+                            <h3><a href="blogy.html">Ako Vám webová stránka pomôže prekonať vaše konkurenčné podniky a
+                                        prilákať viac zákazníkov</a></h3>
+                            <p class="post-meta"><i class="far fa-calendar-alt"></i> 18. jún 2025 | <i
+                                        class="fas fa-tags"></i> Dizajn</p>
+                            <p>Odlíšte sa od konkurencie s webom, ktorý priťahuje zákazníkov.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a href="blogy.html" class="btn btn-secondary animate-on-scroll">Zobraziť Všetky Články</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="text-center animate-on-scroll">Kontaktujte Nás</h2>
+                <p class="section-description animate-on-scroll delay-1">
+                    Máte otázky alebo chcete nezáväznú cenovú ponuku? Ozvite sa nám!
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-info animate-on-scroll delay-2">
+                        <h3>Sme Vám K Dispozícii</h3>
+                        <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                        <p><i class="far fa-clock"></i> Pracovná doba: Vždy otvorené online</p>
+                        <p><i class="fas fa-shipping-fast"></i> Weby dodávame do 1-3 pracovných dní</p>
+
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i
+                                    class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-form animate-on-scroll delay-3">
+                        <h3>Napíšte Nám</h3>
+                        <form action="https://formspree.io/f/your-form-id" method="POST">
+                            <div class="form-group">
+                                <label for="name">Meno</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="_replyto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Správa</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Odoslať Správu</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="new-site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg.png" alt="MWeby Logo" class="footer-logo">
+                <p>Tvorba profesionálnych webstránok v Nitre. Kvalita za rozumnú cenu.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Rýchle Odkazy</h4>
+                <ul>
+                    <li><a href="#about">O Nás</a></li>
+                    <li><a href="#services">Služby</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontaktujte Nás</h4>
+                <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2025 MWeby. Všetky práva vyhradené. | Vytvorené s <i class="fas fa-heart"></i> v Nitre</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="quiz.js"></script>
+
+</body>
+
+</html

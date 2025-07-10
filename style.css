@@ -1,0 +1,1789 @@
+/* ===================================== */
+/* style.css - Nové Globálne Štýly a Základné Rozloženie */
+/* ===================================== */
+
+/* 0. CSS Reset & Základné Premenné */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Hlavné farby - Denný režim (sofistikované a moderné) */
+    --clr-primary: #1A365D;          /* Tmavá, hlboká modrá/navy pre hlavné prvky a text */
+    --clr-secondary: #E94C3D;        /* Výrazná terakotová/červená pre akcenty a primárne akcie */
+    --clr-accent: #FFD700;           /* Zlatá pre jemné zvýraznenie a ikony */
+    --clr-text-dark: #333333;        /* Tmavý text pre dobrú čitateľnosť */
+    --clr-text-light: #ffffff;       /* Biely text na tmavom pozadí */
+    --clr-background: #F8F9FA;       /* Svetlé, jemné pozadie sekcií */
+    --clr-card-bg: #ffffff;          /* Biele pozadie pre karty/panely */
+    --clr-border: #e0e0e0;           /* Jemné, svetlé ohraničenia */
+    --clr-shadow-light: rgba(0, 0, 0, 0.08); /* Jemný tieň */
+    --clr-shadow-medium: rgba(0, 0, 0, 0.15); /* Stredný tieň */
+
+    /* Typografia (profesionálne fonty z Google Fonts) */
+    --font-primary: 'Open Sans', sans-serif; /* Čistý a čitateľný pre telo textu */
+    --font-heading: 'Montserrat', sans-serif; /* Výrazný a moderný pre nadpisy */
+
+    /* Rozostupy */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+    --spacing-xxl: 7rem;
+
+    /* Prechody */
+    --transition-speed: 0.35s;
+    --transition-timing: ease-in-out;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+     font-family: var(--font-primary);
+    line-height: 1.7;
+    color: var(--clr-text-dark);
+    /* Changed to a subtle linear gradient for smoother transitions */
+    background: linear-gradient(to bottom, #2C528B 0%, var(--clr-background) 200px); /* Adjust 200px as needed for gradient length */
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+section {
+    padding: var(--spacing-xxl) 0; /* Väčšie medzery medzi sekciami */
+    position: relative;
+    overflow: hidden;
+    /* Add smooth background transition for sections that will have gradients */
+    transition: background-color 0.5s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--clr-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+h1 { font-size: 3.8rem; line-height: 1.2; } /* Výraznejšie */
+h2 { font-size: 2.8rem; line-height: 1.2; }
+h3 { font-size: 2rem; line-height: 1.3; }
+h4 { font-size: 1.6rem; }
+
+p {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem; /* Mierne väčší text pre lepšiu čitateľnosť */
+}
+
+a {
+    color: var(--clr-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed) var(--transition-timing);
+}
+
+a:hover {
+    color: var(--clr-secondary);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-description {
+    font-size: 1.2rem; /* Väčší a čitateľnejší popis sekcií */
+    color: #6C757D;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl); /* Viac miesta pod popisom */
+}
+
+/* Tlačidlá - Výrazný, Moderný Dizajn */
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.8rem; /* Väčšie padding pre lepšiu viditeľnosť */
+    border-radius: 8px; /* Jemne zaoblené rohy, moderné */
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Mierne väčšie medzery medzi písmenami */
+    transition: all var(--transition-speed) var(--transition-timing);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 6px 20px var(--clr-shadow-light); /* Výraznejší, ale elegantný tieň */
+    font-size: 1rem; /* Konštantná veľkosť písma */
+}
+
+.btn-primary {
+    background-color: var(--clr-secondary);
+    color: var(--clr-text-light);
+}
+
+.btn-primary:hover {
+    background-color: #d83d30; /* Tmavší odtieň sekundárnej */
+    border-color: #d83d30;
+    transform: translateY(-4px); /* Výraznejší "lift" efekt */
+    box-shadow: 0 10px 30px rgba(233, 76, 61, 0.4); /* Výraznejší, farebný tieň */
+    color: var(--clr-text-light);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--clr-primary); /* Text color from primary variable */
+    border: 2px solid var(--clr-primary); /* Border from primary color */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+}
+
+.btn-secondary:hover {
+    background-color: var(--clr-primary); /* Primary background on hover */
+    color: var(--clr-text-light); /* Light text on hover */
+    transform: translateY(-2px); /* Slightly less aggressive lift on hover */
+    box-shadow: 0 8px 25px rgba(26, 54, 93, 0.5); /* Enhanced, colored shadow on hover */
+}
+
+/* 1. Hlavička a Navigácia */
+.main-header {
+    background-color: var(--clr-card-bg);
+    padding: 1rem 0;
+    box-shadow: 0 2px 15px var(--clr-shadow-medium); /* Výraznejší tieň hlavičky */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between; /* Space between logo, nav, and controls */
+    align-items: center;
+}
+
+.main-header .logo img {
+    height: 60px; /* Väčšie logo */
+    width: auto;
+    display: block;
+}
+
+/* Styles for the group of hamburger and theme toggle */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between hamburger and theme toggle */
+}
+
+.main-nav {
+    /* On desktop, main-nav is a flex item in the container */
+    flex-grow: 1; /* Allows nav to take available space */
+    text-align: center; /* Centers the ul within the nav */
+    display: flex; /* Ensure it's flex on desktop */
+    justify-content: center; /* Center the nav items */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-lg);
+    margin: 0; /* Ensure no default margins */
+    padding: 0; /* Ensure no default padding */
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--clr-primary); /* Farba primárneho textu */
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    text-transform: uppercase; /* Menu text veľkými písmenami */
+    letter-spacing: 0.5px;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--clr-secondary); /* Linka vo farbe akcentu */
+    bottom: -8px; /* Nižšie pod textom */
+    left: 50%; /* Začína od stredu */
+    transform: translateX(-50%);
+    transition: width var(--transition-speed) var(--transition-timing);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: var(--clr-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem; /* Väčší klikateľný priestor */
+    border-radius: 50%;
+    transition: background-color var(--transition-speed) var(--transition-timing), transform 0.2s ease-out;
+    position: relative;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(26, 54, 93, 0.1); /* Jemný hover efekt */
+    transform: scale(1.1);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    position: absolute;
+    width: 32px; /* Väčšie ikony */
+    height: 32px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle .icon-sun.hide,
+.theme-toggle .icon-moon.hide {
+    opacity: 0;
+    transform: scale(0.7) rotate(45deg); /* Jemná rotácia pri zmiznutí */
+}
+
+.theme-toggle .icon-sun.show,
+.theme-toggle .icon-moon.show {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+/* 2. Hero Sekcia */
+.hero-section {
+     background: linear-gradient(to right, var(--clr-primary), #2C528B);
+    color: var(--clr-text-light);
+    padding: var(--spacing-xxl) 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    /* Transition to .about-section's background */
+    background: linear-gradient(180deg, var(--clr-primary) 0%, var(--clr-background) 100%);
+}
+
+
+
+.hero-section h1 {
+    color: var(--clr-text-light);
+    font-size: 4.5rem;
+    margin-bottom: var(--spacing-md);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-section p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+/* Day-Night Visual (prepracovaný pre nový gradient a atmosféru) */
+.day-night-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1; /* Pod obsahom */
+}
+
+/* ☀️ Day Mode Visual Elements */
+.day-mode .sun {
+    position: absolute;
+    top: 80px;
+    left: 60px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFF176 0%, #FFEB3B 70%);
+    box-shadow: 0 0 30px rgba(255, 241, 118, 0.5),
+                0 0 80px rgba(255, 235, 59, 0.3);
+    animation: sunPulse 10s ease-in-out infinite alternate;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.day-mode .cloud {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50px; /* Base for a more rounded shape */
+    box-shadow:
+        10px 10px 0 -5px rgba(255,255,255,0.7), /* Top-right bump */
+        -10px 10px 0 -5px rgba(255,255,255,0.7), /* Top-left bump */
+        20px 20px 0 -10px rgba(255,255,255,0.6), /* Lower-right large bump */
+        -20px 20px 0 -10px rgba(255,255,255,0.6), /* Lower-left large bump */
+        inset 0 0 10px rgba(0,0,0,0.05); /* Subtle inner shadow for depth */
+    width: 120px; /* Increased base size */
+    height: 70px; /* Increased base size */
+    z-index: 2;
+    pointer-events: none;
+    animation: moveClouds 40s linear infinite; /* Consistent animation for all */
+    opacity: 0.9; /* Slightly translucent */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); /* Soft overall shadow */
+}
+
+/* Specific styles for each cloud for variety */
+.day-mode .cloud-1 {
+    top: 100px;
+    left: 10%;
+    width: 150px;
+    height: 90px;
+    animation-duration: 45s;
+    animation-delay: 2s;
+    transform: scale(1.1); /* Slightly larger */
+}
+
+.day-mode .cloud-2 {
+    top: 60px;
+    left: 60%;
+    width: 100px;
+    height: 60px;
+    animation-duration: 38s;
+    animation-delay: 5s;
+    transform: scale(0.9); /* Slightly smaller */
+    opacity: 0.8;
+}
+
+.day-mode .cloud-3 {
+    top: 140px;
+    left: 30%;
+    width: 130px;
+    height: 80px;
+    animation-duration: 50s;
+    animation-delay: 8s;
+    transform: scaleX(-1) scale(1.05); /* Flipped and slightly larger */
+}
+
+.day-mode .cloud-4 {
+    top: 80px;
+    left: 85%;
+    width: 110px;
+    height: 65px;
+    animation-duration: 42s;
+    animation-delay: 12s;
+    opacity: 0.85;
+}
+
+.day-mode .cloud-5 {
+    top: 160px;
+    left: 45%;
+    width: 95px;
+    height: 55px;
+    animation-duration: 36s;
+    animation-delay: 15s;
+    transform: scale(0.95);
+}
+
+.day-mode .cloud-6 {
+    top: 70px;
+    left: 20%;
+    width: 140px;
+    height: 85px;
+    animation-duration: 55s;
+    animation-delay: 18s;
+    opacity: 0.75;
+}
+
+.day-mode .bird {
+    position: absolute;
+    width: 15px; /* Base size, birds are usually small in the sky */
+    height: 2px;
+    background-color: transparent; /* Main div is just a container for pseudo-elements */
+    z-index: 3; /* Above clouds, below content */
+    pointer-events: none;
+    transform-origin: center center;
+}
+
+/* Common bird wing styles (using pseudo-elements for shape) */
+.day-mode .bird::before,
+.day-mode .bird::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 15px; /* Wing length */
+    height: 2px; /* Wing thickness */
+    background-color: #333; /* Dark silhouette */
+    border-radius: 50% 50% 0 0; /* Rounded top, flat bottom for wing shape */
+    transform-origin: 100% 50%; /* Pivot point for rotation (at the 'body' end) */
+}
+
+.day-mode .bird::before {
+    left: -15px; /* Position left wing */
+    transform: rotate(0deg); /* Initial rotation */
+    animation: wingFlapLeft 0.6s infinite ease-in-out alternate;
+}
+
+.day-mode .bird::after {
+    right: -15px; /* Position right wing */
+    transform: rotate(0deg); /* Initial rotation */
+    animation: wingFlapRight 0.6s infinite ease-in-out alternate;
+}
+
+/* Specific bird positions and flight paths */
+.day-mode .bird-1 {
+    top: 200px;
+    left: -50px;
+    animation: birdFlight1 20s linear infinite;
+    animation-delay: 0s;
+}
+
+.day-mode .bird-2 {
+    top: 250px;
+    left: -100px;
+    animation: birdFlight2 25s linear infinite;
+    animation-delay: 5s;
+    transform: scale(0.8); /* Smaller bird */
+}
+
+.day-mode .bird-3 {
+    top: 180px;
+    left: -150px;
+    animation: birdFlight3 22s linear infinite;
+    animation-delay: 10s;
+    transform: scale(1.1); /* Larger bird */
+}
+
+.day-mode .bird-4 {
+    top: 230px;
+    left: -200px;
+    animation: birdFlight4 28s linear infinite;
+    animation-delay: 15s;
+    transform: scale(0.9);
+}
+
+.day-mode .bird-5 {
+    top: 190px;
+    left: -250px;
+    animation: birdFlight5 23s linear infinite;
+    animation-delay: 20s;
+    transform: scale(1.05);
+}
+
+
+/* 3. Sekcia O Nás */
+.about-section {
+    /* Background for this section, and transition to the next */
+    background: linear-gradient(180deg, var(--clr-background) 0%, var(--clr-card-bg) 100%);
+    margin-top: 0; /* Ensure no extra margin pushes it down, let the body gradient handle spacing */
+}
+
+.about-section .about-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about-section .about-text {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.about-section .about-text h2 {
+    text-align: left;
+    margin-bottom: var(--spacing-md);
+}
+
+.about-section .about-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.about-section .about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px; /* Zaoblené rohy obrázkov */
+    box-shadow: none !important;
+}
+
+/* 4. Sekcia Služby */
+.services-section {
+    /* Background for this section, and transition to the next */
+    background: linear-gradient(180deg, var(--clr-card-bg) 0%, var(--clr-background) 100%);
+}
+
+.services-section .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl); /* Väčšie medzery medzi kartičkami */
+}
+
+.service-item {
+    background-color: var(--clr-card-bg);
+    padding: var(--spacing-lg);
+    border-radius: 12px; /* Zaoblené rohy */
+    box-shadow: 0 8px 25px var(--clr-shadow-light); /* Jemný tieň */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-8px); /* Výraznejšie vysunutie pri hoveri */
+    box-shadow: 0 15px 40px var(--clr-shadow-medium); /* Silnejší tieň */
+}
+
+.service-item .service-icon {
+    font-size: 3.5rem; /* Väčšie ikony služieb */
+    margin-bottom: var(--spacing-md);
+    color: var(--clr-secondary); /* Ikony vo farbe akcentu */
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+    transform: scale(1.1); /* Zväčšenie ikony pri hoveri */
+}
+
+.service-item h3 {
+    color: var(--clr-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
+}
+
+.service-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.price-guarantee-banner {
+    background-color: var(--clr-primary); /* Primárna farba pozadia bannera */
+    color: var(--clr-text-light);
+    padding: var(--spacing-xl) var(--spacing-lg); /* Väčší padding */
+    border-radius: 12px;
+    margin-top: var(--spacing-xxl); /* Viac miesta nad bannerom */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.price-guarantee-banner h3 {
+    color: var(--clr-text-light);
+    font-size: 2.2rem; /* Väčší nadpis bannera */
+    margin-bottom: var(--spacing-sm);
+}
+
+.price-guarantee-banner p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.price-guarantee-banner .info-icon {
+    cursor: help;
+    font-size: 1.1rem;
+    margin-left: 0.5rem;
+    color: var(--clr-accent); /* Zlatá farba pre "i" ikonu */
+    position: relative;
+    display: inline-block;
+}
+
+.price-guarantee-banner .info-icon::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+.price-guarantee-banner .info-icon:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 5. Sekcia Portfólio */
+.portfolio-section {
+    /* Changed to gradient for smooth transition from Services and into Advantages */
+    background: linear-gradient(180deg, var(--clr-background) 0%, var(--clr-card-bg) 100%);
+}
+
+
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Väčšie min-width */
+    gap: var(--spacing-xl);
+}
+
+.portfolio-item {
+    background-color: var(--clr-card-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--clr-shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Added for flexbox layout */
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: space-between; /* Distributes space, pushing button to bottom */
+    align-items: center; /* Centers items horizontally */
+    height: 100%; /* Ensures all items take full height */
+}
+
+.portfolio-item p {
+    color: var(--clr-text-dark);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1; /* Allows paragraph to expand and push button down */
+}
+
+.portfolio-item .btn {
+    margin-top: auto; /* Pushes the button to the bottom */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px var(--clr-shadow-medium);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* Pevná výška pre obrázky portfólia */
+    object-fit: cover; /* Aby sa obrázky vyplnili */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05); /* Jemné priblíženie obrázka pri hoveri */
+}
+
+.portfolio-overlay {
+    padding: var(--spacing-md);
+    background-color: var(--clr-card-bg); /* Pozadie pre text a tlačidlo */
+}
+
+.portfolio-overlay h3 {
+    color: var(--clr-primary);
+    font-size: 1.6rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.portfolio-overlay p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: var(--spacing-md);
+}
+
+.portfolio-overlay .btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+}
+
+
+/* 6. Sekcia Výhody (Advantages) */
+.advantages-section {
+    /* Background for this section, and transition to the next */
+     background: linear-gradient(180deg, var(--clr-card-bg) 0%, var(--clr-background) 100%);
+    /* Removed color: var(--clr-text-light); */
+}
+
+.advantages-section h2 {
+    /* Removed color: var(--clr-text-light); */
+}
+
+.advantages-section .section-description {
+    /* Removed color: rgba(255, 255, 255, 0.9); */
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.advantage-item {
+    background-color: var(--clr-card-bg); /* Changed from transparent to solid for better contrast */
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 25px var(--clr-shadow-light); /* Changed to light shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.advantage-item:hover {
+    background-color: #f0f0f0; /* Mierne sýtejšie pri hoveri */
+    transform: translateY(-8px);
+}
+
+.advantage-item i {
+    font-size: 3.5rem; /* Väčšie ikony */
+    color: var(--clr-secondary); /* Changed from accent to secondary color for icons */
+    margin-bottom: var(--spacing-md);
+}
+
+.advantage-item h3 {
+    /* Removed color: var(--clr-text-light); */
+}
+
+.advantage-item p {
+    /* Removed color: rgba(255, 255, 255, 0.8); */
+}
+
+
+/* 7. FAQ Sekcia */
+.faq-section {
+    /* Background for this section, and since quiz-section is the same, no gradient out of it */
+         background: linear-gradient(180deg, var(--clr-background) 0%, var(--clr-background) 100%); /* To this */
+}
+
+.faq-intro {
+    font-size: 1.2rem;
+    color: #6C757D;
+    margin-bottom: var(--spacing-xl);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--clr-card-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    overflow: hidden; /* Dôležité pre animáciu výšky */
+    box-shadow: 0 4px 15px var(--clr-shadow-light);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--clr-primary);
+    background-color: #f0f0f0; /* Jemné pozadie pre otázku */
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #e6e6e6;
+}
+
+.faq-item.active .faq-question {
+    background-color: var(--clr-secondary); /* Akcent farba pre aktívnu otázku */
+    color: var(--clr-text-light);
+}
+
+.faq-item.active .faq-question .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 0 var(--spacing-lg);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    color: #555;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Prispôsobte podľa obsahu */
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+}
+
+/* 8. Kvíz Sekcia */
+.quiz-section {
+    /* Background for this section, and transition to blog section */
+    background: linear-gradient(180deg, var(--clr-background) 0%, var(--clr-card-bg) 100%);
+}
+
+.quiz-container {
+    background-color: var(--clr-card-bg);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 10px 30px var(--clr-shadow-medium);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left; /* Text vo vnútri quizu zarovnaný doľava */
+    position: relative;
+    overflow: hidden;
+}
+
+.quiz-intro-card,
+.quiz-question-card,
+.quiz-results-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--spacing-xl); /* Rovnaký padding ako quiz-container */
+    background-color: var(--clr-card-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centruje obsah vertikálne a horizontálne */
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    text-align: center; /* Obsah kariet v strede */
+}
+
+.quiz-intro-card.is-visible,
+.quiz-question-card.is-visible,
+.quiz-results-card.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative; /* Dôležité pre zobrazenie */
+}
+
+.quiz-question-card {
+    align-items: flex-start; /* Otázky a možnosti zarovnať doľava */
+    text-align: left;
+}
+
+.quiz-question-card h3 {
+    width: 100%;
+    text-align: center; /* Nadpis otázky centrovaný */
+    margin-bottom: var(--spacing-lg);
+    font-size: 2rem;
+    color: var(--clr-primary);
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.quiz-options label {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 1.05rem;
+}
+
+.quiz-options label:hover {
+    background-color: #f0f0f0;
+    border-color: var(--clr-secondary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.quiz-options input[type="radio"],
+.quiz-options input[type="checkbox"] {
+    margin-right: var(--spacing-sm);
+    transform: scale(1.2); /* Väčšie checkbox/radio buttony */
+}
+
+.quiz-options input[type="radio"]:checked + span,
+.quiz-options input[type="checkbox"]:checked + span {
+    color: var(--clr-secondary); /* Text zelenej farby po zaškrtnutí */
+    font-weight: 600;
+}
+
+.quiz-options input[type="radio"]:checked ~ label,
+.quiz-options input[type="checkbox"]:checked ~ label {
+    border-color: var(--clr-secondary);
+    background-color: rgba(233, 76, 61, 0.1); /* Jemný tieň pre vybranú odpoveď */
+    box-shadow: 0 4px 15px rgba(233, 76, 61, 0.2);
+}
+
+
+.quiz-navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: var(--spacing-lg);
+}
+
+.quiz-results-card h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.quiz-results-card ul {
+    list-style: none;
+    margin-bottom: var(--spacing-lg);
+    padding: 0;
+}
+
+.quiz-results-card ul li {
+    background-color: #f0f0f0;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    border-radius: 5px;
+    font-size: 1.05rem;
+    text-align: left;
+}
+
+/* 9. Blog Sekcia */
+.blog-section .text-center .btn {
+    margin-top: var(--spacing-xxl); /* Adds more space above the button */
+}
+
+.blog-section {
+    /* Changed to gradient from card-bg to background for smooth transition from Quiz and into Contact */
+    background: linear-gradient(180deg, var(--clr-card-bg) 0%, var(--clr-background) 100%);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.blog-post-card {
+    background-color: var(--clr-card-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 8px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--clr-shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Changed from 'left' to 'center' */
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px var(--clr-shadow-medium);
+}
+
+.blog-post-card img {
+    width: 100%;
+    height: 220px; /* Pevná výška pre obrázky blogu */
+    object-fit: cover;
+    display: block;
+}
+
+.blog-post-card .card-content {
+    padding: var(--spacing-md);
+}
+
+.blog-post-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--clr-primary);
+}
+
+.blog-post-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-post-card .read-more {
+    color: var(--clr-secondary);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.blog-post-card .read-more:hover {
+    color: var(--clr-primary);
+}
+
+/* 10. Kontakt Sekcia */
+.contact-section {
+    padding: var(--spacing-xxl) 0; /* More vertical padding */
+    /* This section transitions from background to primary for the footer */
+    background: linear-gradient(180deg, var(--clr-background) 0%, var(--clr-primary) 100%);
+    overflow: hidden; /* For potential animations bleeding out */
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Slightly wider right column for info/map */
+    gap: var(--spacing-xl);
+    align-items: stretch; /* Stretch items to fill height */
+    margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+.contact-form,
+.contact-info,
+.map-container {
+    background-color: var(--clr-card-bg);
+    padding: var(--spacing-xl); /* Increased padding */
+    border-radius: 16px; /* More pronounced rounded corners */
+    box-shadow: 0 10px 30px var(--clr-shadow-light); /* Stronger, softer shadow */
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+    border: 1px solid var(--clr-border); /* Subtle border */
+    position: relative; /* For pseudo-elements or more complex animations */
+    overflow: hidden; /* To contain hover effects */
+}
+
+.contact-form:hover,
+.contact-info:hover,
+.map-container:hover {
+    transform: translateY(-8px) scale(1.01); /* More noticeable lift and slight scale */
+    box-shadow: 0 18px 45px var(--clr-shadow-medium); /* More prominent shadow on hover */
+}
+
+/* Pseudo-element for a subtle glow/shine on hover */
+.contact-form::before,
+.contact-info::before,
+.map-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    z-index: 1; /* Above background, below content */
+}
+
+.contact-form:hover::before,
+.contact-info:hover::before,
+.map-container:hover::before {
+    opacity: 1;
+}
+
+
+.contact-form h3,
+.contact-info h3 {
+    color: var(--clr-primary);
+    margin-bottom: var(--spacing-md);
+    font-size: 2.2rem; /* Larger headings */
+    text-align: center;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg); /* More space between form fields */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--clr-primary);
+    font-size: 1.1rem;
+    position: relative;
+    left: 2px; /* Slight alignment adjustment */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-md); /* Increased padding for inputs */
+    border: 2px solid var(--clr-border); /* Thicker border */
+    border-radius: 10px; /* More rounded inputs */
+    font-family: var(--font-primary);
+    font-size: 1.05rem;
+    color: var(--clr-text-dark);
+    background-color: var(--clr-background);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: var(--clr-secondary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(233, 76, 61, 0.25); /* More prominent focus highlight */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px; /* Minimum height for textarea */
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.25);
+}
+
+.contact-form button.btn-primary {
+    width: 100%; /* Full width button */
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.contact-form button.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.contact-info-and-map {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    justify-content: space-between; /* Space out info and map */
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md); /* More space between icon and text */
+    margin-bottom: var(--spacing-sm); /* Reduced margin for contact info paragraphs */
+    font-size: 1.1rem; /* Slightly larger text */
+    color: var(--clr-text-dark);
+}
+
+.contact-info p:last-of-type {
+    margin-bottom: var(--spacing-lg); /* Extra space before social links */
+}
+
+.contact-info p i {
+    color: var(--clr-secondary);
+    font-size: 1.4rem;
+    min-width: 30px; /* Ensure icons align */
+    text-align: center;
+}
+
+.contact-info p a {
+    color: var(--clr-text-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info p a:hover {
+    color: var(--clr-secondary);
+    text-decoration: underline; /* Add underline on hover for links */
+}
+
+.social-links {
+    margin-top: var(--spacing-lg); /* More space from contact info */
+    display: flex;
+    gap: var(--spacing-xl); /* More space between social icons */
+    justify-content: center;
+}
+
+.social-links a {
+    font-size: 2.5rem; /* Even larger social icons */
+    color: var(--clr-primary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--clr-secondary);
+    transform: scale(1.1) translateY(-5px); /* Pop and lift on hover */
+}
+
+.map-container {
+    width: 100%;
+    /* padding handled by the general card style */
+    display: flex; /* To center iframe vertically if needed */
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container iframe {
+    border-radius: 12px;
+    height: 350px; /* Slightly taller map */
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* 11. Promo Pop-up */
+.promo-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.promo-popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.promo-popup .popup-content {
+    background-color: var(--clr-card-bg);
+    padding: var(--spacing-xl);
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(20px); /* Pre animáciu príchodu */
+    transition: transform 0.3s ease;
+}
+
+.promo-popup.show .popup-content {
+    transform: translateY(0);
+}
+
+.promo-popup .popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.promo-popup .popup-close:hover {
+    color: var(--clr-secondary);
+}
+
+.promo-popup h3 {
+    color: var(--clr-primary);
+    font-size: 2.2rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.promo-popup p {
+    color: #555;
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.1rem;
+}
+
+/* 12. Hlavná Pätička */
+/* Removed old .main-footer and .footer-section styles */
+
+.new-site-footer {
+    background-color: var(--clr-primary); /* Dark background for a sleek look */
+    color: var(--clr-text-light);
+    padding: var(--spacing-xl) var(--spacing-md);
+    font-size: 0.95rem;
+    border-top: 5px solid var(--clr-secondary); /* Accent line at the top */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+        padding-bottom: 1rem; /* Optional, if needed to reduce overall footer height */
+
+}
+
+.new-site-footer .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr; /* Brand, Links, Contact/Social */
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+    padding-bottom: var(--spacing-lg);
+}
+
+.new-site-footer .footer-brand {
+    text-align: left;
+}
+
+.new-site-footer .footer-logo {
+    height: 70px; /* Larger logo in footer */
+    width: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+.new-site-footer .footer-brand p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 0; /* Reduced space under the last p */
+}
+
+.new-site-footer .footer-links h4,
+.new-site-footer .footer-contact h4 {
+    color: var(--clr-text-light);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.new-site-footer .footer-links h4::after,
+.new-site-footer .footer-contact h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--clr-secondary);
+    border-radius: 2px;
+}
+
+.new-site-footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.new-site-footer .footer-links li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.new-site-footer .footer-links li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.new-site-footer .footer-links li a:hover {
+    color: var(--clr-accent);
+    transform: translateX(5px);
+}
+
+.new-site-footer .footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-sm); /* Reduced margin for contact info paragraphs */
+    font-size: 1rem;
+}
+
+.new-site-footer .footer-contact p i {
+    color: var(--clr-secondary);
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.new-site-footer .footer-social-links {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-start; /* Align social links to the left */
+}
+
+.new-site-footer .footer-social-links a {
+    font-size: 1.8rem;
+    color: var(--clr-text-light);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.new-site-footer .footer-social-links a:hover {
+    color: var(--clr-accent);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.new-site-footer .footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+     margin-top: 1rem; /* Try lowering from var(--spacing-lg) which is 3rem */
+    font-size: 0.85rem;
+}
+
+.new-site-footer .footer-bottom-bar .fas.fa-heart {
+    color: #e74c3c; /* Red heart */
+    animation: pulse 1.5s infinite ease-in-out; /* Heartbeat animation */
+}
+
+/* --- Responsive Adjustments for New Footer --- */
+@media (max-width: 992px) {
+    .new-site-footer .footer-content {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+
+    .new-site-footer .footer-brand,
+    .new-site-footer .footer-links,
+    .new-site-footer .footer-contact {
+        text-align: center; /* Center content within each section */
+    }
+
+    .new-site-footer .footer-links h4::after,
+    .new-site-footer .footer-contact h4::after {
+        left: 50%; /* Center underline */
+        transform: translateX(-50%);
+    }
+
+    .new-site-footer .footer-contact p {
+        justify-content: center; /* Center contact info icons/text */
+    }
+
+    .new-site-footer .footer-social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .new-site-footer {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    .new-site-footer .footer-content {
+        gap: var(--spacing-lg);
+    }
+    .new-site-footer .footer-links h4,
+    .new-site-footer .footer-contact h4 {
+        font-size: 1.3rem;
+    }
+    .new-site-footer .footer-social-links a {
+        font-size: 1.5rem;
+    }
+}
+
+
+/* 13. Custom Cursor */
+.custom-cursor {
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    background-color: var(--clr-secondary); /* Akcentová farba kurzora */
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0; /* Predvolene skryté, JS ho zobrazí */
+}
+
+.custom-cursor.hover {
+    width: 45px;
+    height: 45px;
+    background-color: var(--clr-accent); /* Iná farba pri hoveri */
+}
+
+/* 14. Animate on Scroll (zopakované z animations.css pre konzistenciu) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+.animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+.animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+.animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+.animate-on-scroll.delay-5 { transition-delay: 0.5s; }
+
+
+
+.menu-toggle{
+
+    display: none;
+}
+/* ===================================== */
+/* Responzívny Dizajn (Media Queries) */
+/* ===================================== */
+
+/* Tablety a menšie desktopy (max-width: 1024px) */
+@media (max-width: 1024px) {
+    h1 { font-size: 3.2rem; }
+    h2 { font-size: 2.4rem; }
+    h3 { font-size: 1.8rem; }
+
+    .main-nav ul {
+        gap: var(--spacing-md);
+    }
+
+    .main-header .logo img {
+        height: 50px;
+    }
+
+    .hero-section h1 {
+        font-size: 3.8rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Stack buttons on smaller screens */
+        gap: var(--spacing-sm);
+    }
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+    }
+
+
+    .service-item, .advantage-item, .blog-post-card, .portfolio-item {
+        padding: var(--spacing-md);
+    }
+    .service-item h3 { font-size: 1.6rem; }
+    .advantage-item h3 { font-size: 1.6rem; }
+    .blog-post-card h3 { font-size: 1.4rem; }
+    .portfolio-overlay h3 { font-size: 1.4rem; }
+
+    .about-section .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-section .about-text h2 {
+        text-align: center;
+    }
+    .about-section .about-image {
+        order: -1; /* Obrázok hore na menších obrazovkách */
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .price-guarantee-banner h3 {
+        font-size: 1.8rem;
+    }
+    .price-guarantee-banner p {
+        font-size: 1rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+        padding: 1rem 1.2rem;
+    }
+    .faq-answer {
+        padding: 0 1.2rem;
+    }
+    .faq-item.active .faq-answer {
+        padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .quiz-container, .contact-form, .contact-info {
+        padding: var(--spacing-md);
+    }
+    .quiz-options label {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .promo-popup .popup-content {
+        max-width: 95%;
+        padding: var(--spacing-lg);
+    }
+    .promo-popup h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobily a menšie tablety (max-width: 768px) */
+@media (max-width: 768px) {
+    section {
+        padding: var(--spacing-xl) 0; /* Menšie medzery pre mobily */
+    }
+
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    h3 { font-size: 1.6rem; }
+    p { font-size: 1rem; }
+
+    .main-header .container {
+        flex-direction: row; /* Keep elements in a row */
+        justify-content: space-between; /* Logo left, controls right */
+        align-items: center;
+        gap: 0; /* Reset gap if any from desktop styles */
+    }
+
+    .main-header .logo img {
+        height: 45px;
+    }
+
+    .header-controls { /* Use the renamed class */
+        display: flex; /* Ensure hamburger and theme toggle are side-by-side */
+        align-items: center;
+        gap: 15px; /* Space between them */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger on mobile */
+        background-color: transparent; /* Match header background */
+        border: none; /* No border for the button itself */
+        padding: 0.5rem; /* Padding for click area to make it easily tappable */
+        cursor: pointer;
+        transition: transform 0.2s ease-out;
+    }
+
+    .menu-toggle i {
+        color: var(--clr-primary); /* Blue color for the bars icon */
+        font-size: 1.8rem; /* Adjust size */
+        transition: color 0.3s ease;
+    }
+
+    .menu-toggle:hover i {
+        color: var(--clr-secondary); /* Optional: hover effect for icon */
+    }
+
+    .main-nav {
+        display: none; /* Hide main nav by default on mobile */
+        position: absolute;
+        top: 100%; /* Position below the header */
+        left: 0;
+        width: 100%;
+        background-color: var(--clr-card-bg); /* Same background as header */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        z-index: 999;
+    }
+
+    .main-nav.active {
+        display: flex; /* Show when active */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Stack menu items vertically */
+        gap: 1rem;
+        width: 100%; /* Take full width of nav container */
+    }
+
+    .main-nav ul li {
+        width: 100%; /* Ensure each list item takes full width */
+        text-align: center; /* Center text in menu items */
+    }
+
+    .main-nav a {
+        padding: 0.8rem 0; /* Adjust padding for menu items */
+        display: block; /* Make links block level to fill width */
+    }
+
+    .hero-section h1 {
+        font-size: 3.2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    .btn {
+        padding: 1rem 2rem;
+        font-size: 0.95rem;
+    }
+
+    .service-grid, .portfolio-grid, .advantages-grid, .blog-grid, .contact-grid {
+        grid-template-columns: 1fr; /* Jeden stĺpec pre všetky gridy */
+    }
+
+    .service-item, .advantage-item, .blog-post-card, .portfolio-item {
+        padding: var(--spacing-lg);
+    }
+
+    .price-guarantee-banner {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    .price-guarantee-banner h3 {
+        font-size: 1.6rem;
+    }
+
+    .faq-question {
+        font-size: 1rem;
+        padding: 1rem 1.2rem;
+    }
+    .faq-answer {
+        padding: 0 1.2rem;
+    }
+    .faq-item.active .faq-answer {
+        padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .quiz-container, .contact-form, .contact-info {
+        padding: var(--spacing-md);
+    }
+    .quiz-options label {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .promo-popup .popup-content {
+        max-width: 95%;
+        padding: var(--spacing-lg);
+    }
+    .promo-popup h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Veľmi malé mobily (max-width: 480px) */
+@media (max-width: 480px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+}
+
+body.day-mode .background-visual {
+    background: linear-gradient(to top, #e0f7fa, #ffffff);
+}
+
+body.day-mode .background-visual::after,
+body.day-mode .background-visual::before {
+    display: none;
+}
+
+.imgprojekt{
+
+    margin-bottom: 50px;
+}
+
+.spacing1{
+
+    margin-bottom: 100px;
+}

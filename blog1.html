@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prečo podniky v roku 2025 potrebujú webovú stránku a nestačí Facebook | MWeby Blog</title>
+    <meta name="description"
+        content="Zistite, prečo je pre lokálne podniky ako kaviarne, autoškoly či puby v roku 2025 kľúčové mať vlastnú webstránku a prečo Facebook už nestačí.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===================================== */
+        /* style.css - Globálne Štýly */
+        /* ===================================== */
+        :root {
+            --clr-primary: #1A365D;
+            --clr-secondary: #E94C3D;
+            --clr-accent: #FFD700;
+            --clr-text-dark: #333333;
+            --clr-text-light: #ffffff;
+            --clr-background: #F8F9FA;
+            --clr-card-bg: #ffffff;
+            --clr-border: #e0e0e0;
+            --clr-shadow-light: rgba(0, 0, 0, 0.08);
+            --clr-shadow-medium: rgba(0, 0, 0, 0.15);
+            --font-primary: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 5rem;
+            --spacing-xxl: 7rem;
+            --transition-speed: 0.35s;
+            --transition-timing: ease-in-out;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--clr-text-dark);
+            background: var(--clr-background);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: var(--clr-primary);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-timing);
+        }
+
+        a:hover {
+            color: var(--clr-secondary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all var(--transition-speed) var(--transition-timing);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 6px 20px var(--clr-shadow-light);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--clr-secondary);
+            color: var(--clr-text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #d83d30;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(233, 76, 61, 0.4);
+            color: var(--clr-text-light);
+        }
+
+        .main-header {
+            background-color: var(--clr-card-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px var(--clr-shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-header .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            color: var(--clr-primary);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--clr-secondary);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width var(--transition-speed) var(--transition-timing);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          font-size: 2rem;
+          color: var(--clr-primary);
+          cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--clr-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .theme-toggle .icon-sun, .theme-toggle .icon-moon {
+            position: absolute;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .theme-toggle .icon-sun.hide, .theme-toggle .icon-moon.hide {
+            opacity: 0;
+            transform: scale(0.7) rotate(45deg);
+        }
+        .theme-toggle .icon-sun.show, .theme-toggle .icon-moon.show {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+        
+        .new-site-footer {
+    background-color: var(--clr-primary); /* Dark background for a sleek look */
+    color: var(--clr-text-light);
+    padding: var(--spacing-xl) var(--spacing-md);
+    font-size: 0.95rem;
+    border-top: 5px solid var(--clr-secondary); /* Accent line at the top */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+        padding-bottom: 1rem; /* Optional, if needed to reduce overall footer height */
+
+}
+
+.new-site-footer .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr; /* Brand, Links, Contact/Social */
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+    padding-bottom: var(--spacing-lg);
+}
+
+.new-site-footer .footer-brand {
+    text-align: left;
+}
+
+.new-site-footer .footer-logo {
+    height: 70px; /* Larger logo in footer */
+    width: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+.new-site-footer .footer-brand p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 0; /* Reduced space under the last p */
+}
+
+.new-site-footer .footer-links h4,
+.new-site-footer .footer-contact h4 {
+    color: var(--clr-text-light);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.new-site-footer .footer-links h4::after,
+.new-site-footer .footer-contact h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--clr-secondary);
+    border-radius: 2px;
+}
+
+.new-site-footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.new-site-footer .footer-links li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.new-site-footer .footer-links li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.new-site-footer .footer-links li a:hover {
+    color: var(--clr-accent);
+    transform: translateX(5px);
+}
+
+.new-site-footer .footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-sm); /* Reduced margin for contact info paragraphs */
+    font-size: 1rem;
+}
+
+.new-site-footer .footer-contact p i {
+    color: var(--clr-secondary);
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.new-site-footer .footer-social-links {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-start; /* Align social links to the left */
+}
+
+.new-site-footer .footer-social-links a {
+    font-size: 1.8rem;
+    color: var(--clr-text-light);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.new-site-footer .footer-social-links a:hover {
+    color: var(--clr-accent);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.new-site-footer .footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+     margin-top: 1rem; /* Try lowering from var(--spacing-lg) which is 3rem */
+    font-size: 0.85rem;
+}
+
+.new-site-footer .footer-bottom-bar .fas.fa-heart {
+    color: #e74c3c; /* Red heart */
+    animation: pulse 1.5s infinite ease-in-out; /* Heartbeat animation */
+
+    
+}
+
+/* --- Responsive Adjustments for New Footer --- */
+@media (max-width: 992px) {
+    .new-site-footer .footer-content {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+
+    .new-site-footer .footer-brand,
+    .new-site-footer .footer-links,
+    .new-site-footer .footer-contact {
+        text-align: center; /* Center content within each section */
+    }
+
+    .new-site-footer .footer-links h4::after,
+    .new-site-footer .footer-contact h4::after {
+        left: 50%; /* Center underline */
+        transform: translateX(-50%);
+    }
+
+    .new-site-footer .footer-contact p {
+        justify-content: center; /* Center contact info icons/text */
+    }
+
+    .new-site-footer .footer-social-links {
+        justify-content: center; /* Center social icons */
+    }
+}
+
+@media (max-width: 576px) {
+    .new-site-footer {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    .new-site-footer .footer-content {
+        gap: var(--spacing-lg);
+    }
+    .new-site-footer .footer-links h4,
+    .new-site-footer .footer-contact h4 {
+        font-size: 1.3rem;
+    }
+    .new-site-footer .footer-social-links a {
+        font-size: 1.5rem;
+    }
+}
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+
+        /* ===================================== */
+        /* dark-mode.css */
+        /* ===================================== */
+        body.dark-mode {
+            --clr-primary: #86A8E7;
+            --clr-secondary: #FF8C60;
+            --clr-accent: #FFEB3B;
+            --clr-text-dark: #E0E0E0;
+            --clr-text-light: #222222;
+            --clr-background: #0D141F;
+            --clr-card-bg: #1A253A;
+            --clr-border: #3A475D;
+            --clr-shadow-light: rgba(0, 0, 0, 0.3);
+            --clr-shadow-medium: rgba(0, 0, 0, 0.5);
+            color: var(--clr-text-dark);
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: var(--clr-primary); }
+        body.dark-mode a { color: var(--clr-primary); }
+        body.dark-mode a:hover { color: var(--clr-secondary); }
+        body.dark-mode .main-header { background-color: var(--clr-card-bg); border-bottom: 1px solid var(--clr-border); }
+        body.dark-mode .main-nav a { color: var(--clr-text-dark); }
+        body.dark-mode .main-nav a::after { background-color: var(--clr-secondary); }
+        body.dark-mode .theme-toggle { color: var(--clr-text-dark); }
+        body.dark-mode .new-site-footer { background-color: #101827; border-top-color: var(--clr-secondary); }
+        body.dark-mode .new-site-footer .footer-links h4, body.dark-mode .new-site-footer .footer-contact h4 { color: var(--clr-primary); }
+        body.dark-mode .new-site-footer .footer-social-links a:hover { color: var(--clr-accent); }
+        body.dark-mode .new-site-footer .footer-bottom-bar { color: rgba(224, 224, 224, 0.6); }
+        
+        /* ===================================== */
+        /* styleblog.css */
+        /* ===================================== */
+        .blog-posts-detail-section {
+            padding: 120px 0 var(--spacing-xxl) 0;
+            background-color: var(--clr-background);
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-full-article {
+            background-color: var(--clr-card-bg);
+            border-radius: 16px;
+            box-shadow: 0 15px 45px var(--clr-shadow-light);
+            padding: var(--spacing-xxl);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .blog-full-article .article-title {
+            font-size: 3.5rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .blog-full-article .article-meta {
+            font-size: 1.05rem;
+            color: #888;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .blog-full-article .article-meta i {
+            color: var(--clr-accent);
+        }
+
+        .blog-full-article .article-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .blog-full-article .article-content h3 {
+            font-size: 2.5rem;
+            color: var(--clr-primary);
+            margin-top: var(--spacing-xxl);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--clr-border);
+            padding-bottom: var(--spacing-xs);
+        }
+
+        .blog-full-article .article-content p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--clr-text-dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .blog-full-article .article-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .blog-full-article .article-content ul li {
+            position: relative;
+            padding-left: 2.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .blog-full-article .article-content ul li::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f058";
+            color: var(--clr-secondary);
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-full-article .back-to-blog-list {
+            margin-top: var(--spacing-xxl);
+            text-align: center;
+        }
+        
+        body.dark-mode .blog-posts-detail-section { background-color: var(--clr-background); }
+        body.dark-mode .blog-full-article { background-color: var(--clr-card-bg); box-shadow: 0 15px 45px var(--clr-shadow-medium); }
+        body.dark-mode .blog-full-article .article-title { color: var(--clr-primary); }
+        body.dark-mode .blog-full-article .article-meta { color: rgba(224, 224, 224, 0.7); }
+        body.dark-mode .blog-full-article .article-content h3 { color: var(--clr-primary); border-bottom-color: var(--clr-border); }
+        body.dark-mode .blog-full-article .article-content p { color: var(--clr-text-dark); }
+        body.dark-mode .blog-full-article .article-content ul li { color: var(--clr-text-dark); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-header .container { position: relative; }
+            .menu-toggle { display: block; z-index: 20; }
+            .main-nav { 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background-color: var(--clr-card-bg);
+                display: none;
+                flex-direction: column; 
+                box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
+                padding: 1rem; 
+                z-index: 15;
+            }
+            .main-nav.active { display: flex; }
+            .main-nav ul { flex-direction: column; width: 100%; gap: var(--spacing-sm); }
+            .new-site-footer .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .new-site-footer .footer-brand, .new-site-footer .footer-links, .new-site-footer .footer-contact { align-items: center; text-align: center; }
+            .new-site-footer .footer-social-links, .new-site-footer .footer-contact p { justify-content: center; }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-full-article { padding: var(--spacing-lg); }
+            .blog-full-article .article-title { font-size: 2.5rem; }
+            .blog-full-article .article-content h3 { font-size: 2rem; }
+            .blog-full-article .article-content p { font-size: 1rem; }
+        }
+
+        /* Nastaví bielu farbu pre všetky sociálne ikony a plynulý prechod */
+.social-links a i,
+.footer-social-links a i {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* Pri prejdení myšou nad odkazom zmení farbu ikony na zlatú */
+.social-links a:hover i,
+.footer-social-links a:hover i {
+    color: #FFEB3B;
+}
+
+
+    </style>
+</head>
+
+<body class="dark-mode">
+
+    <div class="background-visual"></div>
+    <div class="custom-cursor"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html#home">
+                    <img src="logo.jpg.png" alt="MWeby Logo" width="150" height="60">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#home">Domov</a></li>
+                    <li><a href="index.html#about">O Nás</a></li>
+                    <li><a href="index.html#services">Služby</a></li>
+                    <li><a href="index.html#portfolio">Portfólio</a></li>
+                    <li><a href="index.html#advantages">Výhody</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#quiz-section">Kvíz</a></li>
+                    <li><a href="blogy.html" class="active">Blog</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Prepnúť režim zobrazenia">
+                <i class="fas fa-sun icon-sun show"></i>
+                <i class="fas fa-moon icon-moon hide"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-posts-detail-section">
+            <div class="container">
+                <article class="blog-full-article">
+                    <h1 class="article-title">Ako prilákať viac zákazníkov: Prečo v roku 2025 Facebook nestačí</h1>
+                    <div class="article-meta">
+                        <span><i class="far fa-calendar-alt"></i> 8. júl 2025</span> |
+                        <span><i class="fas fa-user"></i> MWeby Tím</span> |
+                        <span><i class="fas fa-tags"></i> Marketing, Stratégia</span>
+                    </div>
+
+                    <img src="https://raw.githubusercontent.com/Maximmm1388/mweby/main/WF.jpg" alt="Ilustračný obrázok modernej webstránky na laptope a mobilnom telefóne vedľa loga Facebooku" class="article-image">
+
+                    <div class="article-content">
+                        <p>Prevádzkujete v Nitre skvelú kaviareň, zabehnutú autoškolu alebo obľúbený pub? Určite ste na Facebooku, zdieľate denné menu a fotky spokojných zákazníkov. To je skvelý začiatok. Ale v dnešnom svete, kde sa zákazníci rozhodujú v priebehu sekúnd, už Facebook jednoducho nestačí. Ak chcete nielen prežiť, ale aktívne rásť a prilákať viac zákazníkov, potrebujete vlastnú webstránku. Poďme sa pozrieť, prečo je to vaša najsilnejšia marketingová zbraň.</p>
+
+                        <h3>Váš web je vaša digitálna výkladná skriňa – urobte skvelý prvý dojem</h3>
+                        <p>Predstavte si, že potenciálny zákazník hľadá "príjemné posedenie v Nitre". Čo urobí? Otvorí Google. Ak sa mu zobrazí vaša profesionálna, prehľadná a vizuálne príťažlivá webstránka, okamžite si vytvorí pozitívny prvý dojem. Vníma vás ako seriózny a etablovaný podnik. Naopak, Facebooková stránka s rozhádzanými príspevkami, starými fotkami a neprehľadnými informáciami môže pôsobiť chaoticky a nedôveryhodne. Webstránka vám dáva úplnú kontrolu nad tým, ako sa prezentujete a aký príbeh rozprávate.</p>
+                        
+                        <h3>Budovanie dôvery a sociálny dôkaz: Nechajte hovoriť vašich zákazníkov</h3>
+                        <p>Ľudia veria iným ľuďom. Toto je základný kameň marketingu. Zatiaľ čo na Facebooku sú recenzie často skryté alebo pôsobia nedôveryhodne, na vlastnej stránke ich môžete elegantne prezentovať. Vytvorte sekciu s referenciami, kde uverejníte tie najlepšie ohlasy. Pridajte galériu profesionálnych fotiek vášho interiéru, produktov alebo spokojných absolventov autoškoly. Toto je tzv. <strong>sociálny dôkaz</strong> v praxi. Ukazujete novým návštevníkom, že ostatní vám už dôverujú a boli spokojní. To dramaticky zvyšuje šancu, že si vyberú práve vás.</p>
+                        <ul>
+                            <li><strong>Referencie a hodnotenia:</strong> Elegantne zobrazte najlepšie recenzie, ktoré budujú okamžitú dôveru.</li>
+                            <li><strong>Profesionálna galéria:</strong> Ukážte to najlepšie z vášho podniku a vytvorte atmosféru, ktorú chcú zákazníci zažiť.</li>
+                            <li><strong>"O nás" stránka:</strong> Povedzte svoj príbeh. Ľudia sa radi spájajú s inými ľuďmi, nie s anonymnými firmami.</li>
+                        </ul>
+
+                        <h3>Psychológia prilákania zákazníkov: Buďte tam, kde vás hľadajú</h3>
+                        <p>Vaša webstránka je marketingové centrum, ktoré pracuje pre vás 24 hodín denne. Na rozdiel od Facebooku, kde bojujete o pozornosť s fotkami mačiatok a príspevkami priateľov, na vašu stránku prichádza človek s konkrétnym zámerom. Hľadá informácie. Vašou úlohou je mu ich poskytnúť a jemne ho nasmerovať k akcii – či už je to rezervácia stola, prihlásenie na kurz alebo len zistenie otváracích hodín. Vďaka optimalizácii pre vyhľadávače (SEO) vás ľudia nájdu presne vtedy, keď vás potrebujú. Byť na prvej strane Google pre "autoškola Nitra" je oveľa cennejšie, než mať tisíc fanúšikov na Facebooku, ktorí o vaše služby nemajú reálny záujem.</p>
+
+                        <h3>Záver: Stratégia pre rast, nie len prítomnosť</h3>
+                        <p>Facebook je skvelý sluha, ale zlý pán. Je to jeden z mnohých nástrojov vo vašej marketingovej sade. Ale nemôže byť jej základom. Vlastná webová stránka je investícia do kontroly, dôveryhodnosti a dlhodobého rastu vášho podniku. Je to miesto, kde meníte zvedavých návštevníkov na platiacich zákazníkov. V roku 2025 už nejde o to, či webstránku mať, ale o to, ako ju čo najlepšie využiť na prilákanie nových ľudí do vašej kaviarne, autoškoly alebo pubu.</p>
+                        
+                        <div class="back-to-blog-list text-center">
+                             <a href="blogy.html" class="btn btn-primary">Späť na Zoznam Článkov</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+   <footer class="new-site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg.png" alt="MWeby Logo" class="footer-logo">
+                <p>Tvorba profesionálnych webstránok v Nitre. Kvalita za rozumnú cenu.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Rýchle Odkazy</h4>
+                <ul>
+                    <li><a href="#about">O Nás</a></li>
+                    <li><a href="#services">Služby</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontaktujte Nás</h4>
+                <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2025 MWeby. Všetky práva vyhradené. | Vytvorené s <i class="fas fa-heart"></i> v Nitre</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobilné Menu ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+
+            // --- Prepínač Tém (Dark/Light Mode) ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const sunIcon = themeToggleBtn ? themeToggleBtn.querySelector('.icon-sun') : null;
+            const moonIcon = themeToggleBtn ? themeToggleBtn.querySelector('.icon-moon') : null;
+            const body = document.body;
+
+            const applyTheme = (isDarkMode) => {
+                if (isDarkMode) {
+                    body.classList.add('dark-mode');
+                    if (sunIcon && moonIcon) {
+                        sunIcon.classList.remove('show');
+                        sunIcon.classList.add('hide');
+                        moonIcon.classList.remove('hide');
+                        moonIcon.classList.add('show');
+                    }
+                } else {
+                    body.classList.remove('dark-mode');
+                    if (sunIcon && moonIcon) {
+                        sunIcon.classList.remove('hide');
+                        sunIcon.classList.add('show');
+                        moonIcon.classList.remove('show');
+                        moonIcon.classList.add('hide');
+                    }
+                }
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                applyTheme(true);
+            } else {
+                applyTheme(false);
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    applyTheme(!body.classList.contains('dark-mode'));
+                });
+            }
+
+            // --- Custom Cursor ---
+            const customCursor = document.querySelector('.custom-cursor');
+            if (customCursor) {
+                document.addEventListener('mousemove', (e) => {
+                    customCursor.style.left = `${e.clientX}px`;
+                    customCursor.style.top = `${e.clientY}px`;
+                    if (customCursor.style.opacity === '0' || !customCursor.style.opacity) {
+                        customCursor.style.opacity = '1';
+                    }
+                });
+                const interactiveElements = 'a, button, label';
+                document.querySelectorAll(interactiveElements).forEach(element => {
+                    element.addEventListener('mouseenter', () => customCursor.classList.add('hover'));
+                    element.addEventListener('mouseleave', () => customCursor.classList.remove('hover'));
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ako Vám webová stránka pomôže prekonať vaše konkurenčné podniky a prilákať viac zákazníkov | MWeby Blog</title>
+    <meta name="description"
+        content="Zistite, ako profesionálna webstránka zaručí vašej firme dôveryhodnosť, odlíši vás od konkurencie a stane sa kľúčom k získavaniu nových zákazníkov.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ===================================== */
+        /* style.css - Globálne Štýly */
+        /* ===================================== */
+        :root {
+            --clr-primary: #1A365D;
+            --clr-secondary: #E94C3D;
+            --clr-accent: #FFD700;
+            --clr-text-dark: #333333;
+            --clr-text-light: #ffffff;
+            --clr-background: #F8F9FA;
+            --clr-card-bg: #ffffff;
+            --clr-border: #e0e0e0;
+            --clr-shadow-light: rgba(0, 0, 0, 0.08);
+            --clr-shadow-medium: rgba(0, 0, 0, 0.15);
+            --font-primary: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 5rem;
+            --spacing-xxl: 7rem;
+            --transition-speed: 0.35s;
+            --transition-timing: ease-in-out;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.7;
+            color: var(--clr-text-dark);
+            background: var(--clr-background);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-sm);
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: var(--clr-primary);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-timing);
+        }
+
+        a:hover {
+            color: var(--clr-secondary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.8rem;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all var(--transition-speed) var(--transition-timing);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 6px 20px var(--clr-shadow-light);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--clr-secondary);
+            color: var(--clr-text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: #d83d30;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(233, 76, 61, 0.4);
+            color: var(--clr-text-light);
+        }
+
+        .main-header {
+            background-color: var(--clr-card-bg);
+            padding: 1rem 0;
+            box-shadow: 0 2px 15px var(--clr-shadow-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-header .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-lg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav a {
+            font-weight: 500;
+            color: var(--clr-primary);
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--clr-secondary);
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width var(--transition-speed) var(--transition-timing);
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+          display: none;
+          background: none;
+          border: none;
+          font-size: 2rem;
+          color: var(--clr-primary);
+          cursor: pointer;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.6rem;
+            color: var(--clr-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .theme-toggle .icon-sun, .theme-toggle .icon-moon {
+            position: absolute;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .theme-toggle .icon-sun.hide, .theme-toggle .icon-moon.hide {
+            opacity: 0;
+            transform: scale(0.7) rotate(45deg);
+        }
+        .theme-toggle .icon-sun.show, .theme-toggle .icon-moon.show {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+        
+        .new-site-footer {
+    background-color: var(--clr-primary); /* Dark background for a sleek look */
+    color: var(--clr-text-light);
+    padding: var(--spacing-xl) var(--spacing-md);
+    font-size: 0.95rem;
+    border-top: 5px solid var(--clr-secondary); /* Accent line at the top */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+        padding-bottom: 1rem; /* Optional, if needed to reduce overall footer height */
+
+}
+
+.new-site-footer .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr; /* Brand, Links, Contact/Social */
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+    padding-bottom: var(--spacing-lg);
+}
+
+.new-site-footer .footer-brand {
+    text-align: left;
+}
+
+.new-site-footer .footer-logo {
+    height: 70px; /* Larger logo in footer */
+    width: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+.new-site-footer .footer-brand p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 0; /* Reduced space under the last p */
+}
+
+.new-site-footer .footer-links h4,
+.new-site-footer .footer-contact h4 {
+    color: var(--clr-text-light);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.new-site-footer .footer-links h4::after,
+.new-site-footer .footer-contact h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--clr-secondary);
+    border-radius: 2px;
+}
+
+.new-site-footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.new-site-footer .footer-links li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.new-site-footer .footer-links li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.new-site-footer .footer-links li a:hover {
+    color: var(--clr-accent);
+    transform: translateX(5px);
+}
+
+.new-site-footer .footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-sm); /* Reduced margin for contact info paragraphs */
+    font-size: 1rem;
+}
+
+.new-site-footer .footer-contact p i {
+    color: var(--clr-secondary);
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.new-site-footer .footer-social-links {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-start; /* Align social links to the left */
+}
+
+.new-site-footer .footer-social-links a {
+    font-size: 1.8rem;
+    color: var(--clr-text-light);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.new-site-footer .footer-social-links a:hover {
+    color: var(--clr-accent);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.new-site-footer .footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+        margin-top: 1rem; /* Try lowering from var(--spacing-lg) which is 3rem */
+    font-size: 0.85rem;
+}
+
+.new-site-footer .footer-bottom-bar .fas.fa-heart {
+    color: #e74c3c; /* Red heart */
+    animation: pulse 1.5s infinite ease-in-out; /* Heartbeat animation */
+
+    
+}
+
+/* --- Responsive Adjustments for New Footer --- */
+@media (max-width: 992px) {
+    .new-site-footer .footer-content {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+
+    .new-site-footer .footer-brand,
+    .new-site-footer .footer-links,
+    .new-site-footer .footer-contact {
+        text-align: center; /* Center content within each section */
+    }
+
+    .new-site-footer .footer-links h4::after,
+    .new-site-footer .footer-contact h4::after {
+        left: 50%; /* Center underline */
+        transform: translateX(-50%);
+    }
+
+    .new-site-footer .footer-contact p {
+        justify-content: center; /* Center contact info icons/text */
+    }
+
+    .new-site-footer .footer-social-links {
+        justify-content: center; /* Center social icons */
+    }
+}
+
+@media (max-width: 576px) {
+    .new-site-footer {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    .new-site-footer .footer-content {
+        gap: var(--spacing-lg);
+    }
+    .new-site-footer .footer-links h4,
+    .new-site-footer .footer-contact h4 {
+        font-size: 1.3rem;
+    }
+    .new-site-footer .footer-social-links a {
+        font-size: 1.5rem;
+    }
+}
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+
+        /* ===================================== */
+        /* dark-mode.css */
+        /* ===================================== */
+        body.dark-mode {
+            --clr-primary: #86A8E7;
+            --clr-secondary: #FF8C60;
+            --clr-accent: #FFEB3B;
+            --clr-text-dark: #E0E0E0;
+            --clr-text-light: #222222;
+            --clr-background: #0D141F;
+            --clr-card-bg: #1A253A;
+            --clr-border: #3A475D;
+            --clr-shadow-light: rgba(0, 0, 0, 0.3);
+            --clr-shadow-medium: rgba(0, 0, 0, 0.5);
+            color: var(--clr-text-dark);
+        }
+        body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 { color: var(--clr-primary); }
+        body.dark-mode a { color: var(--clr-primary); }
+        body.dark-mode a:hover { color: var(--clr-secondary); }
+        body.dark-mode .main-header { background-color: var(--clr-card-bg); border-bottom: 1px solid var(--clr-border); }
+        body.dark-mode .main-nav a { color: var(--clr-text-dark); }
+        body.dark-mode .main-nav a::after { background-color: var(--clr-secondary); }
+        body.dark-mode .theme-toggle { color: var(--clr-text-dark); }
+        body.dark-mode .new-site-footer { background-color: #101827; border-top-color: var(--clr-secondary); }
+        body.dark-mode .new-site-footer .footer-links h4, body.dark-mode .new-site-footer .footer-contact h4 { color: var(--clr-primary); }
+        body.dark-mode .new-site-footer .footer-social-links a:hover { color: var(--clr-accent); }
+        body.dark-mode .new-site-footer .footer-bottom-bar { color: rgba(224, 224, 224, 0.6); }
+        
+        /* ===================================== */
+        /* styleblog.css */
+        /* ===================================== */
+        .blog-posts-detail-section {
+            padding: 120px 0 var(--spacing-xxl) 0;
+            background-color: var(--clr-background);
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-full-article {
+            background-color: var(--clr-card-bg);
+            border-radius: 16px;
+            box-shadow: 0 15px 45px var(--clr-shadow-light);
+            padding: var(--spacing-xxl);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .blog-full-article .article-title {
+            font-size: 3.5rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .blog-full-article .article-meta {
+            font-size: 1.05rem;
+            color: #888;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+        }
+        
+        .blog-full-article .article-meta i {
+            color: var(--clr-accent);
+        }
+
+        .blog-full-article .article-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .blog-full-article .article-content h3 {
+            font-size: 2.5rem;
+            color: var(--clr-primary);
+            margin-top: var(--spacing-xxl);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--clr-border);
+            padding-bottom: var(--spacing-xs);
+        }
+
+        .blog-full-article .article-content p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--clr-text-dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .blog-full-article .article-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .blog-full-article .article-content ul li {
+            position: relative;
+            padding-left: 2.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .blog-full-article .article-content ul li::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f058";
+            color: var(--clr-secondary);
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            font-size: 1.3rem;
+        }
+
+        .blog-full-article .back-to-blog-list {
+            margin-top: var(--spacing-xxl);
+            text-align: center;
+        }
+        
+        body.dark-mode .blog-posts-detail-section { background-color: var(--clr-background); }
+        body.dark-mode .blog-full-article { background-color: var(--clr-card-bg); box-shadow: 0 15px 45px var(--clr-shadow-medium); }
+        body.dark-mode .blog-full-article .article-title { color: var(--clr-primary); }
+        body.dark-mode .blog-full-article .article-meta { color: rgba(224, 224, 224, 0.7); }
+        body.dark-mode .blog-full-article .article-content h3 { color: var(--clr-primary); border-bottom-color: var(--clr-border); }
+        body.dark-mode .blog-full-article .article-content p { color: var(--clr-text-dark); }
+        body.dark-mode .blog-full-article .article-content ul li { color: var(--clr-text-dark); }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-header .container { position: relative; }
+            .menu-toggle { display: block; z-index: 20; }
+            .main-nav { 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background-color: var(--clr-card-bg);
+                display: none;
+                flex-direction: column; 
+                box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
+                padding: 1rem; 
+                z-index: 15;
+            }
+            .main-nav.active { display: flex; }
+            .main-nav ul { flex-direction: column; width: 100%; gap: var(--spacing-sm); }
+            .new-site-footer .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .new-site-footer .footer-brand, .new-site-footer .footer-links, .new-site-footer .footer-contact { align-items: center; text-align: center; }
+            .new-site-footer .footer-social-links, .new-site-footer .footer-contact p { justify-content: center; }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-full-article { padding: var(--spacing-lg); }
+            .blog-full-article .article-title { font-size: 2.5rem; }
+            .blog-full-article .article-content h3 { font-size: 2rem; }
+            .blog-full-article .article-content p { font-size: 1rem; }
+        }
+
+        /* Nastaví bielu farbu pre všetky sociálne ikony a plynulý prechod */
+.social-links a i,
+.footer-social-links a i {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* Pri prejdení myšou nad odkazom zmení farbu ikony na zlatú */
+.social-links a:hover i,
+.footer-social-links a:hover i {
+    color: #FFEB3B;
+}
+
+    </style>
+</head>
+
+<body class="dark-mode">
+
+    <div class="background-visual"></div>
+    <div class="custom-cursor"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html#home">
+                    <img src="logo.jpg.png" alt="MWeby Logo" width="150" height="60">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#home">Domov</a></li>
+                    <li><a href="index.html#about">O Nás</a></li>
+                    <li><a href="index.html#services">Služby</a></li>
+                    <li><a href="index.html#portfolio">Portfólio</a></li>
+                    <li><a href="index.html#advantages">Výhody</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#quiz-section">Kvíz</a></li>
+                    <li><a href="blogy.html" class="active">Blog</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Prepnúť režim zobrazenia">
+                <i class="fas fa-sun icon-sun show"></i>
+                <i class="fas fa-moon icon-moon hide"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-posts-detail-section">
+            <div class="container">
+                <article class="blog-full-article">
+                    <h1 class="article-title">Ako Vám webová stránka pomôže prekonať vaše konkurenčné podniky a prilákať viac zákazníkov</h1>
+                    <div class="article-meta">
+                        <span><i class="far fa-calendar-alt"></i> 8. júl 2025</span> |
+                        <span><i class="fas fa-user"></i> MWeby Tím</span> |
+                        <span><i class="fas fa-tags"></i> Konkurencia, SEO, Zisk</span>
+                    </div>
+
+                    <img src="https://raw.githubusercontent.com/Maximmm1388/mweby/main/competition.jpg" alt="Ilustračný obrázok podnikateľa stojaceho nad ostatnými, symbolizujúci prekonanie konkurencie s pomocou technológií" class="article-image">
+
+                    <div class="article-content">
+                        <p>V dnešnom konkurenčnom prostredí už nestačí byť len dobrý v tom, čo robíte. Musíte byť aj viditeľní, dôveryhodní a ľahko dostupní. Zatiaľ čo mnohí vaši konkurenti sa spoliehajú len na sociálne siete, vy máte príležitosť ich prekonať. Kľúčom k tomu je profesionálna webová stránka, ktorá vás nielen odlíši, ale aj pritiahne zástupy nových zákazníkov. Poďme sa pozrieť na to, ako vám webstránka zabezpečí dominanciu na trhu.</p>
+
+                        <h3>Budovanie bezkonkurenčnej dôveryhodnosti</h3>
+                        <p>Predstavte si, že potenciálny zákazník si vyberá medzi dvoma podnikmi. Jeden má len Facebookovú stránku, ktorá pôsobí ako dočasná vizitka, zatiaľ čo druhý má prepracovanú, modernú webstránku s jasnými informáciami, sekciou s referenciami a profesionálnymi fotografiami. Ktorému podniku bude zákazník dôverovať viac? Odpoveď je jasná. Profesionálna webová stránka okamžite signalizuje **serióznosť a spoľahlivosť**. Zákazníci vnímajú firmy s vlastnou doménou a kvalitným webom ako etablované a dôveryhodné entity, ktoré sú tu dlhodobo. Toto vnímanie sa priamo premieta do vyššej šance, že si vyberú práve vás.</p>
+                        
+                        <h3>Odlišnosť, ktorá predáva</h3>
+                        <p>Na Facebooku a iných sociálnych sieťach sú si všetky profily veľmi podobné. Ste len jedným z mnohých v záplave príspevkov. Vaša vlastná webová stránka je však váš **jedinečný priestor**, kde môžete naplno rozvinúť svoju značku, ukázať svoju kreativitu a predstaviť sa presne tak, ako chcete. Môžete:
+                        </p>
+                        <ul>
+                            <li><strong>Prezentovať svoje portfólio:</strong> Ukážte svetu svoje najlepšie práce, produkty alebo výsledky (napr. úspešných absolventov autoškoly).</li>
+                            <li><strong>Rozprávať váš príbeh:</strong> Sekcia "O nás" vám umožní vybudovať osobnú väzbu so zákazníkmi, ktorá na sociálnych sieťach často chýba.</li>
+                            <li><strong>Ponúkať exkluzívny obsah:</strong> Blogové články, návody alebo špeciálne ponuky, ktoré sú dostupné len na vašej stránke, priťahujú návštevníkov a udržiavajú ich záujem.</li>
+                        </ul>
+                        <p>Táto miera **prispôsobenia a kontroly** je niečo, čo vám žiadna sociálna sieť nikdy neponúkne. Práve to vás výrazne odlíši od konkurencie, ktorá sa uspokojí len s minimalistickou online prítomnosťou.</p>
+
+                        <h3>Staňte sa neprehliadnuteľnými: Získajte viac zákazníkov</h3>
+                        <p>Webová stránka je kľúčovým nástrojom pre **optimalizáciu pre vyhľadávače (SEO)**. To znamená, že keď potenciálni zákazníci hľadajú "najlepšia kaviareň Nitra" alebo "kurz angličtiny Nitra", vaša stránka sa zobrazí medzi prvými výsledkami. Kým konkurencia čaká, kým ich niekto nájde na Facebooku (čo je mimochodom čoraz ťažšie kvôli neustále sa meniacim algoritmom), vy aktívne získavate tých najkvalitnejších potenciálnych zákazníkov – tých, ktorí už presne vedia, čo chcú, a aktívne to hľadajú. Zvýšená viditeľnosť na Google sa priamo premieta do **viac návštev, viac dopytov a v konečnom dôsledku do vyššieho obratu**.</p>
+
+                        <h3>Záver: Popularita a dominancia začínajú online</h3>
+                        <p>Ak chcete dosiahnuť najväčšiu popularitu a dominanciu medzi konkurenciou, profesionálna webová stránka nie je len možnosťou, ale **nevyhnutnosťou**. Je to vaša základňa, vaša digitálna vizitka, váš predajca a váš marketingový nástroj v jednom. Je to miesto, kde budujete dôveru, prezentujete svoju jedinečnosť a aktívne priťahujete zákazníkov. Nechajte konkurenciu spoliehať sa na premenlivé sociálne siete. Vy investujte do trvalého, výkonného nástroja, ktorý vášmu biznisu zabezpečí stabilný rast a pozíciu lídra na trhu.</p>
+                        
+                        <div class="back-to-blog-list text-center">
+                                <a href="blogy.html" class="btn btn-primary">Späť na Zoznam Článkov</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+   <footer class="new-site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg.png" alt="MWeby Logo" class="footer-logo">
+                <p>Tvorba profesionálnych webstránok v Nitre. Kvalita za rozumnú cenu.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Rýchle Odkazy</h4>
+                <ul>
+                    <li><a href="#about">O Nás</a></li>
+                    <li><a href="#services">Služby</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontaktujte Nás</h4>
+                <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2025 MWeby. Všetky práva vyhradené. | Vytvorené s <i class="fas fa-heart"></i> v Nitre</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobilné Menu ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+            }
+
+            // --- Prepínač Tém (Dark/Light Mode) ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const sunIcon = themeToggleBtn ? themeToggleBtn.querySelector('.icon-sun') : null;
+            const moonIcon = themeToggleBtn ? themeToggleBtn.querySelector('.icon-moon') : null;
+            const body = document.body;
+
+            const applyTheme = (isDarkMode) => {
+                if (isDarkMode) {
+                    body.classList.add('dark-mode');
+                    if (sunIcon && moonIcon) {
+                        sunIcon.classList.remove('show');
+                        sunIcon.classList.add('hide');
+                        moonIcon.classList.remove('hide');
+                        moonIcon.classList.add('show');
+                    }
+                } else {
+                    body.classList.remove('dark-mode');
+                    if (sunIcon && moonIcon) {
+                        sunIcon.classList.remove('hide');
+                        sunIcon.classList.add('show');
+                        moonIcon.classList.remove('show');
+                        moonIcon.classList.add('hide');
+                    }
+                }
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                applyTheme(true);
+            } else {
+                applyTheme(false);
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    applyTheme(!body.classList.contains('dark-mode'));
+                });
+            }
+
+            // --- Custom Cursor ---
+            const customCursor = document.querySelector('.custom-cursor');
+            if (customCursor) {
+                document.addEventListener('mousemove', (e) => {
+                    customCursor.style.left = `${e.clientX}px`;
+                    customCursor.style.top = `${e.clientY}px`;
+                    if (customCursor.style.opacity === '0' || !customCursor.style.opacity) {
+                        customCursor.style.opacity = '1';
+                    }
+                });
+                const interactiveElements = 'a, button, label';
+                document.querySelectorAll(interactiveElements).forEach(element => {
+                    element.addEventListener('mouseenter', () => customCursor.classList.add('hover'));
+                    element.addEventListener('mouseleave', () => customCursor.classList.remove('hover'));
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

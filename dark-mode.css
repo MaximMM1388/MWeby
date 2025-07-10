@@ -1,0 +1,603 @@
+/* ===================================== */
+/* dark-mode.css - Štýly pre Tmavý Režim */
+/* ===================================== */
+
+/* Prepíše premenné v :root, keď je aktívny tmavý režim */
+body.dark-mode {
+    --clr-primary: #86A8E7;          /* Svetlejšia modrá pre nadpisy a primárne prvky v tmavom režime */
+    --clr-secondary: #FF8C60;        /* Jasnejšia oranžová/koralová pre akcenty */
+    --clr-accent: #FFEB3B;           /* Svetlejšia zlatá pre jemné zvýraznenie */
+    --clr-text-dark: #E0E0E0;        /* Svetlý text na tmavom pozadí */
+    --clr-text-light: #222222;       /* Tmavší text na veľmi svetlých prvkoch (ak by boli) */
+    --clr-background: #0D141F;       /* Even darker background for a true night sky */
+    --clr-card-bg: #1A253A;          /* Tmavšie pozadie pre karty/panely */
+    --clr-border: #3A475D;           /* Tmavšie ohraničenia */
+    --clr-shadow-light: rgba(0, 0, 0, 0.3); /* More pronounced dark shadows */
+    --clr-shadow-medium: rgba(0, 0, 0, 0.5); /* Even darker shadows */
+    color: var(--clr-text-dark);
+    position: relative; /* For stars and other celestial elements */
+    overflow-x: hidden; /* Prevent horizontal scroll from stars */
+}
+
+/* 1. Základné telo a Typografia */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--clr-primary);
+}
+
+body.dark-mode p {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode a {
+    color: var(--clr-primary);
+}
+
+body.dark-mode a:hover {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .section-description {
+    color: rgba(224, 224, 224, 0.8);
+}
+
+/* Tlačidlá */
+body.dark-mode .btn-primary {
+    background-color: var(--clr-secondary);
+    color: var(--clr-text-dark);
+    border-color: var(--clr-secondary);
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #e67d53;
+    border-color: #e67d53;
+    box-shadow: 0 10px 30px rgba(255, 140, 96, 0.4);
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .btn-secondary {
+    background-color: transparent;
+    color: var(--clr-primary);
+    border-color: var(--clr-primary);
+}
+
+body.dark-mode .btn-secondary:hover {
+    background-color: var(--clr-primary);
+    color: var(--clr-text-light);
+    box-shadow: 0 10px 30px rgba(134, 168, 231, 0.3);
+}
+
+/* 2. Hlavička a Navigácia */
+body.dark-mode .main-header {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 2px 15px var(--clr-shadow-medium);
+    border-bottom: 1px solid var(--clr-border);
+}
+
+body.dark-mode .main-nav a {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .main-nav a::after {
+    background-color: var(--clr-secondary);
+}
+
+body.dark-mode .main-nav a:hover::after,
+body.dark-mode .main-nav a.active::after {
+    background-color: var(--clr-secondary);
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(134, 168, 231, 0.1);
+}
+
+@media (max-width: 992px) {
+    body.dark-mode .main-nav.active {
+        background-color: var(--clr-card-bg);
+        box-shadow: 0 8px 15px var(--clr-shadow-medium);
+        border-top: 1px solid var(--clr-border);
+    }
+}
+
+/* 3. Hero Sekcia */
+body.dark-mode .hero-section {
+    background: linear-gradient(to right, #101827, #1F2937);
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .hero-section h1 {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .hero-section p {
+    color: rgba(224, 224, 224, 0.9);
+}
+
+/* Day-Night Visual (specific to hero section) */
+body.dark-mode .day-night-visual::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    /* Hero-specific stars, not global */
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, white 60%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 20%, white 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 80%, white 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 40% 60%, white 40%, transparent 100%),
+        radial-gradient(1px 1px at 90% 50%, white 50%, transparent 100%),
+        radial-gradient(1px 1px at 10% 90%, white 50%, transparent 100%);
+    animation: twinkle 4s infinite ease-in-out;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+body.dark-mode .day-night-visual::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fefcea 0%, #d4d4d4 70%);
+    box-shadow: 0 0 30px rgba(255, 255, 200, 0.4),
+                0 0 80px rgba(255, 255, 180, 0.15);
+    z-index: 3;
+    animation: moonGlow 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+body.dark-mode .shooting-star { /* Hero-specific shooting star */
+    position: absolute;
+    top: 20%;
+    left: 80%;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(0deg, transparent, white);
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: shootStar 8s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+body.dark-mode .shooting-star.delay-1 {
+    animation-delay: 4s;
+}
+
+body.dark-mode .planet { /* Hero-specific planet */
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, #9bd3f9, #264e77);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(155, 211, 249, 0.2);
+    z-index: 1;
+    opacity: 0.7;
+    animation: planetDrift 40s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+/* 4. Sekcia O Nás */
+body.dark-mode .about-section {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .about-section .about-image img {
+    box-shadow: 0 10px 30px var(--clr-shadow-medium);
+}
+
+/* 5. Sekcia Služby */
+body.dark-mode .services-section {
+    background-color: var(--clr-background); /* Tmavšie pozadie */
+}
+
+body.dark-mode .service-item {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 8px 25px var(--clr-shadow-medium); /* Výraznejší tieň */
+}
+
+body.dark-mode .service-item:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Ešte silnejší tieň */
+}
+
+body.dark-mode .service-item .service-icon {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .service-item p {
+    color: rgba(224, 224, 224, 0.9);
+}
+
+body.dark-mode .price-guarantee-banner {
+    background-color: #4A5568; /* Iná tmavá farba pre banner */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .price-guarantee-banner .info-icon {
+    color: var(--clr-accent);
+}
+
+/* 6. Sekcia Portfólio */
+body.dark-mode .portfolio-section {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .portfolio-item {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 8px 25px var(--clr-shadow-medium);
+}
+
+body.dark-mode .portfolio-item:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .portfolio-overlay {
+    background-color: var(--clr-card-bg);
+}
+
+body.dark-mode .portfolio-overlay p {
+    color: rgba(224, 224, 224, 0.9);
+}
+
+/* 7. Sekcia Výhody */
+body.dark-mode .advantages-section {
+    background-color: #101827; /* Ešte tmavšie pozadie */
+}
+
+body.dark-mode .advantage-item {
+    background-color: rgba(255, 255, 255, 0.08); /* Jemne transparentné pre tmavé pozadie */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .advantage-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .advantage-item i {
+    color: var(--clr-accent);
+}
+
+body.dark-mode .advantage-item p {
+    color: rgba(224, 224, 224, 0.8);
+}
+
+
+/* 8. FAQ Sekcia */
+body.dark-mode .faq-section {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .faq-intro {
+    color: rgba(224, 224, 224, 0.8);
+}
+
+body.dark-mode .faq-item {
+    background-color: var(--clr-card-bg);
+    border-color: var(--clr-border);
+    box-shadow: 0 4px 15px var(--clr-shadow-medium);
+}
+
+body.dark-mode .faq-question {
+    background-color: #2D3748; /* Tmavšie pozadie pre otázku */
+    color: var(--clr-primary);
+}
+
+body.dark-mode .faq-question:hover {
+    background-color: #3A4557;
+}
+
+body.dark-mode .faq-item.active .faq-question {
+    background-color: var(--clr-secondary);
+    color: var(--clr-text-light); /* Tmavší text na jasnom akcente */
+}
+
+body.dark-mode .faq-answer {
+    color: var(--clr-text-dark);
+}
+
+/* 9. Kvíz Sekcia */
+body.dark-mode .quiz-section {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .quiz-container {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 10px 30px var(--clr-shadow-medium);
+}
+
+body.dark-mode .quiz-intro-card,
+body.dark-mode .quiz-question-card,
+body.dark-mode .quiz-results-card {
+    background-color: var(--clr-card-bg);
+}
+
+body.dark-mode .quiz-question-card h3 {
+    color: var(--clr-primary);
+}
+
+body.dark-mode .quiz-options label {
+    border-color: var(--clr-border);
+    background-color: #2D3748; /* Tmavšie pozadie pre možnosti */
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .quiz-options label:hover {
+    background-color: #3A4557;
+    border-color: var(--clr-secondary);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .quiz-options input[type="radio"]:checked + span,
+body.dark-mode .quiz-options input[type="checkbox"]:checked + span {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .quiz-options input[type="radio"]:checked ~ label,
+body.dark-mode .quiz-options input[type="checkbox"]:checked ~ label {
+    border-color: var(--clr-secondary);
+    background-color: rgba(255, 140, 96, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 140, 96, 0.3);
+}
+
+body.dark-mode .quiz-results-card ul li {
+    background-color: #2D3748; /* Tmavšie pozadie pre výsledky */
+    color: var(--clr-text-dark);
+}
+
+/* 10. Blog Sekcia */
+body.dark-mode .blog-section {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .blog-post-card {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 8px 25px var(--clr-shadow-medium);
+}
+
+body.dark-mode .blog-post-card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .blog-post-card p {
+    color: rgba(224, 224, 224, 0.9);
+}
+
+body.dark-mode .blog-post-card .read-more {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .blog-post-card .read-more:hover {
+    color: var(--clr-primary);
+}
+
+/* 11. Kontakt Sekcia */
+body.dark-mode .contact-section {
+    background: linear-gradient(180deg, var(--clr-background) 0%, var(--clr-card-bg) 100%);
+}
+
+body.dark-mode .contact-form,
+body.dark-mode .contact-info,
+body.dark-mode .map-container {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 10px 30px var(--clr-shadow-medium);
+    border-color: var(--clr-border);
+}
+
+body.dark-mode .contact-form:hover,
+body.dark-mode .contact-info:hover,
+body.dark-mode .map-container:hover {
+    box-shadow: 0 18px 45px var(--clr-shadow-medium);
+}
+
+body.dark-mode .contact-form::before,
+body.dark-mode .contact-info::before,
+body.dark-mode .map-container::before {
+    background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 100%);
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="email"],
+body.dark-mode .form-group textarea {
+    background-color: #263445;
+    border-color: var(--clr-border);
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .form-group input[type="text"]:focus,
+body.dark-mode .form-group input[type="email"]:focus,
+body.dark-mode .form-group textarea:focus {
+    box-shadow: 0 0 0 4px rgba(255, 140, 96, 0.35);
+}
+
+/* 12. Promo Pop-up */
+body.dark-mode .promo-popup .popup-content {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .promo-popup .popup-close {
+    color: #AAA;
+}
+
+body.dark-mode .promo-popup .popup-close:hover {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .promo-popup p {
+    color: var(--clr-text-dark);
+}
+
+/* 13. Hlavná Pätička (New Footer Styles) */
+body.dark-mode .new-site-footer {
+    background-color: #101827; /* Even darker background for a deep night feel */
+    border-top-color: var(--clr-secondary);
+    color: var(--clr-text-dark); /* Ensure base text color is light */
+}
+
+body.dark-mode .new-site-footer .footer-brand p,
+body.dark-mode .new-site-footer .footer-contact p {
+    color: rgba(224, 224, 224, 0.8); /* Lighter text for paragraphs */
+}
+
+body.dark-mode .new-site-footer .footer-links h4,
+body.dark-mode .new-site-footer .footer-contact h4 {
+    color: var(--clr-primary); /* Use primary color for headings (light blue) */
+}
+
+body.dark-mode .new-site-footer .footer-links h4::after,
+body.dark-mode .new-site-footer .footer-contact h4::after {
+    background-color: var(--clr-secondary); /* Accent color for underline */
+}
+
+body.dark-mode .new-site-footer .footer-links li a {
+    color: rgba(224, 224, 224, 0.7); /* Lighter links */
+}
+
+body.dark-mode .new-site-footer .footer-links li a:hover {
+    color: var(--clr-accent); /* Golden accent on hover */
+}
+
+body.dark-mode .new-site-footer .footer-contact p i {
+    color: var(--clr-secondary); /* Accent color for icons */
+}
+
+body.dark-mode .new-site-footer .footer-social-links a {
+    color: var(--clr-text-dark); /* Light text for social icons */
+}
+
+body.dark-mode .new-site-footer .footer-social-links a:hover {
+    color: var(--clr-accent); /* Golden accent on hover */
+}
+
+body.dark-mode .new-site-footer .footer-bottom-bar {
+    border-top-color: rgba(224, 224, 224, 0.1);
+    color: rgba(224, 224, 224, 0.6); /* Lighter copyright text */
+}
+
+/* 14. Custom Cursor */
+body.dark-mode .custom-cursor {
+    background-color: var(--clr-secondary);
+    mix-blend-mode: screen;
+}
+
+body.dark-mode .custom-cursor.hover {
+    background-color: var(--clr-accent);
+}
+
+/* Global background visual for the entire body */
+body.dark-mode .background-visual {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0; /* Ensures it's behind all content */
+    pointer-events: none;
+    background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%); /* Deep space background */
+    overflow: hidden;
+}
+
+body.dark-mode .background-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Enhanced starfield with more gradients for density and variation */
+    background-image:
+        radial-gradient(1px 1px at 20% 30%, #fff 60%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 80%, #fff 60%, transparent 100%),
+        radial-gradient(1px 1px at 50% 50%, #fff 60%, transparent 100%),
+        radial-gradient(0.8px 0.8px at 10% 90%, #fff 60%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 90% 10%, #fff 60%, transparent 100%),
+        radial-gradient(0.9px 0.9px at 40% 5%, #fff 60%, transparent 100%),
+        radial-gradient(1.1px 1.1px at 5% 45%, #fff 60%, transparent 100%),
+        radial-gradient(0.7px 0.7px at 80% 35%, #fff 60%, transparent 100%);
+    animation: twinkle 6s infinite ease-in-out;
+    opacity: 0.6;
+    z-index: 1; /* Above background gradient, below other elements */
+}
+
+body.dark-mode .background-visual::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        rgba(134, 255, 255, 0.1), /* Light blue aurora */
+        rgba(255, 100, 200, 0.15), /* Pinkish aurora */
+        rgba(255, 255, 200, 0.1) /* Yellowish aurora */
+    );
+    animation: auroraFlow 30s infinite alternate ease-in-out;
+    mix-blend-mode: screen; /* Blends nicely with the dark background */
+    z-index: -1; /* Behind the main stars and content */
+}
+
+/* Global Shooting Star for entire body */
+body.dark-mode .bg-shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 80px; /* Shorter tail for subtle background effect */
+    background: linear-gradient(0deg, transparent, rgba(255, 255, 255, 0.8));
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: shootStarGlobal 15s ease-in-out infinite; /* Slower animation for background */
+    z-index: 1; /* Same as stars, or slightly higher */
+    pointer-events: none;
+}
+
+body.dark-mode .bg-shooting-star.star-1 {
+    top: 15%;
+    left: 70%;
+    animation-delay: 2s;
+}
+
+body.dark-mode .bg-shooting-star.star-2 {
+    top: 50%;
+    left: 10%;
+    animation-delay: 8s;
+    transform: rotate(-30deg);
+}
+
+/* Global Planet for entire body */
+body.dark-mode .bg-planet {
+    position: absolute;
+    width: 80px; /* Smaller planet for background */
+    height: 80px;
+    background: radial-gradient(circle at 30% 30%, #9bd3f9, #264e77); /* Blue/dark blue gradient */
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(155, 211, 249, 0.1); /* Softer glow */
+    z-index: 0; /* Behind stars and content */
+    opacity: 0.6; /* More subtle */
+    animation: planetDriftGlobal 60s ease-in-out infinite alternate; /* Slower, subtle drift */
+    pointer-events: none;
+}
+
+body.dark-mode .bg-planet.planet-1 {
+    top: 80%;
+    left: 5%;
+    animation-delay: 5s;
+}
+
+body.dark-mode .bg-planet.planet-2 {
+    top: 25%;
+    left: 90%;
+    animation-delay: 20s;
+    transform: scale(0.8); /* Slightly smaller */
+}

@@ -1,0 +1,494 @@
+/* ===================================== */
+/* styleblog.css - Prepracované Štýly pre Blogy */
+/* ===================================== */
+
+/* --- Globálne nastavenia pre celú blog sekciu --- */
+.blog-page-listing,
+.blog-posts-detail-section {
+    padding: 120px 0 var(--spacing-xxl) 0; /* Zvýšený horný padding na 120px pre viac miesta nad kartami */
+    background-color: var(--clr-background); /* Zabezpečí konzistentné pozadie */
+    position: relative;
+    z-index: 1; /* Aby bol obsah nad pozadím */
+}
+
+/* Rozšírenie kontajnera špecificky pre blog listing */
+.blog-page-listing .container {
+    max-width: 1600px; /* Ešte viac zväčšená maximálna šírka kontajnera pre blogy */
+    width: 95%; /* Flexibilná šírka, aby sa prispôsobila väčším obrazovkám */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--spacing-md); /* Pridanie horizontálneho paddingu pre menšie obrazovky */
+}
+
+.blog-page-listing .section-description {
+    margin-bottom: var(--spacing-xl); /* Viac miesta pod popisom */
+}
+
+/* --- Blog Grid (Zoznam článkov) --- */
+.blog-grid {
+    display: grid;
+    /* Explicitne 3 stĺpce rovnakej šírky na väčších obrazovkách */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: var(--spacing-xl); /* Väčšie medzery medzi kartami */
+    margin-top: var(--spacing-lg); /* Medzera od nadpisu/popisu */
+    /* Zabezpečenie, aby grid nepresahoval kontajner */
+    max-width: 100%; 
+    overflow-x: hidden;
+}
+
+/* --- Jednotlivé Blogové Karty v Zozname --- */
+.blog-page-listing .blog-post-card {
+    background-color: var(--clr-card-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: 16px; /* Ešte viac zaoblené rohy */
+    box-shadow: 0 10px 30px var(--clr-shadow-light); /* Jemnejší, ale výraznejší tieň */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Pre zaoblené obrázky */
+    position: relative; /* Pre prípadné animácie */
+    min-height: 550px; /* Pridaná minimálna výška pre konzistentný vzhľad */
+    width: 450px;
+}
+
+.blog-page-listing .blog-post-card:hover {
+    transform: translateY(-12px); /* Výraznejšie vysunutie pri hoveri */
+    box-shadow: 0 20px 50px var(--clr-shadow-medium); /* Silnejší tieň pri hoveri */
+}
+
+.blog-page-listing .blog-post-card img {
+    width: 100%;
+    height: 280px; /* Zvýšená výška obrázkov v kartách */
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 16px; /* Zaoblené rohy hore */
+    border-top-right-radius: 16px;
+    transition: transform 0.4s ease;
+}
+
+.blog-page-listing .blog-post-card:hover img {
+    transform: scale(1.05); /* Jemné priblíženie obrázka */
+}
+
+.blog-page-listing .blog-content {
+    padding: var(--spacing-lg); /* Zmenený padding na var(--spacing-lg) pre lepšie rozloženie */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blog-page-listing .blog-content h3 {
+    font-size: 1.3rem; /* Zmenšená veľkosť nadpisu článku pre lepšie prispôsobenie */
+    margin-bottom: var(--spacing-sm);
+    color: var(--clr-primary);
+    line-height: 1.3;
+}
+
+.blog-page-listing .blog-content h3 a {
+    color: var(--clr-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-page-listing .blog-content h3 a:hover {
+    color: var(--clr-secondary);
+}
+
+.blog-page-listing .post-meta {
+    font-size: 0.8rem;
+    color: #666; /* Jemnejšia šedá farba pre metadáta */
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    font-weight: 400; /* Normálna váha fontu */
+    font-style: italic; /* Kurzíva pre jemnejší vzhľad */
+    letter-spacing: 0.2px;
+}
+
+body.dark-mode .blog-page-listing .post-meta {
+    color: rgba(224, 224, 224, 0.7); /* Svetlejšia farba textu v dark mode */
+}
+
+.blog-page-listing .post-meta i {
+    color: var(--clr-accent); /* Ikony v akcentovej farbe */
+    font-size: 0.85rem; /* Zmenšené ikony */
+}
+
+.blog-page-listing .blog-content p {
+    font-size: 0.9rem; /* Mierne zväčšený text pre lepšiu čitateľnosť v rámci karty */
+    color: var(--clr-text-dark); /* Zabezpečenie farby textu */
+    margin-bottom: var(--spacing-lg); /* Viac miesta pod textom */
+    flex-grow: 1;
+    line-height: 1.7;
+}
+
+.blog-page-listing .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Väčšia medzera medzi textom a šípkou */
+    color: var(--clr-secondary);
+    font-weight: 700; /* Výraznejší font */
+    transition: color 0.3s ease, transform 0.3s ease;
+    margin-top: var(--spacing-sm);
+    text-transform: uppercase; /* Veľké písmená */
+    letter-spacing: 0.5px;
+}
+
+.blog-page-listing .read-more:hover {
+    color: var(--clr-primary);
+    transform: translateX(5px); /* Jemný posun doprava */
+}
+
+/* --- Detailné Zobrazenie Blogových Článkov (tieto štýly zostávajú pre prípadné samostatné stránky) --- */
+.blog-posts-detail-section {
+    background-color: var(--clr-background);
+}
+
+.blog-full-article {
+    background-color: var(--clr-card-bg);
+    border-radius: 16px;
+    box-shadow: 0 15px 45px var(--clr-shadow-medium); /* Výraznejší tieň */
+    padding: var(--spacing-xxl); /* Väčší padding pre obsah článku */
+    max-width: 960px; /* Širší článok pre lepšiu čitateľnosť */
+    margin: var(--spacing-xxl) auto;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.blog-full-article .article-title {
+    font-size: 3.5rem; /* Výraznejší nadpis článku */
+    color: var(--clr-primary);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.blog-full-article .article-meta {
+    font-size: 1.05rem;
+    color: #888;
+    margin-bottom: var(--spacing-xl); /* Viac miesta pod meta informáciami */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.blog-full-article .article-meta i {
+    color: var(--clr-accent);
+    font-size: 1.2rem;
+}
+
+.blog-full-article .article-image {
+    width: 100%;
+    max-height: 500px; /* Ešte vyšší obrázok pre detail */
+    object-fit: cover;
+    border-radius: 12px; /* Jemne zaoblené rohy */
+    margin-bottom: var(--spacing-xxl); /* Viac miesta pod obrázkom */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.blog-full-article .article-content h3 {
+    font-size: 2.5rem; /* Nadpisy v texte článku */
+    color: var(--clr-primary);
+    margin-top: var(--spacing-xxl); /* Viac miesta nad podnadpismi */
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--clr-border);
+    padding-bottom: var(--spacing-xs);
+    line-height: 1.3;
+}
+
+.blog-full-article .article-content p {
+    font-size: 1.15rem; /* Väčší text pre lepšiu čitateľnosť */
+    line-height: 1.9; /* Zvýšená výška riadkov */
+    color: var(--clr-text-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.blog-full-article .article-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: var(--spacing-lg);
+}
+
+.blog-full-article .article-content ul li {
+    position: relative;
+    padding-left: 2.2rem; /* Väčší priestor pre vlastnú odrážku */
+    margin-bottom: 1rem; /* Väčšia medzera medzi položkami zoznamu */
+    color: var(--clr-text-dark);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.blog-full-article .article-content ul li::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f058"; /* Použitie ikony check-circle pre moderný vzhľad */
+    color: var(--clr-secondary);
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-size: 1.3rem;
+}
+
+.blog-full-article .back-to-blog-list {
+    margin-top: var(--spacing-xxl);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+/* --- Tmavý režim pre blogy --- */
+body.dark-mode .blog-page-listing {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .blog-page-listing .blog-post-card {
+    background-color: var(--clr-card-bg);
+    border-color: var(--clr-border);
+    box-shadow: 0 10px 30px var(--clr-shadow-medium);
+}
+
+body.dark-mode .blog-page-listing .blog-post-card:hover {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .blog-page-listing .blog-content h3 a {
+    color: var(--clr-primary);
+}
+
+body.dark-mode .blog-page-listing .blog-content h3 a:hover {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .blog-page-listing .post-meta {
+    color: rgba(224, 224, 224, 0.7); /* Svetlejšia farba textu v dark mode */
+}
+
+body.dark-mode .blog-page-listing .post-meta i {
+    color: var(--clr-accent);
+}
+
+body.dark-mode .blog-page-listing .blog-content p {
+    color: rgba(224, 224, 224, 0.9);
+}
+
+body.dark-mode .blog-page-listing .read-more {
+    color: var(--clr-secondary);
+}
+
+body.dark-mode .blog-page-listing .read-more:hover {
+    color: var(--clr-primary);
+}
+
+body.dark-mode .blog-posts-detail-section {
+    background-color: var(--clr-background);
+}
+
+body.dark-mode .blog-full-article {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 15px 45px var(--clr-shadow-medium);
+}
+
+body.dark-mode .blog-full-article .article-title {
+    color: var(--clr-primary);
+}
+
+body.dark-mode .blog-full-article .article-meta {
+    color: rgba(224, 224, 224, 0.7);
+}
+
+body.dark-mode .blog-full-article .article-meta i {
+    color: var(--clr-accent);
+}
+
+body.dark-mode .blog-full-article .article-content h3 {
+    color: var(--clr-primary);
+    border-bottom-color: var(--clr-border);
+}
+
+body.dark-mode .blog-full-article .article-content p {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .blog-full-article .article-content ul li {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .blog-full-article .article-content ul li::before {
+    color: var(--clr-secondary);
+}
+
+
+/* --- Responzívne úpravy pre blogy --- */
+@media (min-width: 1201px) { /* Zabezpečí 3 stĺpce na širokých obrazovkách */
+    .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1200px) { /* Pre menšie desktopy a tablety */
+    .blog-page-listing .container {
+        max-width: 960px; /* Zmenšená šírka kontajnera pre tablety */
+        width: 90%;
+    }
+    .blog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexibilné 2-3 stĺpce */
+    }
+    .blog-page-listing .blog-content h3 {
+        font-size: 1.2rem;
+    }
+    .blog-page-listing .blog-content p {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-page-listing .container {
+        max-width: 90%; /* Zabezpečí, aby bol kontajner flexibilný na mobiloch */
+        padding: 0 var(--spacing-sm);
+    }
+    .blog-grid {
+        grid-template-columns: 1fr; /* Jeden stĺpec pre mobily */
+    }
+    .blog-page-listing .blog-content {
+        padding: var(--spacing-md);
+    }
+    .blog-page-listing .blog-content h3 {
+        font-size: 1.1rem;
+    }
+    .blog-page-listing .blog-content p {
+        font-size: 0.7rem;
+    }
+    .blog-full-article {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-xl) auto;
+    }
+    .blog-full-article .article-title {
+        font-size: 2.2rem;
+    }
+    .blog-full-article .article-meta {
+        font-size: 0.85rem;
+    }
+    .blog-full-article .article-content h3 {
+        font-size: 1.8rem;
+    }
+    .blog-full-article .article-content p,
+    .blog-full-article .article-content ul li {
+        font-size: 0.95rem;
+    }
+    .blog-full-article .article-content ul li::before {
+        font-size: 1rem;
+    }
+    .blog-full-article .back-to-blog-list {
+        padding: 0.7rem 1.8rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-page-listing {
+        padding-top: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+    }
+    .blog-page-listing .blog-content h3 {
+        font-size: 1rem;
+    }
+    .blog-page-listing .blog-content p {
+        font-size: 0.65rem;
+    }
+    .blog-full-article .article-title {
+        font-size: 1.8rem;
+    }
+    .blog-full-article .article-content h3 {
+        font-size: 1.4rem;
+    }
+    .blog-full-article {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+  .main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--clr-text-dark);
+    z-index: 20;
+    cursor: pointer;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--clr-card-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 15;
+  }
+
+  .main-nav.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .main-nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .main-nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--clr-text-dark);
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .main-nav ul li a:hover {
+ 
+    color: white;
+  }
+}

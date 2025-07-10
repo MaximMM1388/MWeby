@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MWeby - Objednajte si webstránku | Kontakt</title>
+    <meta name="description"
+        content="Pripravení na novú webstránku? Kontaktujte nás a spoločne premeníme vaše vízie na realitu. Popíšte nám váš projekt a získajte cenovú ponuku.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Všetky štýly sú teraz priamo v tomto súbore -->
+    <style>
+        /* ===================================== */
+        /* Globálne Štýly a Základné Rozloženie */
+        /* ===================================== */
+
+        /* 0. CSS Reset & Základné Premenné */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Hlavné farby - Denný režim (sofistikované a moderné) */
+            --clr-primary: #1A365D;          /* Tmavá, hlboká modrá/navy pre hlavné prvky a text */
+            --clr-secondary: #E94C3D;        /* Výrazná terakotová/červená pre akcenty a primárne akcie */
+            --clr-accent: #FFD700;           /* Zlatá pre jemné zvýraznenie a ikony */
+            --clr-text-dark: #333333;        /* Tmavý text pre dobrú čitateľnosť */
+            --clr-text-light: #ffffff;       /* Biely text na tmavom pozadí */
+            --clr-background: #F8F9FA;       /* Svetlé, jemné pozadie sekcií */
+            --clr-card-bg: #ffffff;          /* Biele pozadie pre karty/panely */
+            --clr-border: #e0e0e0;           /* Jemné, svetlé ohraničenia */
+            --clr-shadow-light: rgba(0, 0, 0, 0.1); /* Jemný tieň pre karty */
+            --clr-shadow-medium: rgba(0, 0, 0, 0.2); /* Stredný tieň pre interaktívne prvky */
+            --clr-shadow-dark: rgba(0, 0, 0, 0.4); /* Silný tieň pre pop-upy */
+
+            /* Typografia */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+
+            /* Rozostupy */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-xxl: 4rem;
+
+            /* Zaoblenie */
+            --border-radius-sm: 5px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+
+            /* Transition speed for theme changes */
+            --transition-speed: 0.3s;
+            --transition-timing: ease-in-out;
+        }
+
+        /* Základné štýly tela */
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--clr-text-dark);
+            background-color: var(--clr-background);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden; /* Zabraňuje horizontálnemu scrollu */
+        }
+
+        /* Všeobecné nastavenia pre kontajner */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Sekcie */
+        .section-padding {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--clr-text-dark);
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Tlačidlá */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--clr-secondary);
+            color: var(--clr-text-light);
+            box-shadow: 0 4px 8px var(--clr-shadow-medium);
+        }
+
+        .btn-primary:hover {
+            background-color: #d64133; /* Hardcoded pre darken, keďže Sass nie je k dispozícii */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px var(--clr-shadow-medium);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--clr-primary);
+            border: 2px solid var(--clr-primary);
+            box-shadow: 0 2px 4px var(--clr-shadow-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--clr-primary);
+            color: var(--clr-text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--clr-shadow-medium);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Karty (Cards) */
+        .card {
+            background-color: var(--clr-card-bg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 20px var(--clr-shadow-light);
+            padding: var(--spacing-xl);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--clr-shadow-medium);
+        }
+
+        /* Formuláre */
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 600;
+            color: var(--clr-primary);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--clr-border);
+            border-radius: var(--border-radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--clr-text-dark);
+            background-color: var(--clr-background);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="tel"]:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--clr-secondary);
+            box-shadow: 0 0 0 3px rgba(233, 76, 61, 0.2); /* Upravené pre priame použitie rgba */
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Checkbox group */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem; /* Row gap, column gap */
+            margin-top: var(--spacing-xs);
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            color: var(--clr-text-dark);
+            cursor: pointer;
+            margin-bottom: 0; /* Override default label margin */
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--clr-secondary); /* Colors the checkbox itself */
+        }
+
+        /* Custom validation feedback */
+        .form-group .invalid-feedback {
+            color: var(--clr-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+            display: none; /* Hidden by default */
+        }
+
+        .form-group input:invalid.was-validated,
+        .form-group textarea:invalid.was-validated {
+            border-color: var(--clr-secondary);
+        }
+
+        .form-group input:invalid.was-validated ~ .invalid-feedback,
+        .form-group textarea:invalid.was-validated ~ .invalid-feedback {
+            display: block; /* Show when invalid and validated */
+        }
+
+
+     /* 1. Hlavička a Navigácia */
+.main-header {
+    background-color: var(--clr-card-bg);
+    padding: 1rem 0;
+    box-shadow: 0 2px 15px var(--clr-shadow-medium); /* Výraznejší tieň hlavičky */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-speed) var(--transition-timing), box-shadow var(--transition-speed) var(--transition-timing);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between; /* Space between logo, nav, and controls */
+    align-items: center;
+}
+
+.main-header .logo img {
+    height: 60px; /* Väčšie logo */
+    width: auto;
+    display: block;
+}
+
+/* Styles for the group of hamburger and theme toggle */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between hamburger and theme toggle */
+}
+
+.main-nav {
+    /* On desktop, main-nav is a flex item in the container */
+    flex-grow: 1; /* Allows nav to take available space */
+    text-align: center; /* Centers the ul within the nav */
+    display: flex; /* Ensure it's flex on desktop */
+    justify-content: center; /* Center the nav items */
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-lg);
+    margin: 0; /* Ensure no default margins */
+    padding: 0; /* Ensure no default padding */
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--clr-primary); /* Farba primárneho textu */
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    text-transform: uppercase; /* Menu text veľkými písmenami */
+    letter-spacing: 0.5px;
+      text-decoration: none;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--clr-secondary); /* Linka vo farbe akcentu */
+    bottom: -8px; /* Nižšie pod textom */
+    left: 50%; /* Začína od stredu */
+    transform: translateX(-50%);
+    transition: width var(--transition-speed) var(--transition-timing);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: var(--clr-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem; /* Väčší klikateľný priestor */
+    border-radius: 50%;
+    transition: background-color var(--transition-speed) var(--transition-timing), transform 0.2s ease-out;
+    position: relative;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(26, 54, 93, 0.1); /* Jemný hover efekt */
+    transform: scale(1.1);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    position: absolute;
+    width: 32px; /* Väčšie ikony */
+    height: 32px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle .icon-sun.hide,
+.theme-toggle .icon-moon.hide {
+    opacity: 0;
+    transform: scale(0.7) rotate(45deg); /* Jemná rotácia pri zmiznutí */
+}
+
+.theme-toggle .icon-sun.show,
+.theme-toggle .icon-moon.show {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+}
+
+/* 2. Hero Sekcia */
+.hero-section {
+     background: linear-gradient(to right, var(--clr-primary), #2C528B);
+    color: var(--clr-text-light);
+    padding: var(--spacing-xxl) 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    /* Transition to .about-section's background */
+    background: linear-gradient(180deg, var(--clr-primary) 0%, var(--clr-background) 100%);
+}
+
+
+
+.hero-section h1 {
+    color: var(--clr-text-light);
+    font-size: 4.5rem;
+    margin-bottom: var(--spacing-md);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-section p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+/* Removed .hero-buttons as per user request */
+
+/* Day-Night Visual (prepracovaný pre nový gradient a atmosféru) */
+.day-night-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1; /* Pod obsahom */
+}
+
+/* ☀️ Day Mode Visual Elements */
+.day-mode .sun {
+    position: absolute;
+    top: 80px;
+    left: 60px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFF176 0%, #FFEB3B 70%);
+    box-shadow: 0 0 30px rgba(255, 241, 118, 0.5),
+                0 0 80px rgba(255, 235, 59, 0.3);
+    animation: sunPulse 10s ease-in-out infinite alternate;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.day-mode .cloud {
+    position: absolute;
+    background: #ffffff;
+    border-radius: 50px; /* Base for a more rounded shape */
+    box-shadow:
+        10px 10px 0 -5px rgba(255,255,255,0.7), /* Top-right bump */
+        -10px 10px 0 -5px rgba(255,255,255,0.7), /* Top-left bump */
+        20px 20px 0 -10px rgba(255,255,255,0.6), /* Lower-right large bump */
+        -20px 20px 0 -10px rgba(255,255,255,0.6), /* Lower-left large bump */
+        inset 0 0 10px rgba(0,0,0,0.05); /* Subtle inner shadow for depth */
+    width: 120px; /* Increased base size */
+    height: 70px; /* Increased base size */
+    z-index: 2;
+    pointer-events: none;
+    animation: moveClouds 40s linear infinite; /* Consistent animation for all */
+    opacity: 0.9; /* Slightly translucent */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); /* Soft overall shadow */
+}
+
+/* Specific styles for each cloud for variety */
+.day-mode .cloud-1 {
+    top: 100px;
+    left: 10%;
+    width: 150px;
+    height: 90px;
+    animation-duration: 45s;
+    animation-delay: 2s;
+    transform: scale(1.1); /* Slightly larger */
+}
+
+.day-mode .cloud-2 {
+    top: 60px;
+    left: 60%;
+    width: 100px;
+    height: 60px;
+    animation-duration: 38s;
+    animation-delay: 5s;
+    transform: scale(0.9); /* Slightly smaller */
+    opacity: 0.8;
+}
+
+.day-mode .cloud-3 {
+    top: 100px;
+    left: 30%;
+    width: 130px;
+    height: 80px;
+    animation-duration: 50s;
+    animation-delay: 8s;
+    transform: scaleX(-1) scale(1.00); /* Flipped and slightly larger */
+}
+
+.day-mode .cloud-4 {
+    top: 80px;
+    left: 85%;
+    width: 110px;
+    height: 65px;
+    animation-duration: 42s;
+    animation-delay: 12s;
+    opacity: 0.85;
+}
+
+.day-mode .cloud-5 {
+    top: 160px;
+    left: 45%;
+    width: 95px;
+    height: 55px;
+    animation-duration: 36s;
+    animation-delay: 15s;
+    transform: scale(0.95);
+}
+
+.day-mode .cloud-6 {
+    top: 70px;
+    left: 20%;
+    width: 140px;
+    height: 85px;
+    animation-duration: 55s;
+    animation-delay: 18s;
+    opacity: 0.75;
+}
+
+.day-mode .bird {
+    position: absolute;
+    width: 15px; /* Base size, birds are usually small in the sky */
+    height: 2px;
+    background-color: transparent; /* Main div is just a container for pseudo-elements */
+    z-index: 3; /* Above clouds, below content */
+    pointer-events: none;
+    transform-origin: center center;
+}
+
+/* Common bird wing styles (using pseudo-elements for shape) */
+.day-mode .bird::before,
+.day-mode .bird::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 15px; /* Wing length */
+    height: 2px; /* Wing thickness */
+    background-color: #333; /* Dark silhouette */
+    border-radius: 50% 50% 0 0; /* Rounded top, flat bottom for wing shape */
+    transform-origin: 100% 50%; /* Pivot point for rotation (at the 'body' end) */
+}
+
+.day-mode .bird::before {
+    left: -15px; /* Position left wing */
+    transform: rotate(0deg); /* Initial rotation */
+    animation: wingFlapLeft 0.6s infinite ease-in-out alternate;
+}
+
+.day-mode .bird::after {
+    right: -15px; /* Position right wing */
+    transform: rotate(0deg); /* Initial rotation */
+    animation: wingFlapRight 0.6s infinite ease-in-out alternate;
+}
+
+/* Specific bird positions and flight paths */
+.day-mode .bird-1 {
+    top: 200px;
+    left: -50px;
+    animation: birdFlight1 20s linear infinite;
+    animation-delay: 0s;
+}
+
+.day-mode .bird-2 {
+    top: 250px;
+    left: -100px;
+    animation: birdFlight2 25s linear infinite;
+    animation-delay: 5s;
+    transform: scale(0.8); /* Smaller bird */
+}
+
+.day-mode .bird-3 {
+    top: 180px;
+    left: -150px;
+    animation: birdFlight3 22s linear infinite;
+    animation-delay: 10s;
+    transform: scale(1.1); /* Larger bird */
+}
+
+.day-mode .bird-4 {
+    top: 230px;
+    left: -200px;
+    animation: birdFlight4 28s linear infinite;
+    animation-delay: 15s;
+    transform: scale(0.9);
+}
+
+.day-mode .bird-5 {
+    top: 190px;
+    left: -250px;
+    animation: birdFlight5 23s linear infinite;
+    animation-delay: 20s;
+    transform: scale(1.05);
+}
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .about-content h2 {
+            text-align: left;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-content p {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px var(--clr-shadow-medium);
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .service-item {
+            text-align: center;
+        }
+
+        .service-item .icon {
+            font-size: 3.5rem;
+            color: var(--clr-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .service-item p {
+            color: var(--clr-text-dark);
+        }
+
+        /* --- Portfolio Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .portfolio-item {
+            background-color: var(--clr-card-bg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 20px var(--clr-shadow-light);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--clr-shadow-medium);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .portfolio-content {
+            padding: var(--spacing-md);
+        }
+
+        .portfolio-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .portfolio-content p {
+            font-size: 0.95rem;
+            color: var(--clr-text-dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .portfolio-content .btn {
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+        }
+
+        /* --- Pricing Section --- */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            align-items: stretch; /* Zabezpečí, aby karty mali rovnakú výšku */
+        }
+
+        .pricing-plan {
+            background-color: var(--clr-card-bg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 20px var(--clr-shadow-light);
+            padding: var(--spacing-xl);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--clr-shadow-medium);
+        }
+
+        .pricing-plan h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .pricing-plan .price {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--clr-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .pricing-plan .price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--clr-text-dark);
+        }
+
+        .pricing-plan ul {
+            list-style: none;
+            margin-bottom: var(--spacing-xl);
+            flex-grow: 1; /* Umožní zoznamu zaberať dostupný priestor */
+        }
+
+        .pricing-plan ul li {
+            margin-bottom: 0.8rem;
+            color: var(--clr-text-dark);
+            font-size: 1.05rem;
+        }
+
+        .pricing-plan ul li i {
+            color: var(--clr-secondary);
+            margin-right: 0.5rem;
+        }
+
+
+        /* --- FAQ Section --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+     
+
+        .faq-item {
+            background-color: var(--clr-card-bg);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-sm);
+            box-shadow: 0 4px 10px var(--clr-shadow-light);
+            overflow: hidden; /* Zabezpečuje, aby zaoblené rohy fungovali so skrytým obsahom */
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--clr-primary);
+            font-size: 1.15rem;
+            background-color: var(--clr-card-bg);
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: var(--clr-background);
+        }
+
+        .faq-question .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: var(--clr-secondary);
+        }
+
+        .faq-item.active .faq-question .icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            color: var(--clr-text-dark);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px; /* Upravte podľa potreby obsahu */
+            padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+        }
+
+        .faq-answer p {
+            margin-bottom: 0; /* Odstráňte predvolený okraj odseku */
+        }
+
+        /* --- Contact Section (General) --- */
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info ul {
+            list-style: none;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-info ul li {
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+            color: var(--clr-text-dark);
+        }
+
+        .contact-info ul li i {
+            color: var(--clr-secondary);
+            margin-right: 0.8rem;
+        }
+
+        .fab{
+
+            color: white;
+        }
+         .fab:hover{
+
+            color: var(--clr-accent);
+        }
+
+        .contact-info .info-details {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--clr-border);
+        }
+
+        .contact-info .info-details h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info .info-details p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--clr-text-dark);
+        }
+
+        .contact-info .info-details p i {
+            color: var(--clr-secondary);
+            margin-right: 0.8rem;
+        }
+
+        .social-links {
+            margin-top: var(--spacing-md);
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .social-links a {
+            color: var(--clr-primary);
+            font-size: 1.8rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--clr-secondary);
+            transform: translateY(-3px);
+        }
+
+        /* --- Contact Form Section (špecifické pre contact.html) --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Upravené: Formulár zaberá 2/3, Info zaberá 1/3 */
+            gap: var(--spacing-xl); /* Zvýšená medzera */
+            align-items: flex-start;
+        }
+
+        .contact-form h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--clr-primary);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--clr-border);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .important-message {
+            background-color: rgba(233, 76, 61, 0.1); /* Svetlé pozadie pre zvýraznenie */
+            border-left: 5px solid var(--clr-secondary);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            margin-bottom: var(--spacing-xl); /* Väčší spodný okraj */
+            font-size: 1.15rem; /* Väčší font */
+            line-height: 1.6;
+            color: var(--clr-text-dark);
+            text-align: center;
+            max-width: 800px; /* Obmedzenie šírky */
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 600; /* Tučnejší text */
+        }
+
+
+        /* --- Why Us Contact Section (znovu použité mriežky funkcií) --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Explicitne 2 stĺpce pre desktop */
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: var(--spacing-md);
+        }
+
+        .feature-item .feature-icon {
+            font-size: 3rem;
+            color: var(--clr-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-item h3 {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            color: var(--clr-text-dark);
+        }
+
+
+       /* 12. Hlavná Pätička */
+/* Removed old .main-footer and .footer-section styles */
+
+.new-site-footer {
+    background-color: #1A365D; /* Dark background for a sleek look */
+    color: var(--clr-primary);
+    padding: var(--spacing-xl) var(--spacing-md);
+    font-size: 0.95rem;
+    border-top: 5px solid var(--clr-secondary); /* Accent line at the top */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+        padding-bottom: 1rem; /* Optional, if needed to reduce overall footer height */
+
+}
+
+.new-site-footer .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.5fr; /* Brand, Links, Contact/Social */
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+    padding-bottom: var(--spacing-lg);
+}
+
+.new-site-footer .footer-brand {
+    text-align: left;
+}
+
+.new-site-footer .footer-logo {
+    height: 70px; /* Larger logo in footer */
+    width: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+.new-site-footer .footer-brand p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 0; /* Reduced space under the last p */
+}
+
+.new-site-footer .footer-links h4,
+.new-site-footer .footer-contact h4 {
+   color: white;
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.new-site-footer .footer-links h4::after,
+.new-site-footer .footer-contact h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 40px;
+    height: 3px;
+   color: white;
+    border-radius: 2px;
+}
+
+.new-site-footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.new-site-footer .footer-links li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.new-site-footer .footer-links li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+      text-decoration: none;
+}
+
+.new-site-footer .footer-links li a:hover {
+    color: var(--clr-accent);
+    transform: translateX(5px);
+}
+
+.new-site-footer .footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-sm); /* Reduced margin for contact info paragraphs */
+    font-size: 1rem;
+}
+
+.new-site-footer .footer-contact p i {
+    color: var(--clr-secondary);
+    font-size: 1.1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.new-site-footer .footer-social-links {
+    margin-top: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-start; /* Align social links to the left */
+}
+
+.new-site-footer .footer-social-links a {
+    font-size: 1.8rem;
+    color: var(--clr-primary);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.new-site-footer .footer-social-links a:hover {
+    color: var(--clr-accent);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.new-site-footer .footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+     margin-top: 1rem; /* Try lowering from var(--spacing-lg) which is 3rem */
+    font-size: 0.85rem;
+}
+
+.new-site-footer .footer-bottom-bar .fas.fa-heart {
+    color: #e74c3c; /* Red heart */
+    animation: pulse 1.5s infinite ease-in-out; /* Heartbeat animation */
+}
+
+        /* --- Custom Cursor --- */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--clr-secondary);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.5s ease;
+            opacity: 0; /* Skryté predvolene */
+        }
+
+        .custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(233, 76, 61, 0.3); /* Upravte pre použitie premennej */
+        }
+
+        /* --- Promo Popup --- */
+        .promo-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .promo-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .promo-popup .popup-content {
+            background-color: var(--clr-card-bg);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 30px var(--clr-shadow-dark);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .promo-popup.active .popup-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .promo-popup .close-btn {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--clr-primary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .promo-popup .close-btn:hover {
+            color: var(--clr-secondary);
+        }
+
+        .promo-popup h3 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            color: var(--clr-primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .promo-popup p {
+            font-size: 1.1rem;
+            color: var(--clr-text-dark);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .promo-popup .btn {
+            margin: 0.5rem;
+        }
+
+        /* --- Message Box (pre upozornenia) --- */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--clr-card-bg);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 10px 30px var(--clr-shadow-dark);
+            z-index: 2000;
+            text-align: center;
+            max-width: 400px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+
+        .message-box.is-visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .message-box p {
+            font-size: 1.1rem;
+            color: var(--clr-text-dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .message-box button {
+            background-color: var(--clr-secondary);
+            color: var(--clr-text-light);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .message-box button:hover {
+            background-color: #d64133; /* Hardcoded pre darken, keďže Sass nie je k dispozícii */
+        }
+
+
+        /* ===================================== */
+        /* animations.css - Animácie a Prechody */
+        /* ===================================== */
+
+        /* 1. Keyframes pre animáciu fade-in-up */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for starFall (for night mode, good to keep) */
+        @keyframes starFall {
+            0% {
+                transform: translate(-100px, -100px) rotate(45deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100vw, 100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        /* Keyframes for moonFloat (for night mode) */
+        @keyframes moonFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); } /* Slightly more noticeable float */
+        }
+
+        /* Keyframes for planetDrift (for night mode) */
+        @keyframes planetDrift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(20px, -20px) rotate(10deg); } /* More noticeable drift */
+        }
+
+        /* Keyframes for bubblePulse (for hero section buttons) */
+        @keyframes bubblePulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Keyframes for night sky elements (specific to hero section) */
+        @keyframes moonGlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(5px); }
+        }
+
+        @keyframes shootStar {
+            0% {
+                transform: translateX(0) translateY(0) rotate(-45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            40% {
+                transform: translateX(-300px) translateY(300px) rotate(-45deg);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* New: Global Shooting Star animation (slower, longer path) */
+        @keyframes shootStarGlobal {
+            0% {
+                transform: translateX(-100vw) translateY(-100vh) rotate(-45deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.8;
+            }
+            95% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateX(100vw) translateY(100vh) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        /* ===================================== */
+        /* dark-mode.css - Štýly pre Tmavý Režim */
+        /* ===================================== */
+
+        /* Prepíše premenné v :root, keď je aktívny tmavý režim */
+        body.dark-mode {
+            --clr-primary: #86A8E7;          /* Svetlejšia modrá pre nadpisy a primárne prvky v tmavom režime */
+            --clr-secondary: #FF8C60;        /* Jasnejšia oranžová/koralová pre akcenty */
+            --clr-accent: #FFEB3B;           /* Svetlejšia zlatá pre jemné zvýraznenie */
+            --clr-text-dark: #E0E0E0;        /* Svetlý text na tmavom pozadí */
+            --clr-text-light: #222222;       /* Tmavší text na veľmi svetlých prvkoch (ak by boli) */
+            --clr-background: #0D141F;       /* Ešte tmavšie pozadie pre skutočnú nočnú oblohu */
+            --clr-card-bg: #1A253A;          /* Tmavšie pozadie pre karty/panely */
+            --clr-border: #3A475D;           /* Tmavšie ohraničenia */
+            --clr-shadow-light: rgba(0, 0, 0, 0.3); /* Výraznejšie tmavé tiene */
+            --clr-shadow-medium: rgba(0, 0, 0, 0.5); /* */
+            --clr-shadow-dark: rgba(0, 0, 0, 0.7); /* */
+        }
+
+      /* 2. Hlavička a Navigácia */
+body.dark-mode .main-header {
+    background-color: var(--clr-card-bg);
+    box-shadow: 0 2px 15px var(--clr-shadow-medium);
+    border-bottom: 1px solid var(--clr-border);
+}
+
+body.dark-mode .main-nav a {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .main-nav a::after {
+    background-color: var(--clr-secondary);
+}
+
+body.dark-mode .main-nav a:hover::after,
+body.dark-mode .main-nav a.active::after {
+    background-color: var(--clr-secondary);
+}
+
+body.dark-mode .theme-toggle {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(134, 168, 231, 0.1);
+}
+
+@media (max-width: 992px) {
+    body.dark-mode .main-nav.active { /* Changed from .open to .active */
+        background-color: var(--clr-card-bg);
+        box-shadow: 0 8px 15px var(--clr-shadow-medium);
+        border-top: 1px solid var(--clr-border);
+    }
+}
+
+/* 3. Hero Sekcia */
+body.dark-mode .hero-section {
+    background: linear-gradient(to right, #101827, #1F2937);
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .hero-section h1 {
+    color: var(--clr-text-dark);
+}
+
+body.dark-mode .hero-section p {
+    color: rgba(224, 224, 224, 0.9);
+}
+
+/* Day-Night Visual (specific to hero section) */
+body.dark-mode .day-night-visual::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    /* Hero-specific stars, not global */
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, white 60%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 70% 20%, white 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 60% 80%, white 50%, transparent 100%),
+        radial-gradient(1.2px 1.2px at 40% 60%, white 40%, transparent 100%),
+        radial-gradient(1px 1px at 90% 50%, white 50%, transparent 100%),
+        radial-gradient(1px 1px at 10% 90%, white 50%, transparent 100%);
+    animation: twinkle 4s infinite ease-in-out;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+body.dark-mode .day-night-visual::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fefcea 0%, #d4d4d4 70%);
+    box-shadow: 0 0 30px rgba(255, 255, 200, 0.4),
+                0 0 80px rgba(255, 255, 180, 0.15);
+    z-index: 3;
+    animation: moonGlow 10s ease-in-out infinite;
+    pointer-events: none;
+}
+
+body.dark-mode .shooting-star { /* Hero-specific shooting star */
+    position: absolute;
+    top: 20%;
+    left: 80%;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(0deg, transparent, white);
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: shootStar 8s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+body.dark-mode .shooting-star.delay-1 {
+    animation-delay: 4s;
+}
+
+body.dark-mode .planet { /* Hero-specific planet */
+    position: absolute;
+    bottom: 15%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle at 30% 30%, #9bd3f9, #264e77);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(155, 211, 249, 0.2);
+    z-index: 1;
+    opacity: 0.7;
+    animation: planetDrift 40s ease-in-out infinite alternate;
+    pointer-events: none;
+
+
+}
+
+/* 13. Hlavná Pätička (New Footer Styles) */
+body.dark-mode .new-site-footer {
+    background-color: #101827; /* Even darker background for a deep night feel */
+    border-top-color: var(--clr-secondary);
+    color: var(--clr-text-dark); /* Ensure base text color is light */
+}
+
+body.dark-mode .new-site-footer .footer-brand p,
+body.dark-mode .new-site-footer .footer-contact p {
+    color: rgba(224, 224, 224, 0.8); /* Lighter text for paragraphs */
+}
+
+body.dark-mode .new-site-footer .footer-links h4,
+body.dark-mode .new-site-footer .footer-contact h4 {
+    color: var(--clr-primary); /* Use primary color for headings (light blue) */
+}
+
+body.dark-mode .new-site-footer .footer-links h4::after,
+body.dark-mode .new-site-footer .footer-contact h4::after {
+    background-color: var(--clr-secondary); /* Accent color for underline */
+}
+
+body.dark-mode .new-site-footer .footer-links li a {
+    color: rgba(224, 224, 224, 0.7); /* Lighter links */
+}
+
+body.dark-mode .new-site-footer .footer-links li a:hover {
+    color: var(--clr-accent); /* Golden accent on hover */
+}
+
+body.dark-mode .new-site-footer .footer-contact p i {
+    color: var(--clr-secondary); /* Accent color for icons */
+}
+
+body.dark-mode .new-site-footer .footer-social-links a {
+    color: var(--clr-text-dark); /* Light text for social icons */
+}
+
+body.dark-mode .new-site-footer .footer-social-links a:hover {
+    color: var(--clr-accent); /* Golden accent on hover */
+}
+
+body.dark-mode .new-site-footer .footer-bottom-bar {
+    border-top-color: rgba(224, 224, 224, 0.1);
+    color: rgba(224, 224, 224, 0.6); /* Lighter copyright text */
+}
+        /* Globálna planéta pre celé telo - UPRAVENÁ POZÍCIA */
+        body.dark-mode .bg-planet {
+            position: absolute;
+            width: 80px; /* Menšia planéta pre pozadie */
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #9bd3f9, #264e77); /* Modrý/tmavomodrý gradient */
+            border-radius: 50%;
+            box-shadow: 0 0 15px 5px rgba(155, 211, 249, 0.4);
+            top: 60%; /* Upravené na 60% */
+            left: 80%; /* Upravené na 80% */
+            animation: planetDrift 20s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+
+            /* Removed the old .menu-toggle display: none */
+        /* ===================================== */
+        /* Responzívny Dizajn (Media Queries) */
+        /* ===================================== */
+
+        /* Tablety a menšie desktopy (max-width: 992px) */
+        @media (max-width: 992px) {
+            .main-nav {
+                display: none; /* Skryté predvolene na menších obrazovkách */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--clr-card-bg);
+                box-shadow: 0 10px 20px var(--clr-shadow-medium);
+                padding: var(--spacing-md) 0;
+                border-top: 1px solid var(--clr-border);
+            }
+
+            .main-nav.active { /* Changed from .open to .active */
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .main-nav a {
+                padding: 0.8rem 0;
+                font-size: 1.1rem;
+              
+            }
+
+            /* Hamburger menu button styles */
+            .hamburger-menu {
+                display: flex; /* Show hamburger on small screens */
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 25px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                z-index: 1001; /* Ensure it's above other content */
+            }
+
+            .hamburger-menu .bar {
+                width: 100%;
+                height: 3px;
+                background-color: var(--clr-primary); /* Color of the bars */
+                border-radius: 5px;
+                transition: all 0.3s ease-in-out;
+            }
+
+            /* Animation for hamburger to 'X' */
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: translateY(11px) rotate(45deg);
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: translateY(-11px) rotate(-45deg);
+            }
+
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr; /* Stohovať na menších obrazovkách */
+            }
+
+            .about-content {
+                order: 2; /* Obsah pod obrázkom na mobile */
+            }
+
+            .about-image {
+                order: 1; /* Obrázok nad obsahom na mobile */
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .services-grid,
+            .portfolio-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .features-grid { /* Pre mobilné zobrazenie 1 stĺpec */
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr; /* Stohovať na menších obrazovkách */
+            }
+
+            .contact-form, .contact-info {
+                padding: var(--spacing-lg);
+            }
+
+            .main-footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links ul {
+                padding: 0;
+            }
+
+            .footer-social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Mobily (max-width: 768px) */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-description {
+                font-size: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .card {
+                padding: var(--spacing-lg);
+            }
+
+            .faq-question {
+                font-size: 1.05rem;
+            }
+            .faq-item.active .faq-answer {
+                padding: 1rem 1.2rem 1.2rem;
+            }
+
+            .quiz-container, .contact-form, .contact-info {
+                padding: var(--spacing-md);
+            }
+            .quiz-options label {
+                padding: 0.8rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .promo-popup .popup-content {
+                max-width: 95%;
+                padding: var(--spacing-lg);
+            }
+            .promo-popup h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Veľmi malé mobily (max-width: 480px) */
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* Hide hamburger and show full nav on larger screens */
+        @media (min-width: 993px) { /* Changed from 768px to 993px to match the max-width: 992px breakpoint */
+            .hamburger-menu {
+                display: none; /* Hide hamburger on desktop */
+            }
+            .main-nav {
+                display: flex; /* Show nav on desktop */
+                position: static;
+                flex-direction: row;
+                background-color: transparent;
+                box-shadow: none;
+                border-top: none;
+                padding: 0;
+            }
+            .main-nav ul {
+                flex-direction: row;
+                gap: var(--spacing-lg);
+            }
+        }
+
+
+        body.day-mode .background-visual {
+            background: linear-gradient(to top, #e0f7fa, #ffffff);
+        }
+
+        body.day-mode .background-visual::after,
+        body.day-mode .background-visual::before {
+            display: none;
+        }
+
+        .imgprojekt{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="custom-cursor"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="logo.jpg.png" alt="MWeby Logo" width="150" height="60">
+                </a>
+            </div>
+            <!-- Main navigation for desktop, hidden on mobile -->
+            <nav class="main-nav">
+                <ul>
+                     <li><a href="index.html#home">Domov</a></li>
+                    <li><a href="index.html#about">O Nás</a></li>
+                    <li><a href="index.html#services">Služby</a></li>
+                    <li><a href="index.html#portfolio">Portfólio</a></li>
+                    <li><a href="index.html#advantages">Výhody</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#quiz-section">Kvíz</a></li>
+                    <li><a href="blogy.html">Blog</a></li>
+                    <li><a href="index.html#contact" class="active">Kontakt</a></li>
+                </ul>
+            </nav>
+            <!-- Controls always visible, but hamburger-menu only on mobile -->
+            <div class="header-controls"> <!-- Renamed class for clarity -->
+                <button class="hamburger-menu" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="Prepnúť režim zobrazenia">
+                    <i class="fas fa-sun icon-sun show"></i>
+                    <i class="fas fa-moon icon-moon hide"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="day-night-visual">
+                <div class="sun"></div>
+
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+                <div class="cloud cloud-4"></div>
+                <div class="bird bird-1"></div>
+                <div class="bird bird-2"></div>
+                <div class="bird bird-3"></div>
+                <div class="bird bird-4"></div>
+                <div class="bird bird-5"></div>
+                <!-- Hero-specific shooting star and planet are kept here if desired for distinct hero visuals -->
+                <div class="shooting-star"></div>
+                <div class="shooting-star delay-1"></div>
+                <div class="planet"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="container animate-on-scroll">
+                <h1>Tvorba profesionálnych webstránok v Nitre</h1>
+                <p>Navrhujeme a vyvíjame moderné, rýchle a responzívne webstránky na mieru. Získajte profesionálnu
+                    online prezentáciu za najlepšiu cenu!</p>
+                <!-- Removed hero-buttons div as per user request -->
+            </div>
+        </section>
+
+        <section id="contact-form-section" class="section-padding">
+            <div class="container">
+                <h2 class="section-title text-center">Povedzte nám viac o Vašom projekte</h2>
+                <p class="section-description text-center">Vyplňte formulár nižšie a my sa Vám ozveme s cenovou ponukou a možnými riešeniami. Čím viac detailov nám poskytnete, tým presnejšiu ponuku Vám dokážeme pripraviť.</p>
+
+                <p class="important-message">
+                    Nemajte obavy! Odoslaním tejto požiadavky sa k ničomu nezaväzujete. Berte to ako nezáväzný experiment.
+                    Radi si s Vami prejdeme Vaše predstavy, navrhneme riešenia a pripravíme cenovú ponuku úplne zadarmo.
+                    Až potom sa budete môcť rozhodnúť, či je to pre Vás to pravé.
+                </p>
+
+                <div class="contact-grid">
+                    <div class="contact-form card animated-card">
+                        <form action="submit_form.php" method="POST" class="needs-validation" novalidate>
+                            <div class="form-group">
+                                <label for="name">Vaše meno a priezvisko <strong>*</strong></label>
+                                <input type="text" id="name" name="name" required placeholder="Ján Novák">
+                                <div class="invalid-feedback">Prosím, zadajte svoje meno.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Váš e-mail <strong>*</strong></label>
+                                <input type="email" id="email" name="email" required placeholder="vas.email@priklad.sk">
+                                <div class="invalid-feedback">Prosím, zadajte platný e-mail.</div>
+                            </div>
+                            <!-- Telefónne číslo odstránené podľa požiadavky -->
+
+                            <h3>O Vašom Podnikaní a Víziách</h3>
+                            <div class="form-group">
+                                <label for="business-name">Názov Vášho podniku/projektu</label>
+                                <input type="text" id="business-name" name="business-name" placeholder="Moja Kaviareň, s.r.o.">
+                            </div>
+                            <div class="form-group">
+                                <label for="business-type">Typ podnikania / odvetvie <strong>*</strong></label>
+                                <input type="text" id="business-type" name="business-type" required placeholder="Kaviareň, e-shop s oblečením, autoškola...">
+                                <div class="invalid-feedback">Prosím, uveďte typ Vášho podnikania.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="target-audience">Pre koho je Váš web určený? (Cieľová skupina)</label>
+                                <textarea id="target-audience" name="target-audience" rows="3"
+                                    placeholder="Napr. mladí ľudia 18-35 rokov, majitelia domácich zvierat, lokálni obyvatelia Nitry..."></textarea>
+                            </div>
+
+                            <h3>O Vašej Budúcej Webstránke</h3>
+                            <div class="form-group">
+                                <label for="website-purpose">Hlavný účel webstránky <strong>*</strong></label>
+                                <textarea id="website-purpose" name="website-purpose" rows="4" required
+                                    placeholder="Napr. prezentácia služieb, predaj produktov, zber kontaktov, blog..."></textarea>
+                                <div class="invalid-feedback">Prosím, popíšte hlavný účel webstránky.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="features">Aké funkcie by mal web obsahovať? (Vyberte viacero možností)</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" name="features[]" value="Kontaktný formulár"> Kontaktný formulár</label>
+                                    <label><input type="checkbox" name="features[]" value="Galéria/Portfólio"> Galéria/Portfólio</label>
+                                    <label><input type="checkbox" name="features[]" value="Blog/Aktuality"> Blog/Aktuality</label>
+                                    <label><input type="checkbox" name="features[]" value="E-shop funkcionalita"> E-shop funkcionalita</label>
+                                    <label><input type="checkbox" name="features[]" value="Rezervačný systém"> Rezervačný systém</label>
+                                    <label><input type="checkbox" name="features[]" value="Cenník služieb"> Cenník služieb</label>
+                                    <label><input type="checkbox" name="features[]" value="Mapka/Adresa"> Mapka/Adresa</label>
+                                    <label><input type="checkbox" name="features[]" value="Sociálne siete prepojenie"> Prepojenie na sociálne siete</label>
+                                    <label><input type="checkbox" name="features[]" value="FAQ sekcia"> Sekcia častých otázok (FAQ)</label>
+                                    <label><input type="checkbox" name="features[]" value="Viacjazyčnosť"> Viacjazyčnosť</label>
+                                    <label><input type="checkbox" name="features[]" value="Iné"> Iné (prosím, špecifikujte v správe)</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ďalšie požiadavky alebo správa pre nás</label>
+                                <textarea id="message" name="message" rows="5"
+                                    placeholder="Máte špecifické predstavy o dizajne, referenčné weby, alebo akékoľvek iné detaily, ktoré nám pomôžu?"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Odoslať požiadavku</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info card animated-card">
+                        <h3>Čo môžete očakávať ďalej?</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <strong>Rýchla reakcia:</strong> Ozveme sa Vám do 24-48 hodín.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Osobná konzultácia:</strong> Dohodneme si krátky online hovor alebo stretnutie (ak ste z Nitry), aby sme prediskutovali Vaše potreby detailnejšie.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Cenová ponuka na mieru:</strong> Pripravíme transparentnú a férovú cenovú ponuku bez skrytých poplatkov.</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Spustenie projektu:</strong> Po schválení ponuky začneme s tvorbou Vašej novej webstránky!</li>
+                        </ul>
+                        <div class="info-details">
+                            <h4>Kontaktujte nás priamo:</h4>
+                            <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us-contact" class="section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Prečo si vybrať MWeby pre Váš projekt?</h2>
+                <div class="features-grid">
+                    <div class="feature-item card">
+                        <i class="fas fa-hand-holding-usd feature-icon"></i>
+                        <h3>Férové ceny, jednorazová platba</h3>
+                        <p>U nás platíte len raz za profesionálnu webstránku, bez mesačných popoplatkov. Transparentná cenotvorba bez skrytých nákladov.</p>
+                    </div>
+                    <div class="feature-item card">
+                        <i class="fas fa-laptop-code feature-icon"></i>
+                        <h3>Moderný a responzívny dizajn</h3>
+                        <p>Vytvárame weby, ktoré vyzerajú skvele a fungujú perfektne na akomkoľvek zariadení – od mobilu po desktop.</p>
+                    </div>
+                    <div class="feature-item card">
+                        <i class="fas fa-headset feature-icon"></i>
+                        <h3>Osobný prístup a podpora</h3>
+                        <p>Sme Váš partner, nie len dodávateľ. Počúvame Vaše potreby a poskytujeme individuálnu podporu počas celého projektu aj po ňom.</p>
+                    </div>
+                    <div class="feature-item card">
+                        <i class="fas fa-chart-line feature-icon"></i>
+                        <h3>Zameranie na výsledky</h3>
+                        <p>Naším cieľom je, aby Váš web nielen vyzeral dobre, ale aj prinášal výsledky – viac zákazníkov a rast Vášho biznisu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="footer-separator"></div> <!-- Separátor pred pätičkou -->
+
+    <footer class="new-site-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="logo.jpg.png" alt="MWeby Logo" class="footer-logo">
+                <p>Tvorba profesionálnych webstránok v Nitre. Kvalita za rozumnú cenu.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Rýchle Odkazy</h4>
+                <ul>
+                    <li><a href="#about">O Nás</a></li>
+                    <li><a href="#services">Služby</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Kontaktujte Nás</h4>
+                <p><i class="fas fa-envelope"></i> mweby.2025@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nitra, Slovensko</p>
+                <div class="footer-social-links">
+                    <a href="https://www.facebook.com/mweby.sk" target="_blank" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/mweby.sk" target="_blank" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/yourphonenumber" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2025 MWeby. Všetky práva vyhradené. | Vytvorené s <i class="fas fa-heart"></i> v Nitre</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funkcionalita pre hamburger menu
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const mainNav = document.querySelector('.main-nav');
+
+            if (hamburgerMenu && mainNav) {
+                hamburgerMenu.addEventListener('click', () => {
+                    mainNav.classList.toggle('active'); // Changed from 'open' to 'active'
+                    hamburgerMenu.classList.toggle('active');
+                });
+
+                // Zatvorenie menu po kliknutí na odkaz (pre mobil)
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mainNav.classList.remove('active'); // Changed from 'open' to 'active'
+                        hamburgerMenu.classList.remove('active');
+                    });
+                });
+            }
+
+            // Funkcionalita pre prepínač tém (dark/light mode)
+            const themeToggleBtn = document.getElementById('theme-toggle-btn'); // Changed ID
+            const body = document.body;
+            const sunIcon = document.querySelector('.icon-sun');
+            const moonIcon = document.querySelector('.icon-moon');
+            const dayNightVisual = document.querySelector('.day-night-visual');
+
+
+            const applyTheme = (isDarkMode) => {
+                if (isDarkMode) {
+                    body.classList.add('dark-mode');
+                    dayNightVisual.classList.remove('day-mode'); // Remove day-mode for night visual
+                    if (sunIcon && moonIcon) {
+                        sunIcon.classList.remove('show');
+                        sunIcon.classList.add('hide');
+                        moonIcon.classList.remove('hide');
+                        moonIcon.classList.add('show');
+                    }
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    body.classList.remove('dark-mode');
+                    dayNightVisual.classList.add('day-mode'); // Add day-mode for day visual
+                    if (sunIcon && moonIcon) {
+                        sunIcon.classList.remove('hide');
+                        sunIcon.classList.add('show');
+                        moonIcon.classList.remove('show');
+                        moonIcon.classList.add('hide');
+                    }
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Načítanie uloženej témy alebo detekcia preferencií systému
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                applyTheme(true);
+            } else {
+                applyTheme(false);
+            }
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    applyTheme(!body.classList.contains('dark-mode'));
+                });
+            }
+
+      
+            // Klient-side validácia formulára
+            (function () {
+                'use strict';
+                var forms = document.getElementsByClassName('needs-validation');
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            })();
+        });
+    </script>
+</body>
+
+</html>
